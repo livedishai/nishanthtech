@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ta" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jewels-AI | Next-Gen WebAR & AI Agency</title>
+  <title>Nishanth AI | Next-Gen WebAR & AI Agency</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Model-Viewer for WebAR -->
@@ -21,49 +21,76 @@
       border-color: rgba(56, 189, 248, 0.4);
       box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
     }
+    .lang-dropdown {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    .lang-dropdown:focus {
+      outline: none;
+      border-color: #38bdf8;
+    }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-white pb-20">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-white pb-24">
 
   <!-- TOP NAVIGATION -->
   <nav class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 px-4 py-3">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
+      
+      <!-- Brand Logo & Name -->
       <div class="flex items-center space-x-2">
         <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-500/20">
-          J
+          N
         </div>
-        <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Jewels-AI</span>
+        <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+          Nishanth AI
+        </span>
       </div>
-      <a href="https://wa.me/919999999999?text=Hi%20Jewels-AI%2C%20I%20want%20a%20free%20AR%2FAI%20demo" 
-         class="hidden sm:inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full transition-all shadow-md shadow-emerald-500/20">
-        <i data-lucide="message-circle" class="w-4 h-4"></i> Free Demo
-      </a>
+
+      <!-- Right Navigation Actions: Language Switcher + Demo Button -->
+      <div class="flex items-center space-x-2.5">
+        
+        <!-- Multi-Language Selector Dropdown -->
+        <div class="relative">
+          <select id="language-switcher" onchange="setLanguage(this.value)" class="lang-dropdown text-xs text-slate-200 font-medium px-2.5 py-1.5 rounded-lg cursor-pointer transition-all">
+            <option value="en" selected class="bg-slate-900 text-white">🌐 English</option>
+            <option value="ta" class="bg-slate-900 text-white">🌐 தமிழ்</option>
+          </select>
+        </div>
+
+        <a href="https://wa.me/919999999999?text=Hi%20Nishanth%20AI%2C%20I%20want%20a%20free%20AR%2FAI%20demo" 
+           class="hidden sm:inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all shadow-md shadow-emerald-500/20">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> <span data-i18n="nav_demo_btn">Free Demo</span>
+        </a>
+      </div>
+
     </div>
   </nav>
 
   <!-- HERO SECTION -->
   <header class="px-4 pt-8 pb-10 max-w-4xl mx-auto text-center space-y-4">
     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-medium">
-      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Next-Gen WebAR & AI Agency
+      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> 
+      <span data-i18n="hero_badge">Next-Gen WebAR & AI Agency</span>
     </div>
     
     <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-      உங்கள் வணிகத்திற்கு <br>
-      <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
-        WebAR & AI ஆட்டோமேஷன்
+      <span data-i18n="hero_title_1">Transform Your Business With</span> <br>
+      <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent" data-i18n="hero_title_2">
+        WebAR & AI Automation
       </span>
     </h1>
 
-    <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-      No App Download. உங்கள் வாடிக்கையாளர்களுக்கு பிரவுசரிலேயே 3D AR அனுபவமும், வாட்ஸ்அப் வழியே 24/7 தானியங்கி விற்பனையும் வழங்கி வருவாயை இரட்டிப்பாக்குங்கள்.
+    <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed" data-i18n="hero_description">
+      No App Download Required. Deliver native 3D AR in any mobile browser & convert leads 24/7 with autonomous WhatsApp workflows to double your revenue.
     </p>
 
     <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-      <a href="#industries" class="w-full sm:w-auto bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-6 py-3 rounded-xl shadow-lg shadow-cyan-500/25 transition-all">
-        துறைகளைத் தேர்ந்தெடுக்க 🚀
+      <a href="#industries" class="w-full sm:w-auto bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-6 py-3 rounded-xl shadow-lg shadow-cyan-500/25 transition-all" data-i18n="hero_btn_explore">
+        Explore Industries 🚀
       </a>
       <a href="#live-demo" class="w-full sm:w-auto glass-card hover:bg-slate-900 text-slate-200 font-semibold text-sm px-5 py-3 rounded-xl transition-all flex items-center justify-center gap-2">
-        <i data-lucide="scan" class="w-4 h-4 text-cyan-400"></i> Live 3D Demo
+        <i data-lucide="scan" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="hero_btn_demo">Live 3D Demo</span>
       </a>
     </div>
   </header>
@@ -71,8 +98,8 @@
   <!-- 9-CATEGORY 2-COLUMN COMPACT GRID -->
   <section id="industries" class="px-4 py-8 max-w-4xl mx-auto">
     <div class="text-center mb-6">
-      <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">எந்த துறைக்கான தீர்வு வேண்டும்?</h2>
-      <p class="text-slate-400 text-xs sm:text-sm mt-1">கீழே உள்ள உங்கள் தொழிலைத் தேர்ந்தெடுத்து 10 பிரத்யேக டெமோக்களைப் பாருங்கள்</p>
+      <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight" data-i18n="grid_heading">Which Industry Solution Do You Need?</h2>
+      <p class="text-slate-400 text-xs sm:text-sm mt-1" data-i18n="grid_subheading">Select your niche below to explore 10 interactive bespoke demos</p>
     </div>
 
     <!-- Grid Container: 2-Column on Mobile, 3-Column on Tablets/Desktop -->
@@ -82,11 +109,11 @@
       <a href="hospitality.html" class="glass-card rounded-2xl p-4 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
         <div class="space-y-2">
           <span class="text-3xl">🍽️</span>
-          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors">உணவு & ஹோட்டல்</h3>
-          <p class="text-[11px] text-slate-400 leading-snug">3D மெனு, வாட்ஸ்அப் ஆர்டரிங், வைரல் கேம்ஸ்</p>
+          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_1_title">Food & Hospitality</h3>
+          <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_1_desc">3D Menu Viewer, WhatsApp Ordering, Viral Table Games</p>
         </div>
         <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
-          <span>10 Demos</span>
+          <span data-i18n="demo_count">10 Demos</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
         </div>
       </a>
@@ -95,11 +122,11 @@
       <a href="healthcare.html" class="glass-card rounded-2xl p-4 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
         <div class="space-y-2">
           <span class="text-3xl">🏥</span>
-          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors">மருத்துவம் & கிளினிக்</h3>
-          <p class="text-[11px] text-slate-400 leading-snug">3D சிகிச்சை விளக்கம், அப்பாயின்ட்மென்ட் போட்</p>
+          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_2_title">Medical & Clinics</h3>
+          <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_2_desc">3D Procedure Explainer, 24/7 Appointment Booking Bot</p>
         </div>
         <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
-          <span>10 Demos</span>
+          <span data-i18n="demo_count">10 Demos</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
         </div>
       </a>
@@ -108,11 +135,11 @@
       <a href="realestate.html" class="glass-card rounded-2xl p-4 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
         <div class="space-y-2">
           <span class="text-3xl">🏗️</span>
-          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors">ரியல் எஸ்டேட்</h3>
-          <p class="text-[11px] text-slate-400 leading-snug">3D ஃப்ளோர் பிளான், விர்ச்சுவல் இன்டீரியர்</p>
+          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_3_title">Real Estate & Staging</h3>
+          <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_3_desc">Interactive 3D Floor Plans, Virtual Architecture Tours</p>
         </div>
         <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
-          <span>10 Demos</span>
+          <span data-i18n="demo_count">10 Demos</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
         </div>
       </a>
@@ -121,11 +148,11 @@
       <a href="retail.html" class="glass-card rounded-2xl p-4 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
         <div class="space-y-2">
           <span class="text-3xl">💍</span>
-          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors">நகை & ஆடைகள்</h3>
-          <p class="text-[11px] text-slate-400 leading-snug">விர்ச்சுவல் ட்ரை-ஆன், மேஜிக் மிரர்</p>
+          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_4_title">Jewelry & Luxury</h3>
+          <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_4_desc">Virtual Try-On, 3D Product Showcase, Live Rate Alerts</p>
         </div>
         <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
-          <span>10 Demos</span>
+          <span data-i18n="demo_count">10 Demos</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
         </div>
       </a>
@@ -134,11 +161,11 @@
       <a href="events.html" class="glass-card rounded-2xl p-4 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
         <div class="space-y-2">
           <span class="text-3xl">🎁</span>
-          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors">திருமணம் & கிஃப்ட்</h3>
-          <p class="text-[11px] text-slate-400 leading-snug">AR பத்திரிகை, வீடியோ மேக்னட்ஸ்</p>
+          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_5_title">Weddings & Gifting</h3>
+          <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_5_desc">Living AR Invitations, AR Video Fridge Magnets</p>
         </div>
         <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
-          <span>10 Demos</span>
+          <span data-i18n="demo_count">10 Demos</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
         </div>
       </a>
@@ -147,11 +174,11 @@
       <a href="automobile.html" class="glass-card rounded-2xl p-4 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
         <div class="space-y-2">
           <span class="text-3xl">🚗</span>
-          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors">ஆட்டோமொபைல்</h3>
-          <p class="text-[11px] text-slate-400 leading-snug">3D கார் வியூவர், சர்வீஸ் ரிமைண்டர்</p>
+          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_6_title">Automobile Showrooms</h3>
+          <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_6_desc">3D Car Visualizer, Test Drive Booking, Service Bots</p>
         </div>
         <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
-          <span>10 Demos</span>
+          <span data-i18n="demo_count">10 Demos</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
         </div>
       </a>
@@ -160,11 +187,11 @@
       <a href="education.html" class="glass-card rounded-2xl p-4 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
         <div class="space-y-2">
           <span class="text-3xl">🎓</span>
-          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors">கல்வி & பயிற்சி</h3>
-          <p class="text-[11px] text-slate-400 leading-snug">3D லேப், AI டவுட் சால்வர் போட்</p>
+          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_7_title">Education & EdTech</h3>
+          <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_7_desc">Interactive 3D Science Labs, 24/7 AI Homework Tutor</p>
         </div>
         <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
-          <span>10 Demos</span>
+          <span data-i18n="demo_count">10 Demos</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
         </div>
       </a>
@@ -173,11 +200,11 @@
       <a href="tourism.html" class="glass-card rounded-2xl p-4 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
         <div class="space-y-2">
           <span class="text-3xl">🎨</span>
-          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors">கலை & சுற்றுலா</h3>
-          <p class="text-[11px] text-slate-400 leading-snug">லிவிங் கேன்வாஸ், பலமொழி AI கைடு</p>
+          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_8_title">Art, Culture & Tourism</h3>
+          <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_8_desc">Living Canvas Gallery, Multilingual AI Voice Tour Guide</p>
         </div>
         <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
-          <span>10 Demos</span>
+          <span data-i18n="demo_count">10 Demos</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
         </div>
       </a>
@@ -186,11 +213,11 @@
       <a href="manufacturing.html" class="col-span-2 sm:col-span-1 glass-card rounded-2xl p-4 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
         <div class="space-y-2">
           <span class="text-3xl">🏭</span>
-          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors">உற்பத்தி & தொழிற்துறை</h3>
-          <p class="text-[11px] text-slate-400 leading-snug">1:1 மெஷினரி AR, வாட்ஸ்அப் B2B போட்</p>
+          <h3 class="font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_9_title">Manufacturing & B2B</h3>
+          <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_9_desc">1:1 Heavy Machinery AR, Automated Lead Qualification</p>
         </div>
         <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
-          <span>10 Demos</span>
+          <span data-i18n="demo_count">10 Demos</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
         </div>
       </a>
@@ -204,9 +231,9 @@
       <div class="absolute -top-12 -right-12 w-44 h-44 bg-cyan-500/10 rounded-full blur-3xl"></div>
       
       <div class="text-center space-y-2 mb-6">
-        <span class="text-xs font-bold uppercase tracking-wider text-cyan-400">Live WebAR Experience</span>
-        <h2 class="text-2xl font-bold text-white">இப்போதே 3D-யில் அனுபவியுங்கள்</h2>
-        <p class="text-slate-400 text-xs sm:text-sm">விரலால் சுழற்றிப் பாருங்கள்; போன் கேமராவில் உங்கள் மேஜை மீதே பார்க்கலாம்</p>
+        <span class="text-xs font-bold uppercase tracking-wider text-cyan-400" data-i18n="demo_badge">Live WebAR Experience</span>
+        <h2 class="text-2xl font-bold text-white" data-i18n="demo_title">Experience in Native 3D Now</h2>
+        <p class="text-slate-400 text-xs sm:text-sm" data-i18n="demo_sub">Rotate with touch; place right on your physical table using your mobile camera</p>
       </div>
 
       <!-- 3D Model Viewer Component -->
@@ -224,7 +251,7 @@
       </div>
 
       <div class="mt-4 text-center">
-        <p class="text-[11px] text-slate-400 mb-2">மொபைலில் 'View in AR' பட்டனை அழுத்தி உங்கள் அறையில் வைத்துப் பார்க்கலாம்</p>
+        <p class="text-[11px] text-slate-400" data-i18n="demo_hint">Tap 'View in your space' on mobile to place the 3D model in your room</p>
       </div>
     </div>
   </section>
@@ -232,16 +259,107 @@
   <!-- STICKY MOBILE BOTTOM BAR -->
   <div class="fixed bottom-0 left-0 right-0 z-50 p-3 bg-slate-950/90 backdrop-blur-lg border-t border-slate-800 flex items-center gap-2 max-w-md mx-auto">
     <a href="tel:+919999999999" class="flex-1 glass-card hover:bg-slate-900 text-slate-200 font-semibold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 transition-all">
-      <i data-lucide="phone" class="w-3.5 h-3.5 text-cyan-400"></i> Call Us
+      <i data-lucide="phone" class="w-3.5 h-3.5 text-cyan-400"></i> <span data-i18n="btn_call">Call Us</span>
     </a>
-    <a href="https://wa.me/919999999999?text=Hi%20Jewels-AI%2C%20I%20am%20interested%20in%20your%20AR%2FAI%20services" 
+    <a href="https://wa.me/919999999999?text=Hi%20Nishanth%20AI%2C%20I%20am%20interested%20in%20your%20AR%2FAI%20services" 
        class="flex-[2] bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20 transition-all">
-      <i data-lucide="message-circle" class="w-4 h-4"></i> Chat on WhatsApp
+      <i data-lucide="message-circle" class="w-4 h-4"></i> <span data-i18n="btn_whatsapp">Chat on WhatsApp</span>
     </a>
   </div>
 
+  <!-- MULTILINGUAL DICTIONARY & SWITCHING ENGINE -->
   <script>
-    lucide.createIcons();
+    const translations = {
+      en: {
+        nav_demo_btn: "Free Demo",
+        hero_badge: "Next-Gen WebAR & AI Agency",
+        hero_title_1: "Transform Your Business With",
+        hero_title_2: "WebAR & AI Automation",
+        hero_description: "No App Download Required. Deliver native 3D AR in any mobile browser & convert leads 24/7 with autonomous WhatsApp workflows to double your revenue.",
+        hero_btn_explore: "Explore Industries 🚀",
+        hero_btn_demo: "Live 3D Demo",
+        grid_heading: "Which Industry Solution Do You Need?",
+        grid_subheading: "Select your niche below to explore 10 interactive bespoke demos",
+        card_1_title: "Food & Hospitality",
+        card_1_desc: "3D Menu Viewer, WhatsApp Ordering, Viral Table Games",
+        card_2_title: "Medical & Clinics",
+        card_2_desc: "3D Procedure Explainer, 24/7 Appointment Booking Bot",
+        card_3_title: "Real Estate & Staging",
+        card_3_desc: "Interactive 3D Floor Plans, Virtual Architecture Tours",
+        card_4_title: "Jewelry & Luxury",
+        card_4_desc: "Virtual Try-On, 3D Product Showcase, Live Rate Alerts",
+        card_5_title: "Weddings & Gifting",
+        card_5_desc: "Living AR Invitations, AR Video Fridge Magnets",
+        card_6_title: "Automobile Showrooms",
+        card_6_desc: "3D Car Visualizer, Test Drive Booking, Service Bots",
+        card_7_title: "Education & EdTech",
+        card_7_desc: "Interactive 3D Science Labs, 24/7 AI Homework Tutor",
+        card_8_title: "Art, Culture & Tourism",
+        card_8_desc: "Living Canvas Gallery, Multilingual AI Voice Tour Guide",
+        card_9_title: "Manufacturing & B2B",
+        card_9_desc: "1:1 Heavy Machinery AR, Automated Lead Qualification",
+        demo_count: "10 Demos",
+        demo_badge: "Live WebAR Experience",
+        demo_title: "Experience in Native 3D Now",
+        demo_sub: "Rotate with touch; place right on your physical table using your mobile camera",
+        demo_hint: "Tap 'View in your space' on mobile to place the 3D model in your room",
+        btn_call: "Call Us",
+        btn_whatsapp: "Chat on WhatsApp"
+      },
+      ta: {
+        nav_demo_btn: "இலவச டெமோ",
+        hero_badge: "Next-Gen WebAR & AI Agency",
+        hero_title_1: "உங்கள் வணிகத்திற்கு",
+        hero_title_2: "WebAR & AI ஆட்டோமேஷன்",
+        hero_description: "No App Download. உங்கள் வாடிக்கையாளர்களுக்கு பிரவுசரிலேயே 3D AR அனுபவமும், வாட்ஸ்அப் வழியே 24/7 தானியங்கி விற்பனையும் வழங்கி வருவாயை இரட்டிப்பாக்குங்கள்.",
+        hero_btn_explore: "துறைகளைத் தேர்ந்தெடுக்க 🚀",
+        hero_btn_demo: "Live 3D Demo",
+        grid_heading: "எந்த துறைக்கான தீர்வு வேண்டும்?",
+        grid_subheading: "கீழே உள்ள உங்கள் தொழிலைத் தேர்ந்தெடுத்து 10 பிரத்யேக டெமோக்களைப் பாருங்கள்",
+        card_1_title: "உணவு & ஹோட்டல்",
+        card_1_desc: "3D மெனு, வாட்ஸ்அப் ஆர்டரிங், வைரல் கேம்ஸ்",
+        card_2_title: "மருத்துவம் & கிளினிக்",
+        card_2_desc: "3D சிகிச்சை விளக்கம், அப்பாயின்ட்மென்ட் போட்",
+        card_3_title: "ரியல் எஸ்டேட்",
+        card_3_desc: "3D ஃப்ளோர் பிளான், விர்ச்சுவல் இன்டீரியர்",
+        card_4_title: "நகை & ஆடைகள்",
+        card_4_desc: "விர்ச்சுவல் ட்ரை-ஆன், மேஜிக் மிரர்",
+        card_5_title: "திருமணம் & கிஃப்ட்",
+        card_5_desc: "AR பத்திரிகை, வீடியோ மேக்னட்ஸ்",
+        card_6_title: "ஆட்டோமொபைல்",
+        card_6_desc: "3D கார் வியூவர், சர்வீஸ் ரிமைண்டர்",
+        card_7_title: "கல்வி & பயிற்சி",
+        card_7_desc: "3D லேப், AI டவுட் சால்வர் போட்",
+        card_8_title: "கலை & சுற்றுலா",
+        card_8_desc: "லிவிங் கேன்வாஸ், பலமொழி AI கைடு",
+        card_9_title: "உற்பத்தி & தொழிற்துறை",
+        card_9_desc: "1:1 மெஷினரி AR, வாட்ஸ்அப் B2B போட்",
+        demo_count: "10 Demos",
+        demo_badge: "Live WebAR Experience",
+        demo_title: "இப்போதே 3D-யில் அனுபவியுங்கள்",
+        demo_sub: "விரலால் சுழற்றிப் பாருங்கள்; போன் கேமராவில் உங்கள் மேஜை மீதே பார்க்கலாம்",
+        demo_hint: "மொபைலில் 'View in AR' பட்டனை அழுத்தி உங்கள் அறையில் வைத்துப் பார்க்கலாம்",
+        btn_call: "Call Us",
+        btn_whatsapp: "Chat on WhatsApp"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          element.innerText = translations[lang][key];
+        }
+      });
+      localStorage.setItem("selected_lang", lang);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      const savedLang = localStorage.getItem("selected_lang") || "en";
+      document.getElementById("language-switcher").value = savedLang;
+      setLanguage(savedLang);
+    });
   </script>
 </body>
 </html>
