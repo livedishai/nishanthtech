@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospitality AR & AI Solutions | Nishanth AI</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Model-Viewer for WebAR -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(234, 179, 8, 0.4);
+      box-shadow: 0 0 25px rgba(234, 179, 8, 0.12);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+      box-shadow: 0 4px 18px rgba(217, 119, 6, 0.35);
+    }
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+      box-shadow: 0 6px 22px rgba(245, 158, 11, 0.5);
+    }
+    .video-overlay-gradient {
+      background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(15,23,42,0.85) 100%);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-black pb-28">
+
+  <!-- TOP NAVIGATION -->
+  <nav class="sticky top-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 px-4 py-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
+        <i data-lucide="arrow-left" class="w-4 h-4 text-amber-400"></i> All Industries
+      </a>
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-md bg-gradient-to-tr from-amber-400 to-orange-500 flex items-center justify-center font-bold text-xs text-black shadow-md shadow-amber-500/20">
+          N
+        </div>
+        <span class="font-extrabold text-sm tracking-tight text-white">Nishanth AI</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- INDUSTRY HERO SECTION -->
+  <header class="px-4 pt-8 pb-6 max-w-4xl mx-auto text-center space-y-3">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold">
+      🍽️ Restaurants • Cafes • Bakeries • Bars
+    </div>
+    
+    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+      Hospitality Industry <br>
+      <span class="bg-gradient-to-r from-amber-300 via-orange-400 to-amber-500 bg-clip-text text-transparent">
+        10 Next-Gen AR & AI Solutions
+      </span>
+    </h1>
+
+    <p class="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
+      Boost high-margin dessert orders by 35%, automate table bookings 24/7 on WhatsApp, and turn dining into viral Instagram moments without requiring any app downloads.
+    </p>
+
+    <!-- FILTER TABS -->
+    <div class="flex items-center justify-center gap-2 pt-4">
+      <button onclick="filterCards('all')" id="tab-all" class="tab-btn bg-amber-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition-all shadow-md shadow-amber-500/20">
+        All Demos (10)
+      </button>
+      <button onclick="filterCards('ar')" id="tab-ar" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🕶️ WebAR Viral (6)
+      </button>
+      <button onclick="filterCards('ai')" id="tab-ai" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🤖 AI Automation (4)
+      </button>
+    </div>
+  </header>
+
+  <!-- 10 SERVICES GRID CONTAINER -->
+  <main class="px-4 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
+
+    <!-- 1. LiveDish AI -->
+    <div class="service-card glass-card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-type="ar">
+      <div class="space-y-3">
+        <div class="text-center space-y-1">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 mx-auto">
+            <i data-lucide="utensils" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-2xl font-black tracking-tight text-white">LiveDish <span class="text-amber-400">AI</span></h2>
+          <div class="flex items-center justify-center gap-2 text-xs font-semibold text-amber-300/90">
+            <span class="w-6 h-[1px] bg-amber-400/40"></span>
+            AR Menu Experience
+            <span class="w-6 h-[1px] bg-amber-400/40"></span>
+          </div>
+          <p class="text-xs text-slate-400 pt-1">Bring your food to life with 3D Augmented Reality on table</p>
+        </div>
+
+        <!-- Video / Preview Thumbnail -->
+        <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 group">
+          <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&auto=format&fit=crop&q=80" alt="3D Ramen Preview" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 video-overlay-gradient flex flex-col justify-between p-3">
+            <span class="self-start px-2 py-0.5 rounded-md bg-rose-500/90 text-white text-[10px] font-bold flex items-center gap-1">
+              <i data-lucide="play" class="w-2.5 h-2.5 fill-white"></i> 3D PREVIEW
+            </span>
+            <div class="flex items-center justify-between text-[11px] text-slate-300 bg-slate-950/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10">
+              <span>+35% Starters & Dessert Orders</span>
+              <span class="text-amber-400 font-bold">Instant AR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2 text-center">
+        <button onclick="openDemoModal('ar_menu')" class="w-full btn-gold text-slate-950 font-black text-sm py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="scan" class="w-4 h-4"></i> VIEW DEMO →
+        </button>
+        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> No App Required • Works on Any Browser
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. TableBot AI -->
+    <div class="service-card glass-card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-type="ai">
+      <div class="space-y-3">
+        <div class="text-center space-y-1">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 mx-auto">
+            <i data-lucide="message-square" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-2xl font-black tracking-tight text-white">TableBot <span class="text-emerald-400">AI</span></h2>
+          <div class="flex items-center justify-center gap-2 text-xs font-semibold text-emerald-300/90">
+            <span class="w-6 h-[1px] bg-emerald-400/40"></span>
+            WhatsApp Auto-Booking & Ordering
+            <span class="w-6 h-[1px] bg-emerald-400/40"></span>
+          </div>
+          <p class="text-xs text-slate-400 pt-1">Automated 24/7 table reservations and takeaway orders</p>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 group">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80" alt="WhatsApp Bot Preview" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 video-overlay-gradient flex flex-col justify-between p-3">
+            <span class="self-start px-2 py-0.5 rounded-md bg-emerald-500 text-white text-[10px] font-bold flex items-center gap-1">
+              <i data-lucide="bot" class="w-2.5 h-2.5"></i> AI BOT
+            </span>
+            <div class="flex items-center justify-between text-[11px] text-slate-300 bg-slate-950/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10">
+              <span>Zero Staff Required</span>
+              <span class="text-emerald-400 font-bold">24/7 Booking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2 text-center">
+        <button onclick="openDemoModal('whatsapp_bot')" class="w-full btn-gold text-slate-950 font-black text-sm py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> VIEW DEMO →
+        </button>
+        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Instant WhatsApp API Integration
+        </p>
+      </div>
+    </div>
+
+    <!-- 3. LivingMenu AR -->
+    <div class="service-card glass-card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-type="ar">
+      <div class="space-y-3">
+        <div class="text-center space-y-1">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 mx-auto">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-2xl font-black tracking-tight text-white">LivingMenu <span class="text-amber-400">AR</span></h2>
+          <div class="flex items-center justify-center gap-2 text-xs font-semibold text-amber-300/90">
+            <span class="w-6 h-[1px] bg-amber-400/40"></span>
+            Living Table Tents & Coasters
+            <span class="w-6 h-[1px] bg-amber-400/40"></span>
+          </div>
+          <p class="text-xs text-slate-400 pt-1">Scan tabletop standee to see video & chef specials come alive</p>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 group">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&auto=format&fit=crop&q=80" alt="AR Table Tent" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 video-overlay-gradient flex flex-col justify-between p-3">
+            <span class="self-start px-2 py-0.5 rounded-md bg-amber-500 text-slate-950 text-[10px] font-bold">
+              🪄 IMAGE TRACKING
+            </span>
+            <div class="flex items-center justify-between text-[11px] text-slate-300 bg-slate-950/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10">
+              <span>Viral Table Engagement</span>
+              <span class="text-amber-400 font-bold">Interactive</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2 text-center">
+        <button onclick="openDemoModal('living_tent')" class="w-full btn-gold text-slate-950 font-black text-sm py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="play" class="w-4 h-4"></i> VIEW DEMO →
+        </button>
+        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Printed QR Card to Video AR
+        </p>
+      </div>
+    </div>
+
+    <!-- 4. ReviewFlow AI -->
+    <div class="service-card glass-card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-type="ai">
+      <div class="space-y-3">
+        <div class="text-center space-y-1">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 mx-auto">
+            <i data-lucide="star" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-2xl font-black tracking-tight text-white">ReviewFlow <span class="text-sky-400">AI</span></h2>
+          <div class="flex items-center justify-center gap-2 text-xs font-semibold text-sky-300/90">
+            <span class="w-6 h-[1px] bg-sky-400/40"></span>
+            Smart Google Review Booster
+            <span class="w-6 h-[1px] bg-sky-400/40"></span>
+          </div>
+          <p class="text-xs text-slate-400 pt-1">Filter feedback: 5-stars to Google Maps, complaints to manager</p>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 group">
+          <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&auto=format&fit=crop&q=80" alt="Review Booster" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 video-overlay-gradient flex flex-col justify-between p-3">
+            <span class="self-start px-2 py-0.5 rounded-md bg-sky-500 text-white text-[10px] font-bold">
+              ⭐ 5-STAR ENGINE
+            </span>
+            <div class="flex items-center justify-between text-[11px] text-slate-300 bg-slate-950/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10">
+              <span>Rank #1 on Google Maps</span>
+              <span class="text-sky-400 font-bold">Reputation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2 text-center">
+        <button onclick="openDemoModal('review_bot')" class="w-full btn-gold text-slate-950 font-black text-sm py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="star" class="w-4 h-4"></i> VIEW DEMO →
+        </button>
+        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Protects against negative public reviews
+        </p>
+      </div>
+    </div>
+
+    <!-- 5. LoyaltyPulse AI -->
+    <div class="service-card glass-card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-type="ai">
+      <div class="space-y-3">
+        <div class="text-center space-y-1">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 mx-auto">
+            <i data-lucide="repeat" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-2xl font-black tracking-tight text-white">LoyaltyPulse <span class="text-purple-400">AI</span></h2>
+          <div class="flex items-center justify-center gap-2 text-xs font-semibold text-purple-300/90">
+            <span class="w-6 h-[1px] bg-purple-400/40"></span>
+            Smart Birthday & Re-Targeting
+            <span class="w-6 h-[1px] bg-purple-400/40"></span>
+          </div>
+          <p class="text-xs text-slate-400 pt-1">Automated WhatsApp coupons on birthdays & inactive diners</p>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 group">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80" alt="Loyalty System" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 video-overlay-gradient flex flex-col justify-between p-3">
+            <span class="self-start px-2 py-0.5 rounded-md bg-purple-500 text-white text-[10px] font-bold">
+              🎯 REPEAT VISITS
+            </span>
+            <div class="flex items-center justify-between text-[11px] text-slate-300 bg-slate-950/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10">
+              <span>+40% Repeat Footfall</span>
+              <span class="text-purple-400 font-bold">CRM Flow</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2 text-center">
+        <button onclick="openDemoModal('loyalty_flow')" class="w-full btn-gold text-slate-950 font-black text-sm py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="gift" class="w-4 h-4"></i> VIEW DEMO →
+        </button>
+        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Seamless POS / CRM sync
+        </p>
+      </div>
+    </div>
+
+    <!-- 6. ViralLens AR -->
+    <div class="service-card glass-card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-type="ar">
+      <div class="space-y-3">
+        <div class="text-center space-y-1">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 mx-auto">
+            <i data-lucide="camera" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-2xl font-black tracking-tight text-white">ViralLens <span class="text-pink-400">AR</span></h2>
+          <div class="flex items-center justify-center gap-2 text-xs font-semibold text-pink-300/90">
+            <span class="w-6 h-[1px] bg-pink-400/40"></span>
+            Instagram & TikTok Brand Filters
+            <span class="w-6 h-[1px] bg-pink-400/40"></span>
+          </div>
+          <p class="text-xs text-slate-400 pt-1">Customers record viral Reels using branded interactive AR filters</p>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 group">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=80" alt="Instagram AR Filter" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 video-overlay-gradient flex flex-col justify-between p-3">
+            <span class="self-start px-2 py-0.5 rounded-md bg-pink-500 text-white text-[10px] font-bold">
+              📸 VIRAL ON REELS
+            </span>
+            <div class="flex items-center justify-between text-[11px] text-slate-300 bg-slate-950/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10">
+              <span>Free Organic Reach</span>
+              <span class="text-pink-400 font-bold">Gen-Z Trend</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2 text-center">
+        <button onclick="openDemoModal('insta_filter')" class="w-full btn-gold text-slate-950 font-black text-sm py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="instagram" class="w-4 h-4"></i> VIEW DEMO →
+        </button>
+        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Direct Meta Spark AR Launch
+        </p>
+      </div>
+    </div>
+
+    <!-- 7. WaitPlay AR -->
+    <div class="service-card glass-card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-type="ar">
+      <div class="space-y-3">
+        <div class="text-center space-y-1">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 mx-auto">
+            <i data-lucide="gamepad-2" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-2xl font-black tracking-tight text-white">WaitPlay <span class="text-emerald-400">AR</span></h2>
+          <div class="flex items-center justify-center gap-2 text-xs font-semibold text-emerald-300/90">
+            <span class="w-6 h-[1px] bg-emerald-400/40"></span>
+            Scan & Win Table Mini-Games
+            <span class="w-6 h-[1px] bg-emerald-400/40"></span>
+          </div>
+          <p class="text-xs text-slate-400 pt-1">Gamify wait times: diners play AR spin-wheels for dessert vouchers</p>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 group">
+          <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop&q=80" alt="AR Gaming" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 video-overlay-gradient flex flex-col justify-between p-3">
+            <span class="self-start px-2 py-0.5 rounded-md bg-emerald-500 text-white text-[10px] font-bold">
+              🎮 ZERO BOREDOM
+            </span>
+            <div class="flex items-center justify-between text-[11px] text-slate-300 bg-slate-950/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10">
+              <span>High Guest Retention</span>
+              <span class="text-emerald-400 font-bold">Instant Coupons</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2 text-center">
+        <button onclick="openDemoModal('wait_game')" class="w-full btn-gold text-slate-950 font-black text-sm py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="play" class="w-4 h-4"></i> VIEW DEMO →
+        </button>
+        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Runs smoothly on WebGL in browser
+        </p>
+      </div>
+    </div>
+
+    <!-- 8. StoryBox AR -->
+    <div class="service-card glass-card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-type="ar">
+      <div class="space-y-3">
+        <div class="text-center space-y-1">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 mx-auto">
+            <i data-lucide="package" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-2xl font-black tracking-tight text-white">StoryBox <span class="text-indigo-400">AR</span></h2>
+          <div class="flex items-center justify-center gap-2 text-xs font-semibold text-indigo-300/90">
+            <span class="w-6 h-[1px] bg-indigo-400/40"></span>
+            AR Delivery Box & Cup Packaging
+            <span class="w-6 h-[1px] bg-indigo-400/40"></span>
+          </div>
+          <p class="text-xs text-slate-400 pt-1">Takeaway boxes & cups trigger 3D animations and re-order links</p>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 group">
+          <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&auto=format&fit=crop&q=80" alt="AR Packaging" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 video-overlay-gradient flex flex-col justify-between p-3">
+            <span class="self-start px-2 py-0.5 rounded-md bg-indigo-500 text-white text-[10px] font-bold">
+              📦 UNBOXING TREND
+            </span>
+            <div class="flex items-center justify-between text-[11px] text-slate-300 bg-slate-950/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10">
+              <span>Home Re-Order Trigger</span>
+              <span class="text-indigo-400 font-bold">Smart Cups</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2 text-center">
+        <button onclick="openDemoModal('story_box')" class="w-full btn-gold text-slate-950 font-black text-sm py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="box" class="w-4 h-4"></i> VIEW DEMO →
+        </button>
+        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Extends customer relationship to home
+        </p>
+      </div>
+    </div>
+
+    <!-- 9. MoodBite AI -->
+    <div class="service-card glass-card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-type="ai">
+      <div class="space-y-3">
+        <div class="text-center space-y-1">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 mx-auto">
+            <i data-lucide="brain" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-2xl font-black tracking-tight text-white">MoodBite <span class="text-violet-400">AI</span></h2>
+          <div class="flex items-center justify-center gap-2 text-xs font-semibold text-violet-300/90">
+            <span class="w-6 h-[1px] bg-violet-400/40"></span>
+            Dynamic Diet & Mood Recommender
+            <span class="w-6 h-[1px] bg-violet-400/40"></span>
+          </div>
+          <p class="text-xs text-slate-400 pt-1">10-second quiz recommending tailored dishes to eliminate hesitation</p>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 group">
+          <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&auto=format&fit=crop&q=80" alt="Mood Recommender" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 video-overlay-gradient flex flex-col justify-between p-3">
+            <span class="self-start px-2 py-0.5 rounded-md bg-violet-500 text-white text-[10px] font-bold">
+              🧠 SMART UPSELLING
+            </span>
+            <div class="flex items-center justify-between text-[11px] text-slate-300 bg-slate-950/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10">
+              <span>Instant Menu Decision</span>
+              <span class="text-violet-400 font-bold">AI Quiz</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2 text-center">
+        <button onclick="openDemoModal('mood_bite')" class="w-full btn-gold text-slate-950 font-black text-sm py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="sparkles" class="w-4 h-4"></i> VIEW DEMO →
+        </button>
+        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Cuts order decision time by 50%
+        </p>
+      </div>
+    </div>
+
+    <!-- 10. V-Wall AR -->
+    <div class="service-card glass-card rounded-3xl p-5 sm:p-6 flex flex-col justify-between" data-type="ar">
+      <div class="space-y-3">
+        <div class="text-center space-y-1">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 mx-auto">
+            <i data-lucide="image" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-2xl font-black tracking-tight text-white">V-Wall <span class="text-rose-400">AR</span></h2>
+          <div class="flex items-center justify-center gap-2 text-xs font-semibold text-rose-300/90">
+            <span class="w-6 h-[1px] bg-rose-400/40"></span>
+            Virtual Neon Wings Photo Wall
+            <span class="w-6 h-[1px] bg-rose-400/40"></span>
+          </div>
+          <p class="text-xs text-slate-400 pt-1">Zero interior decoration cost: turn any cafe wall into 3D neon wings</p>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 group">
+          <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800&auto=format&fit=crop&q=80" alt="Neon Wings Photo Spot" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 video-overlay-gradient flex flex-col justify-between p-3">
+            <span class="self-start px-2 py-0.5 rounded-md bg-rose-500 text-white text-[10px] font-bold">
+              🖼️ ZERO DECOR COST
+            </span>
+            <div class="flex items-center justify-between text-[11px] text-slate-300 bg-slate-950/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10">
+              <span>Viral Selfie Corner</span>
+              <span class="text-rose-400 font-bold">Instant AR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-2 text-center">
+        <button onclick="openDemoModal('v_wall')" class="w-full btn-gold text-slate-950 font-black text-sm py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="eye" class="w-4 h-4"></i> VIEW DEMO →
+        </button>
+        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i> Seamless wall target projection
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- INTERACTIVE DEMO POPUP MODAL -->
+  <div id="demo-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-card bg-slate-900/95 border border-amber-500/30 rounded-3xl max-w-lg w-full p-6 relative overflow-hidden shadow-2xl">
+      
+      <!-- Close Button -->
+      <button onclick="closeDemoModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800/80 p-2 rounded-full transition-all">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="modal-content" class="space-y-4">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY MOBILE BOTTOM BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-40 p-3 bg-slate-950/90 backdrop-blur-lg border-t border-slate-800 flex items-center gap-2 max-w-md mx-auto">
+    <a href="index.html" class="flex-1 glass-card hover:bg-slate-900 text-slate-300 font-semibold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 transition-all">
+      <i data-lucide="grid" class="w-3.5 h-3.5 text-amber-400"></i> Categories
+    </a>
+    <a href="https://wa.me/919999999999?text=Hi%20Nishanth%20AI%2C%20I%20want%20the%20Hospitality%20AR%2FAI%20Package%20for%20my%20restaurant" 
+       class="flex-[2] btn-gold text-slate-950 font-black text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-lg transition-all">
+      <i data-lucide="message-circle" class="w-4 h-4"></i> Get Restaurant Package
+    </a>
+  </div>
+
+  <!-- SCRIPTS: FILTERING, MODAL ENGINE & MODEL VIEWER -->
+  <script>
+    lucide.createIcons();
+
+    // Category Filter Logic
+    function filterCards(category) {
+      const cards = document.querySelectorAll('.service-card');
+      const tabs = document.querySelectorAll('.tab-btn');
+
+      tabs.forEach(tab => {
+        tab.className = 'tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all';
+      });
+
+      const activeTab = document.getElementById('tab-' + category);
+      if (activeTab) {
+        activeTab.className = 'tab-btn bg-amber-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition-all shadow-md shadow-amber-500/20';
+      }
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-type') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal Content Templates & Controller
+    const demoConfigs = {
+      ar_menu: {
+        title: "LiveDish AI • 3D Interactive WebAR Menu",
+        desc: "Rotate with your finger or tap the AR button to project this 3D dish right onto your table.",
+        type: "3d",
+        model: "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+        ctaText: "Get Custom 3D Dish for My Restaurant",
+        waText: "Hi Nishanth AI, I want to convert my restaurant menu into 3D AR."
+      },
+      whatsapp_bot: {
+        title: "TableBot AI • WhatsApp Reservation Simulator",
+        desc: "Experience how the AI bot answers customer questions, checks seat availability, and confirms bookings instantly.",
+        type: "simulator",
+        ctaText: "Deploy TableBot on My WhatsApp",
+        waText: "Hi Nishanth AI, I want to deploy TableBot AI for my restaurant reservations."
+      },
+      living_tent: {
+        title: "LivingMenu AR • Interactive Table Tent",
+        desc: "Point your camera at the table tent to see a 3D animated greeting from the executive chef.",
+        type: "info",
+        ctaText: "Order AR Table Tents",
+        waText: "Hi Nishanth AI, I want LivingMenu AR standees for my restaurant tables."
+      },
+      review_bot: {
+        title: "ReviewFlow AI • 5-Star Booster Flow",
+        desc: "Guides happy customers to leave 5-star reviews on Google Maps while privately resolving customer complaints.",
+        type: "info",
+        ctaText: "Setup Review Booster",
+        waText: "Hi Nishanth AI, I want ReviewFlow AI to increase my Google Maps 5-star rating."
+      },
+      loyalty_flow: {
+        title: "LoyaltyPulse AI • Automated CRM Campaign",
+        desc: "Tracks diner birthdays and automatically delivers personalized WhatsApp gift vouchers to drive repeat visits.",
+        type: "info",
+        ctaText: "Automate My Loyalty Program",
+        waText: "Hi Nishanth AI, I want to setup LoyaltyPulse AI automated WhatsApp campaigns."
+      },
+      insta_filter: {
+        title: "ViralLens AR • Custom Instagram Filter",
+        desc: "Branded interactive face and table filters that turn your guests into active brand promoters on Instagram Stories & Reels.",
+        type: "info",
+        ctaText: "Create Instagram Filter",
+        waText: "Hi Nishanth AI, I want a custom Instagram AR Filter for my cafe/restaurant."
+      },
+      wait_game: {
+        title: "WaitPlay AR • Scan & Win Table Game",
+        desc: "Keep guests entertained during peak cooking times with a playable WebAR spin-wheel or interactive food catcher game.",
+        type: "info",
+        ctaText: "Get Table Minigames",
+        waText: "Hi Nishanth AI, I want WaitPlay AR mini-games for my restaurant."
+      },
+      story_box: {
+        title: "StoryBox AR • Packaging Experience",
+        desc: "Turns delivery containers and coffee cups into interactive storytelling portals that drive direct repeat orders.",
+        type: "info",
+        ctaText: "Design AR Packaging",
+        waText: "Hi Nishanth AI, I want AR packaging designed for my food boxes and cups."
+      },
+      mood_bite: {
+        title: "MoodBite AI • Dynamic Menu Recommender",
+        desc: "A personalized 10-second quiz that suggests food pairings based on hunger level, mood, and dietary preferences.",
+        type: "info",
+        ctaText: "Add MoodBite to My Menu",
+        waText: "Hi Nishanth AI, I want the MoodBite AI recommender for my digital menu."
+      },
+      v_wall: {
+        title: "V-Wall AR • Virtual Neon Photo Wall",
+        desc: "Delivers an instant Instagrammable photo spot in your cafe with zero renovation costs using AR wall tracking.",
+        type: "info",
+        ctaText: "Setup Virtual AR Wall",
+        waText: "Hi Nishanth AI, I want an AR Virtual Neon Photo Wall for my cafe."
+      }
+    };
+
+    function openDemoModal(key) {
+      const config = demoConfigs[key];
+      if (!config) return;
+
+      const modal = document.getElementById('demo-modal');
+      const content = document.getElementById('modal-content');
+
+      let innerHtml = `
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Live Showcase</span>
+          <h3 class="text-lg font-bold text-white">${config.title}</h3>
+          <p class="text-xs text-slate-300">${config.desc}</p>
+        </div>
+      `;
+
+      if (config.type === '3d') {
+        innerHtml += `
+          <div class="w-full h-64 rounded-2xl bg-slate-950 border border-slate-800 relative overflow-hidden flex items-center justify-center">
+            <model-viewer 
+              src="${config.model}" 
+              alt="3D Interactive Demo" 
+              ar 
+              ar-modes="webxr scene-viewer quick-look" 
+              camera-controls 
+              auto-rotate 
+              shadow-intensity="1.5"
+              class="w-full h-full">
+              <button slot="ar-button" class="absolute bottom-3 right-3 btn-gold text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl shadow-lg flex items-center gap-1.5">
+                <i data-lucide="scan" class="w-4 h-4"></i> View on Table (AR)
+              </button>
+            </model-viewer>
+          </div>
+          <p class="text-center text-[11px] text-slate-400">👆 Drag to rotate 360° • Pinch to zoom</p>
+        `;
+      } else {
+        innerHtml += `
+          <div class="p-6 rounded-2xl bg-slate-950 border border-slate-800 text-center space-y-3">
+            <div class="w-12 h-12 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center mx-auto">
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <div class="text-xs font-semibold text-slate-200">Interactive Simulation Ready</div>
+            <p class="text-[11px] text-slate-400">Click below to test the live bot workflow or request a customized setup for your venue.</p>
+          </div>
+        `;
+      }
+
+      innerHtml += `
+        <a href="https://wa.me/919999999999?text=${encodeURIComponent(config.waText)}" 
+           class="w-full btn-gold text-slate-950 font-black text-xs py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> ${config.ctaText}
+        </a>
+      `;
+
+      content.innerHTML = innerHtml;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      lucide.createIcons();
+    }
+
+    function closeDemoModal() {
+      const modal = document.getElementById('demo-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  </script>
+</body>
+</html>
