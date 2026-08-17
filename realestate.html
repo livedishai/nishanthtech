@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ta" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate & Architecture AR/AI Solutions | Jewels-AI</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Model-Viewer for WebAR -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white pb-24">
+
+  <!-- TOP NAVIGATION -->
+  <nav class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 px-4 py-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
+        <i data-lucide="arrow-left" class="w-4 h-4 text-indigo-400"></i> All Industries
+      </a>
+      <span class="font-extrabold text-sm tracking-tight text-white">Jewels-AI</span>
+    </div>
+  </nav>
+
+  <!-- INDUSTRY HERO SECTION -->
+  <header class="px-4 pt-6 pb-6 max-w-4xl mx-auto text-center space-y-3">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-medium">
+      🏗️ Builders • Architects • Interior Designers
+    </div>
+    
+    <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+      ரியல் எஸ்டேட் துறைக்கான <br>
+      <span class="bg-gradient-to-r from-indigo-400 via-sky-400 to-cyan-400 bg-clip-text text-transparent">
+        10 Next-Gen AR & AI தீர்வுகள்
+      </span>
+    </h1>
+
+    <p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto">
+      3D ஃப்ளோர் பிளான் மினியேச்சர், காலி பிளாட்களில் விர்ச்சுவல் இன்டீரியர் மற்றும் 24/7 வாட்ஸ்அப் சைட் விசிட் புக்கிங் மூலம் புக்கிங் வேகத்தை 2X ஆக்குங்கள்.
+    </p>
+
+    <!-- FILTER TABS -->
+    <div class="flex items-center justify-center gap-2 pt-3">
+      <button onclick="filterCards('all')" id="tab-all" class="tab-btn bg-indigo-500 text-white font-bold text-xs px-4 py-2 rounded-xl transition-all">
+        All (10)
+      </button>
+      <button onclick="filterCards('ar')" id="tab-ar" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🕶️ AR 3D Staging (6)
+      </button>
+      <button onclick="filterCards('ai')" id="tab-ai" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🤖 AI Leads (4)
+      </button>
+    </div>
+  </header>
+
+  <!-- 10 SERVICES CONTAINER -->
+  <main class="px-4 max-w-4xl mx-auto space-y-4">
+
+    <!-- 1. WebAR 3D Interactive Floor Plan -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">🏢 High Conversion</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🏢 1. WebAR 3D Interactive Floor Plan & Miniature</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">சாதாரண 2D புரோஷூரை ஸ்கேன் செய்தால் முழு அபார்ட்மென்ட் அல்லது வில்லா 3D மினியேச்சராக மேஜை மீது தோன்றும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💡 360° Tabletop 3D Model</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%203D%20Floor%20Plan%20AR%20Demo" class="bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="play" class="w-3 h-3"></i> Try Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. WebAR Empty Room Staging -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">🛋️ Fast Booking</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🛋️ 2. WebAR Virtual "Empty Room Staging"</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">வெறும் சிமெண்ட் தரையாக இருக்கும் காலி வீட்டில் போனைத் திருப்பினால் சோபா, டிவி, மாடுலர் கிச்சன் 3D-யில் பொருந்தித் தோன்றும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🏠 Instant Interior Preview</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Room%20Staging%20Demo" class="glass-card hover:bg-slate-800 text-indigo-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 3. 24/7 AI WhatsApp Property Concierge -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🤖 Hot Leads Filter</span>
+        <span class="text-xs font-medium text-slate-400">AI Automation</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📱 3. 24/7 AI WhatsApp Property Concierge</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">வாட்ஸ்அப்பில் பட்ஜெட் விவரங்கள், ப்ரோஷூர் அனுப்பி வாடிக்கையாளர்களின் பட்ஜெட்டை ஃபில்டர் செய்து சைட் விசிட் புக் செய்யும் AI.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💬 Automated Site Visit Scheduler</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20to%20test%20Real%20Estate%20WhatsApp%20Bot" class="bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="message-circle" class="w-3 h-3"></i> Test Bot
+        </a>
+      </div>
+    </div>
+
+    <!-- 4. AR Sun Direction & Lighting Simulator -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">☀️ Vaastu & Light</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🪟 4. AR Interactive Sun Direction & Light Simulator</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">குறிப்பிட்ட பிளாட்டில் காலை 10 மணிக்கும் மாலை 5 மணிக்கும் இயற்கை வெளிச்சம் மற்றும் காற்று எப்படி வரும் என்பதை 3D-யில் காட்டும் டூல்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🌅 Real-time Solar Simulation</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Lighting%20Simulator%20Demo" class="glass-card hover:bg-slate-800 text-indigo-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 5. AI Instant Material & Cost Estimator -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">🧮 Smart Quote</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🧮 5. AI Instant Material & Cost Estimator</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">வீட்டின் சதுர அடி மற்றும் ஸ்டைலைத் தேர்ந்தெடுத்தால் 10 நொடிகளில் தோராயமான பட்ஜெட் PDF-ஐ வாட்ஸ்அப்பில் அனுப்பும் AI விட்ஜெட்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">📄 Instant Quote PDF Generator</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Cost%20Estimator%20Demo" class="glass-card hover:bg-slate-800 text-indigo-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 6. WebAR Smart Construction Site Hoardings -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">🪧 Site Branding</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🪧 6. WebAR Smart Construction Site Hoardings</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">கட்டுமான போர்டை ஸ்கேன் செய்தால் கட்டி முடித்த பிறகு கட்டடம் எப்படி பிரம்மாண்டமாக மாறும் என்பது AR-ல் உயிருடன் தோன்றும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🏗️ 3D Completed Vision Overlay</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Site%20Board%20Demo" class="glass-card hover:bg-slate-800 text-indigo-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 7. AI Builder Reputation Engine -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">⭐ 5-Star Trust</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">⭐ 7. AI Smart Builder Reputation & Testimonial Engine</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">வீடு வாங்கியவர்களிடம் வாட்ஸ்அப் மூலம் ஃபீட்பேக் வாங்கி கூகுள் மேப்பில் 5-ஸ்டார் ரேட்டிங்கை உயர்த்தி பில்டர் மீதான நம்பிக்கையை பலப்படுத்தும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🚀 Local Authority Booster</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Builder%20Reputation%20Demo" class="glass-card hover:bg-slate-800 text-indigo-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 8. WebAR Wall Paint & Flooring Customizer -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">🎨 Interior Magic</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🎨 8. WebAR Wall Paint, Flooring & Tile Customizer</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">அறையின் சுவரில் எந்த கலர் பெயிண்ட், தரையில் எந்த டைல்ஸ் பொருத்தினால் எடுப்பாக இருக்கும் என்பதை மொபைல் கேமரா வழியே நேரலையாகப் பார்க்கலாம்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🖌️ Real-time Texture Swap</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Wall%20Paint%20Demo" class="glass-card hover:bg-slate-800 text-indigo-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 9. WebAR 360° Neighborhood Explorer -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20">🌐 NRI Buyers</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🌐 9. WebAR 360° Neighborhood & Amenities Explorer</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">அபார்ட்மென்ட்டை சுற்றியுள்ள பள்ளிகள், மருத்துவமனைகள், மெட்ரோ ஆகியவற்றை NRI வாடிக்கையாளர்கள் 3D மேப் மற்றும் AR வழியே பார்க்கலாம்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">📍 Virtual Landmark Tour</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Neighborhood%20Tour%20Demo" class="glass-card hover:bg-slate-800 text-indigo-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 10. AI Architecture Reels & Portfolio Engine -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">📱 Viral Architecture</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🎯 10. AI Architecture Portfolio & Reels Generator</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">முடித்த வீடுகளின் படங்களை அப்லோட் செய்தால் இன்ஸ்டாகிராம் ரீல்ஸ் ஸ்கிரிப்ட்கள் மற்றும் கிளைன்ட் கேஸ்-ஸ்டடிகளைத் தானாக உருவாக்கும் AI.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">✨ Premium Inbound Leads</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Architecture%20Content%20Demo" class="glass-card hover:bg-slate-800 text-indigo-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- STICKY MOBILE BOTTOM BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 p-3 bg-slate-950/90 backdrop-blur-lg border-t border-slate-800 flex items-center gap-2 max-w-md mx-auto">
+    <a href="index.html" class="flex-1 glass-card hover:bg-slate-900 text-slate-300 font-semibold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 transition-all">
+      <i data-lucide="grid" class="w-3.5 h-3.5 text-indigo-400"></i> Categories
+    </a>
+    <a href="https://wa.me/919999999999?text=Hi%20Jewels-AI%2C%20I%20want%20to%20get%20Real%20Estate%20AR%2FAI%20Package" 
+       class="flex-[2] bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20 transition-all">
+      <i data-lucide="message-circle" class="w-4 h-4"></i> Get Builder Package
+    </a>
+  </div>
+
+  <!-- JAVASCRIPT FOR FILTER TABS & ICONS -->
+  <script>
+    lucide.createIcons();
+
+    function filterCards(category) {
+      const cards = document.querySelectorAll('.service-card');
+      const tabs = document.querySelectorAll('.tab-btn');
+
+      // Reset Tab Styles
+      tabs.forEach(tab => {
+        tab.className = 'tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all';
+      });
+
+      // Active Tab Style
+      const activeTab = document.getElementById('tab-' + category);
+      if (activeTab) {
+        activeTab.className = 'tab-btn bg-indigo-500 text-white font-bold text-xs px-4 py-2 rounded-xl transition-all';
+      }
+
+      // Filter Logic
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-type') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

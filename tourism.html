@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ta" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art, Culture & Tourism AR/AI Solutions | Jewels-AI</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Model-Viewer for WebAR -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white pb-24">
+
+  <!-- TOP NAVIGATION -->
+  <nav class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 px-4 py-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
+        <i data-lucide="arrow-left" class="w-4 h-4 text-emerald-400"></i> All Industries
+      </a>
+      <span class="font-extrabold text-sm tracking-tight text-white">Jewels-AI</span>
+    </div>
+  </nav>
+
+  <!-- INDUSTRY HERO SECTION -->
+  <header class="px-4 pt-6 pb-6 max-w-4xl mx-auto text-center space-y-3">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
+      🎨 Art Galleries • Museums • Tourism • Resorts
+    </div>
+    
+    <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+      கலை & சுற்றுலா துறைக்கான <br>
+      <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-400 bg-clip-text text-transparent">
+        10 Next-Gen AR & AI தீர்வுகள்
+      </span>
+    </h1>
+
+    <p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto">
+      உயிர்பெறும் ஓவியங்கள், 3D டைனோசர்/வரலாற்று மாதிரிகள் மற்றும் பலமொழி வாட்ஸ்அப் AI கைடு மூலம் சுற்றுலா பயணிகளை ஈர்த்து டிக்கெட் மற்றும் பரிசுப் பொருட்கள் விற்பனையை உயர்த்துங்கள்.
+    </p>
+
+    <!-- FILTER TABS -->
+    <div class="flex items-center justify-center gap-2 pt-3">
+      <button onclick="filterCards('all')" id="tab-all" class="tab-btn bg-emerald-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition-all">
+        All (10)
+      </button>
+      <button onclick="filterCards('ar')" id="tab-ar" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🕶️ AR Heritage (6)
+      </button>
+      <button onclick="filterCards('ai')" id="tab-ai" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🤖 AI Multilingual (4)
+      </button>
+    </div>
+  </header>
+
+  <!-- 10 SERVICES CONTAINER -->
+  <main class="px-4 max-w-4xl mx-auto space-y-4">
+
+    <!-- 1. WebAR Living Canvas Gallery Explainer -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🖼️ High Art Sales</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🖼️ 1. WebAR "Living Canvas" Art Gallery Explainer</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">ஓவியங்களை போன் கேமராவில் பார்த்தால் உருவங்கள் அசைந்து பேசும், அல்லது ஓவியர் வரைந்த விதம் 3D வீடியோவாகத் தோன்றும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💡 35% Higher Art Conversions</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20Living%20Canvas%20AR%20Demo" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="play" class="w-3 h-3"></i> Try Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. Multilingual AI WhatsApp Tourist Guide -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">🗣️ Multi-Language</span>
+        <span class="text-xs font-medium text-slate-400">AI Automation</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📱 2. 24/7 Multilingual AI WhatsApp Tourist & Ticket Guide</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">தமிழ், ஆங்கிலம், இந்தி, பிரெஞ்ச் என எந்த மொழியிலும் டூரிஸ்ட்களோடு பேசி என்ட்ரி டிக்கெட்டுகளை வாட்ஸ்அப்பிலேயே வழங்கும் AI.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💬 Automated WhatsApp Ticket QR</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20to%20test%20Tourist%20WhatsApp%20Bot" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="message-circle" class="w-3 h-3"></i> Test Bot
+        </a>
+      </div>
+    </div>
+
+    <!-- 3. WebAR 3D Artifact Reconstruction -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">🦖 Museum Magic</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🦖 3. WebAR 3D Ancient Artifact & Dinosaur Model</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">பழைய சிலைகள் அல்லது எலும்புக்கூடுகளை ஸ்கேன் செய்தால் அந்த ராஜா அல்லது டைனோசர் உயிருடன் உலாவிய தோற்றம் 3D-யில் கண்முன்னே வரும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">✨ High Student & Family Footfall</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Artifact%20Demo" class="glass-card hover:bg-slate-800 text-emerald-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 4. WebAR Interactive Souvenirs -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">🗿 2X Gift Margin</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🗿 4. WebAR Interactive Souvenir "Living Mini-Monuments"</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">நினைவுப் பரிசுகளை (மினியேச்சர் சிலைகள்/போஸ்ட்கார்டுகள்) வீட்டுக்குச் சென்று ஸ்கேன் செய்தால் அதன் வரலாறு 3D-யில் ஒளிரும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🎁 Premium Smart Souvenir</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Souvenir%20Demo" class="glass-card hover:bg-slate-800 text-emerald-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 5. WebAR 360 Historical Time Portal -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">🏛️ Time Travel</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🏛️ 5. WebAR 360° "Historical Time Travel Portal"</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">பாழடைந்த அரண்மனைகளில் போனைத் திருப்பினால் 500 ஆண்டுகளுக்கு முன்பு அந்த அரண்மனை எப்படி பொலிவுடன் இருந்தது என்பது 360-டிகிரியில் தோன்றும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🌐 Immersive Historical Walkthrough</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Time%20Portal%20Demo" class="glass-card hover:bg-slate-800 text-emerald-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 6. AI Tourist Review Booster -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">⭐ TripAdvisor Top 1</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">⭐ 6. AI Smart Tourist Review & Google Map Booster</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">சுற்றுலா முடித்து செல்லும் பயணிகளிடம் வாட்ஸ்அப்பில் ஃபீட்பேக் வாங்கி கூகுள் மற்றும் TripAdvisor ரேட்டிங்கை உயர்த்தும் சிஸ்டம்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🚀 International Traveler Inflow</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Tourism%20Review%20Demo" class="glass-card hover:bg-slate-800 text-emerald-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 7. Custom AR Cultural Instagram Filters -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20">📸 Viral Heritage</span>
+        <span class="text-xs font-medium text-slate-400">Social AR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📸 7. Custom AR Cultural & Heritage Instagram Filters</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">பாரம்பரிய உடைகள் அல்லது வரலாற்று கிரீடங்களுடன் கூடிய இன்ஸ்டா AR ஃபில்டர்கள் மூலம் சுற்றுலா தலத்தை சோசியல் மீடியாவில் டிரெண்டாக்குங்கள்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🔥 Organic Tourist Shares</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Heritage%20Filter%20Demo" class="bg-pink-500 hover:bg-pink-400 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="instagram" class="w-3 h-3"></i> Test Filter
+        </a>
+      </div>
+    </div>
+
+    <!-- 8. WebAR Interactive Treasure Hunt -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20">🗺️ High Engagement</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🗺️ 8. WebAR Interactive Heritage Trail & Treasure Hunt</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">அரண்மனை அல்லது தீம் பார்க்கில் போன் க்ளூக்களைப் பார்த்து வரலாற்று இடங்களை ஸ்கேன் செய்து ரகசியங்களை அன்லாக் செய்யும் AR கேம்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">⏱️ Higher Visitor Time & Spend</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Treasure%20Hunt%20Demo" class="glass-card hover:bg-slate-800 text-emerald-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 9. AI Personalized Audio Storyteller -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">🎧 Audio Revenue</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🎧 9. AI Personalized Audio Storyteller Guide</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">தங்கள் சொந்த மொபைலில் QR ஸ்கேன் செய்தால் அவர்கள் நிற்கும் இடத்திற்கு ஏற்ப சினிமாட்டிக் குரலில் கதைகளை விவரிக்கும் AI ஆடியோ கைடு.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💰 Zero Device Hardware Cost</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Audio%20Storyteller%20Demo" class="glass-card hover:bg-slate-800 text-emerald-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 10. AI Tourism Reels & Itinerary Engine -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">🎯 Global Leads</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🎬 10. AI Tourism Reels & Travel Itinerary Engine</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">டூர் ஆபரேட்டர்களுக்குத் தேவையான டிராவல் ரீல்ஸ் ஸ்கிரிப்ட்கள் மற்றும் 3-Day Itinerary வழிகாட்டிகளை நொடிகளில் உருவாக்கும் AI.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">📱 Inbound International Bookings</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Tourism%20Reels%20Demo" class="glass-card hover:bg-slate-800 text-emerald-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- STICKY MOBILE BOTTOM BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 p-3 bg-slate-950/90 backdrop-blur-lg border-t border-slate-800 flex items-center gap-2 max-w-md mx-auto">
+    <a href="index.html" class="flex-1 glass-card hover:bg-slate-900 text-slate-300 font-semibold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 transition-all">
+      <i data-lucide="grid" class="w-3.5 h-3.5 text-emerald-400"></i> Categories
+    </a>
+    <a href="https://wa.me/919999999999?text=Hi%20Jewels-AI%2C%20I%20want%20to%20get%20Tourism%20AR%2FAI%20Package" 
+       class="flex-[2] bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20 transition-all">
+      <i data-lucide="message-circle" class="w-4 h-4"></i> Get Tourism Package
+    </a>
+  </div>
+
+  <!-- JAVASCRIPT FOR FILTER TABS & ICONS -->
+  <script>
+    lucide.createIcons();
+
+    function filterCards(category) {
+      const cards = document.querySelectorAll('.service-card');
+      const tabs = document.querySelectorAll('.tab-btn');
+
+      // Reset Tab Styles
+      tabs.forEach(tab => {
+        tab.className = 'tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all';
+      });
+
+      // Active Tab Style
+      const activeTab = document.getElementById('tab-' + category);
+      if (activeTab) {
+        activeTab.className = 'tab-btn bg-emerald-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition-all';
+      }
+
+      // Filter Logic
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-type') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

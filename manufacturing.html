@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ta" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manufacturing & Industrial AR/AI Solutions | Jewels-AI</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Model-Viewer for WebAR -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(249, 115, 22, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-orange-500 selection:text-white pb-24">
+
+  <!-- TOP NAVIGATION -->
+  <nav class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 px-4 py-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
+        <i data-lucide="arrow-left" class="w-4 h-4 text-orange-400"></i> All Industries
+      </a>
+      <span class="font-extrabold text-sm tracking-tight text-white">Jewels-AI</span>
+    </div>
+  </nav>
+
+  <!-- INDUSTRY HERO SECTION -->
+  <header class="px-4 pt-6 pb-6 max-w-4xl mx-auto text-center space-y-3">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-medium">
+      🏭 Manufacturing • Machinery • Hardware • B2B
+    </div>
+    
+    <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+      தொழிற்துறை & உற்பத்திக்கான <br>
+      <span class="bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent">
+        10 Next-Gen AR & AI தீர்வுகள்
+      </span>
+    </h1>
+
+    <p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto">
+      1:1 கனரக இயந்திர WebAR காட்சிப்படுத்தல், B2B வாட்ஸ்அப் கொட்டேஷன் போட் மற்றும் AR சர்வீஸ் மேனுவல் மூலம் விற்பனை சுழற்சியை (Sales Cycle) பாதியாகக் குறைத்து சர்வீஸ் செலவுகளை மிச்சப்படுத்துங்கள்.
+    </p>
+
+    <!-- FILTER TABS -->
+    <div class="flex items-center justify-center gap-2 pt-3">
+      <button onclick="filterCards('all')" id="tab-all" class="tab-btn bg-orange-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition-all">
+        All (10)
+      </button>
+      <button onclick="filterCards('ar')" id="tab-ar" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🕶️ AR Industrial (6)
+      </button>
+      <button onclick="filterCards('ai')" id="tab-ai" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🤖 AI B2B Automation (4)
+      </button>
+    </div>
+  </header>
+
+  <!-- 10 SERVICES CONTAINER -->
+  <main class="px-4 max-w-4xl mx-auto space-y-4">
+
+    <!-- 1. WebAR 1:1 Heavy Machinery Visualizer -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20">🚜 1:1 Scale Factory Placement</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🚜 1. WebAR 1:1 Heavy Machinery & Equipment Visualizer</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">டன் கணக்கில் எடையுள்ள CNC அல்லது பேக்கிங் மெஷின்களை வாடிக்கையாளரின் தொழிற்சாலை தளத்திலேயே 1:1 நிஜ அளவில் பொருத்திப் பார்க்கும் வசதி.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💡 No App Download Required</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%201%3A1%20Heavy%20Machinery%20AR%20Demo" class="bg-orange-500 hover:bg-orange-400 text-slate-950 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="play" class="w-3 h-3"></i> Try Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. WhatsApp AI B2B Quotation Bot -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🤖 Instant PDF Quotes</span>
+        <span class="text-xs font-medium text-slate-400">AI Automation</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📱 2. 24/7 AI WhatsApp B2B Quotation & Spare Parts Bot</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">வாடிக்கையாளர் பழைய ஸ்பேர் பார்ட் போட்டோ அனுப்பினால் அதைக் கண்டறிந்து விலை, ஸ்டாக் மற்றும் உடனடி PDF கொட்டேஷன் அனுப்பும் B2B AI.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💬 Automated B2B Sales Funnel</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20to%20test%20Industrial%20WhatsApp%20Bot" class="bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="message-circle" class="w-3 h-3"></i> Test Bot
+        </a>
+      </div>
+    </div>
+
+    <!-- 3. WebAR 3D Exploded Machinery View -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">🔍 Expo Attraction</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🔍 3. WebAR 3D "Exploded View" & Internal Parts Inspector</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">ஒரே கிளிக்கில் ஒட்டுமொத்த மெஷினும் காற்றில் பிரிந்து ஒவ்வொரு உதிரிபாகமும் சுழன்று காட்டும் வசதி; B2B டிரேட் ஃபேர்களில் வாடிக்கையாளர்களை உடனே கவரும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">✨ 3D Engineering Precision</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Exploded%20View%20Demo" class="glass-card hover:bg-slate-800 text-orange-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 4. WebAR Interactive Maintenance Guide -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">🥽 Zero Travel Cost</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🥽 4. WebAR Interactive "Maintenance & Repair Guide"</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">மெஷினில் உள்ள QR-ஐ ஸ்கேன் செய்தால் ஆயில் மாற்றுவது, ஃபில்டர் கழற்றுவது போன்ற செயல்முறைகளை போன் திரையிலேயே அம்புக்குறியிட்டு கற்றுக்கொடுக்கும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🛠️ Step-by-Step AR Overlay</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Maintenance%20Guide%20Demo" class="glass-card hover:bg-slate-800 text-orange-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 5. WebAR Smart B2B Trade Show Banners -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">🪧 B2B Expo Magnet</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🪧 5. WebAR Smart B2B Trade Show / Expo Banners</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">தொழில் கண்காட்சி பேனர்களை போனில் பார்த்தால் ஃபேக்டரி இயங்கும் விதம் மற்றும் மெஷின்கள் இயங்கும் 3D அனிமேஷன் பேனரின் மீதே ஓடும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">⚡ 4X More Stall Footfall & Inquiries</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Expo%20Banner%20Demo" class="glass-card hover:bg-slate-800 text-orange-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 6. AI B2B Vendor Reputation Booster -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">⭐ Verified Supplier</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">⭐ 6. AI Smart B2B Vendor Reputation Booster</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">மெஷின் வாங்கிய நிறுவனங்களிடம் ஃபீட்பேக் வாங்கி கூகுள் மற்றும் B2B போர்டல்களில் (IndiaMART/TradeIndia) 5-ஸ்டார் ரேட்டிங்கை உயர்த்தும் சிஸ்டம்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🚀 Higher High-Ticket Contracts</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20B2B%20Reputation%20Demo" class="glass-card hover:bg-slate-800 text-orange-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 7. WebAR Safety Training Visualizer -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20">👷 ISO Compliance</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">👷 7. WebAR Safety Training & Hazard Visualizer</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">தொழிற்சாலை ஊழியர்கள் போன் வழியே பார்த்தால் ஹை-வோல்டேஜ் போன்ற ஆபத்தான பகுதிகள் 3D-யில் ஹைலைட் செய்யப்பட்டு பாதுகாப்பு விதிகள் திரையில் தோன்றும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">⚠️ Prevents Industrial Workplace Accidents</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Safety%20Training%20Demo" class="glass-card hover:bg-slate-800 text-orange-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 8. AR Smart Anti-Fake Verification -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">📦 Original Protection</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📦 8. AR Smart Product Packaging & Anti-Fake Verification</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">ஹார்டுவேர் பாக்ஸை ஸ்கேன் செய்தால் அசல் உதிரிபாகமா என்பதைச் சரிபார்த்து வாரண்டியை ஆக்டிவேட் செய்யும் AR செட்டப்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🔒 Eliminates Counterfeit Spares</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Anti-Fake%20Demo" class="glass-card hover:bg-slate-800 text-orange-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 9. AI Predictive Spare Parts Re-Order Bot -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20">⚙️ Recurring Spares Revenue</span>
+        <span class="text-xs font-medium text-slate-400">AI Automation</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">⚙️ 9. AI Predictive Spare Parts Re-Order Bot</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">இயந்திர பாகங்களின் தேய்மானத்தைக் கணித்து வாடிக்கையாளருக்கு வாட்ஸ்அப்பில் ஆயில் சீல்/பேரிங் மாற்றும் அலர்ட் அனுப்பி ஸ்பேர்ஸை விற்பனை செய்யும் AI.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🔄 Consistent Spare Parts Revenue</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Spares%20Bot%20Demo" class="glass-card hover:bg-slate-800 text-orange-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 10. AI Industrial Case Study Engine -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">🎯 Global Export Leads</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🎬 10. AI Industrial Case Study & Video Script Engine</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">மெஷினரி தயாரிப்பாளர்களுக்கு லிங்க்ட்இன் மற்றும் யூடியூபில் சர்வதேச B2B வாடிக்கையாளர்களை ஈர்க்கும் கேஸ்-ஸ்டடிகளைத் தயாரித்துக் கொடுக்கும் AI.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">📱 Inbound Machinery Export Leads</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Industrial%20Content%20Demo" class="glass-card hover:bg-slate-800 text-orange-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- STICKY MOBILE BOTTOM BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 p-3 bg-slate-950/90 backdrop-blur-lg border-t border-slate-800 flex items-center gap-2 max-w-md mx-auto">
+    <a href="index.html" class="flex-1 glass-card hover:bg-slate-900 text-slate-300 font-semibold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 transition-all">
+      <i data-lucide="grid" class="w-3.5 h-3.5 text-orange-400"></i> Categories
+    </a>
+    <a href="https://wa.me/919999999999?text=Hi%20Jewels-AI%2C%20I%20want%20to%20get%20Manufacturing%20AR%2FAI%20Package" 
+       class="flex-[2] bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20 transition-all">
+      <i data-lucide="message-circle" class="w-4 h-4"></i> Get Industrial Package
+    </a>
+  </div>
+
+  <!-- JAVASCRIPT FOR FILTER TABS & ICONS -->
+  <script>
+    lucide.createIcons();
+
+    function filterCards(category) {
+      const cards = document.querySelectorAll('.service-card');
+      const tabs = document.querySelectorAll('.tab-btn');
+
+      // Reset Tab Styles
+      tabs.forEach(tab => {
+        tab.className = 'tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all';
+      });
+
+      // Active Tab Style
+      const activeTab = document.getElementById('tab-' + category);
+      if (activeTab) {
+        activeTab.className = 'tab-btn bg-orange-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition-all';
+      }
+
+      // Filter Logic
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-type') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

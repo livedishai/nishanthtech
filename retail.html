@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ta" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retail, Fashion & Jewelry AR/AI Solutions | Jewels-AI</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Model-Viewer for WebAR -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-white pb-24">
+
+  <!-- TOP NAVIGATION -->
+  <nav class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 px-4 py-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
+        <i data-lucide="arrow-left" class="w-4 h-4 text-amber-400"></i> All Industries
+      </a>
+      <span class="font-extrabold text-sm tracking-tight text-white">Jewels-AI</span>
+    </div>
+  </nav>
+
+  <!-- INDUSTRY HERO SECTION -->
+  <header class="px-4 pt-6 pb-6 max-w-4xl mx-auto text-center space-y-3">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-medium">
+      💍 Jewelry • Boutiques • Eyewear • Showrooms
+    </div>
+    
+    <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+      ரீடெய்ல் & ஷோரூம்களுக்கான <br>
+      <span class="bg-gradient-to-r from-amber-300 via-rose-400 to-amber-500 bg-clip-text text-transparent">
+        10 Next-Gen AR & AI தீர்வுகள்
+      </span>
+    </h1>
+
+    <p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto">
+      ஆப் இன்றியே நகைகள்/கண்ணாடிகள் Virtual Try-On, 24/7 வாட்ஸ்அப் பர்சனல் ஸ்டைலிஸ்ட் மற்றும் கைவிடப்பட்ட கார்டுகளை மீட்டு ஆன்லைன்/ஆஃப்லைன் விற்பனையை 35% உயர்த்துங்கள்.
+    </p>
+
+    <!-- FILTER TABS -->
+    <div class="flex items-center justify-center gap-2 pt-3">
+      <button onclick="filterCards('all')" id="tab-all" class="tab-btn bg-amber-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition-all">
+        All (10)
+      </button>
+      <button onclick="filterCards('ar')" id="tab-ar" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🕶️ AR Try-On (6)
+      </button>
+      <button onclick="filterCards('ai')" id="tab-ai" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🤖 AI Sales (4)
+      </button>
+    </div>
+  </header>
+
+  <!-- 10 SERVICES CONTAINER -->
+  <main class="px-4 max-w-4xl mx-auto space-y-4">
+
+    <!-- 1. WebAR Virtual Try-On -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">👑 Top Converter</span>
+        <span class="text-xs font-medium text-slate-400">Face / Hand AR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">💍 1. WebAR Real-Time Virtual Try-On (Jewelry & Eyewear)</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">ஆப் டவுன்லோட் இன்றி பிரவுசரிலேயே நெக்லஸ், காதணிகள் அல்லது கண்ணாடிகளை வாடிக்கையாளர் முகம்/கைகளில் நேரடியாக அணிந்து பார்க்கும் வசதி.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💡 35% Higher Sales, Low Returns</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20Jewelry%20Virtual%20Try-On%20Demo" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="play" class="w-3 h-3"></i> Try Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. WebAR 3D Product Visualizer -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">✨ Luxury Fabric</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">👗 2. WebAR 3D Interactive Product Visualizer</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">பிரீமியம் பட்டுப்புடவைகள் அல்லது பிராண்டட் ஷூக்களை 360-டிகிரியில் சுழற்றி துணியின் நெசவு மற்றும் நுணுக்கங்களை ஜூம் செய்து பார்க்கும் 3D வியூவர்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🔍 Ultra HD Texture Inspection</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%203D%20Product%20Visualizer%20Demo" class="glass-card hover:bg-slate-800 text-amber-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 3. WhatsApp AI Stylist -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🤖 24/7 Personal Stylist</span>
+        <span class="text-xs font-medium text-slate-400">AI Automation</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📱 3. 24/7 WhatsApp AI Personal Shopping Assistant</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">பட்ஜெட் மற்றும் நிறத்திற்கு ஏற்ப ஆடைகள்/நகைகளைப் பரிந்துரைத்து, ஸ்டாக் சரிபார்த்து வாட்ஸ்அப்பிலேயே ஆர்டர் எடுக்கும் AI உதவியாளர்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💬 Instant WhatsApp Checkout</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20to%20test%20Retail%20WhatsApp%20Bot" class="bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="message-circle" class="w-3 h-3"></i> Test Bot
+        </a>
+      </div>
+    </div>
+
+    <!-- 4. Smart Magic Mirror for Stores -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">🪞 In-Store Magic</span>
+        <span class="text-xs font-medium text-slate-400">Store AR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🪞 4. AR "Smart Magic Mirror" Experience for Stores</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">டிரையல் ரூம் வரிசையில் நிற்காமல், டிஜிட்டல் ஸ்கிரீன் முன் நின்று நொடிகளில் 10 விதமான உடைகளை மாற்றிப் பார்க்கும் மேஜிக் மிரர் செட்டப்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">⚡ Zero Trial Room Friction</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Magic%20Mirror%20Demo" class="glass-card hover:bg-slate-800 text-amber-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 5. Interactive Product Tags -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">🏷️ Premium Branding</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🏷️ 5. WebAR Interactive Product Tags & Storytelling</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">பிரைஸ் டேக் அல்லது நகை பாக்ஸை ஸ்கேன் செய்தால் வைரத்தின் தரம், பட்டு நெசவு செய்யப்பட்ட விதம் வீடியோவாகத் தோன்றும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💎 Higher Perceived Brand Value</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Product%20Tag%20Demo" class="glass-card hover:bg-slate-800 text-amber-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 6. AI Review Booster & Loyalty -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">⭐ 5-Star Reviews</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">⭐ 6. AI Review Booster & VIP Loyalty Harvester</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">பில் போட்ட 2 மணி நேரத்தில் வாட்ஸ்அப்பில் ஃபீட்பேக் வாங்கி கூகுள் ரேட்டிங்கை உயர்த்தி அடுத்த முறை வர 10% ஆஃபர் கூப்பன் தரும் சிஸ்டம்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🔄 Automated Repeat Purchases</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Retail%20Review%20Demo" class="glass-card hover:bg-slate-800 text-amber-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 7. Custom Social Media Try-On Filters -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20">📸 Viral Reels</span>
+        <span class="text-xs font-medium text-slate-400">Social AR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📸 7. Custom AR Social Media Try-On Filters</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">பிராண்டட் நெக்லஸ் அல்லது கூலிங்கிளாஸ்களை அணிந்து பார்க்கும் இன்ஸ்டாகிராம் ஃபில்டர்கள் மூலம் Gen Z மத்தியில் ஆர்கானிக் விளம்பரம்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🔥 Free Social Word-of-Mouth</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Social%20Filter%20Demo" class="bg-pink-500 hover:bg-pink-400 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="instagram" class="w-3 h-3"></i> Test Filter
+        </a>
+      </div>
+    </div>
+
+    <!-- 8. AI Abandoned Cart Recoverer -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">🎯 Cart Recovery</span>
+        <span class="text-xs font-medium text-slate-400">AI Automation</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🎯 8. AI Dynamic Abandoned Cart Recoverer</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">ஆன்லைனில் பொருளைப் பார்த்துவிட்டு வாங்காமல் செல்வோருக்கு வாட்ஸ்அப்பில் தனிப்பயனாக்கப்பட்ட சலுகை அனுப்பி உடனே வாங்க வைக்கும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">📈 Recovers 30% Lost Sales</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Cart%20Recovery%20Demo" class="glass-card hover:bg-slate-800 text-amber-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 9. AI Smart Size & Fit Engine -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">📐 Zero Returns</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📐 9. AI Smart Size & Fit Recommendation Engine</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">உயரம், எடைக்கு ஏற்ப சரியான ஆடை அளவைப் பரிந்துரைத்து ஆன்லைன் துணிக்கடைகளின் மிகப்பெரிய தலைவலியான ரிட்டர்ன் செலவைக் குறைக்கும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">✂️ Perfect Fit Accuracy</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Size%20Engine%20Demo" class="glass-card hover:bg-slate-800 text-amber-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 10. AI Fashion Catalog & Trend Engine -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">📊 Trend Forecasting</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🎨 10. AI Fashion Catalog & Trend Forecast Engine</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">அடுத்த சீசனில் எந்த கலர் துணிகள், நகை டிசைன்கள் அதிகம் விற்கும் என்பதைக் கணித்து விளம்பர போஸ்ட்களைத் தயாரித்துக் கொடுக்கும் AI.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🚀 Data-Driven Stock Planning</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Trend%20Forecast%20Demo" class="glass-card hover:bg-slate-800 text-amber-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- STICKY MOBILE BOTTOM BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 p-3 bg-slate-950/90 backdrop-blur-lg border-t border-slate-800 flex items-center gap-2 max-w-md mx-auto">
+    <a href="index.html" class="flex-1 glass-card hover:bg-slate-900 text-slate-300 font-semibold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 transition-all">
+      <i data-lucide="grid" class="w-3.5 h-3.5 text-amber-400"></i> Categories
+    </a>
+    <a href="https://wa.me/919999999999?text=Hi%20Jewels-AI%2C%20I%20want%20to%20get%20Retail%20AR%2FAI%20Package%20for%20my%20store" 
+       class="flex-[2] bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20 transition-all">
+      <i data-lucide="message-circle" class="w-4 h-4"></i> Get Retail Package
+    </a>
+  </div>
+
+  <!-- JAVASCRIPT FOR FILTER TABS & ICONS -->
+  <script>
+    lucide.createIcons();
+
+    function filterCards(category) {
+      const cards = document.querySelectorAll('.service-card');
+      const tabs = document.querySelectorAll('.tab-btn');
+
+      // Reset Tab Styles
+      tabs.forEach(tab => {
+        tab.className = 'tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all';
+      });
+
+      // Active Tab Style
+      const activeTab = document.getElementById('tab-' + category);
+      if (activeTab) {
+        activeTab.className = 'tab-btn bg-amber-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition-all';
+      }
+
+      // Filter Logic
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-type') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

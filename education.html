@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ta" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education & Training AR/AI Solutions | Jewels-AI</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Model-Viewer for WebAR -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(14, 165, 233, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white pb-24">
+
+  <!-- TOP NAVIGATION -->
+  <nav class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 px-4 py-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
+        <i data-lucide="arrow-left" class="w-4 h-4 text-sky-400"></i> All Industries
+      </a>
+      <span class="font-extrabold text-sm tracking-tight text-white">Jewels-AI</span>
+    </div>
+  </nav>
+
+  <!-- INDUSTRY HERO SECTION -->
+  <header class="px-4 pt-6 pb-6 max-w-4xl mx-auto text-center space-y-3">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium">
+      🎓 Schools • Colleges • Coaching Centers • EdTech
+    </div>
+    
+    <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+      கல்வித் துறைக்கான <br>
+      <span class="bg-gradient-to-r from-sky-400 via-blue-300 to-indigo-400 bg-clip-text text-transparent">
+        10 Next-Gen AR & AI தீர்வுகள்
+      </span>
+    </h1>
+
+    <p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto">
+      3D சயின்ஸ் லேப், வீடியோவாக மாறும் புத்தகங்கள் மற்றும் 24/7 வாட்ஸ்அப் அட்மிஷன் போட் மூலம் மாணவர் சேர்க்கையையும் கற்றல் தரத்தையும் பல மடங்கு உயர்த்துவோம்.
+    </p>
+
+    <!-- FILTER TABS -->
+    <div class="flex items-center justify-center gap-2 pt-3">
+      <button onclick="filterCards('all')" id="tab-all" class="tab-btn bg-sky-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition-all">
+        All (10)
+      </button>
+      <button onclick="filterCards('ar')" id="tab-ar" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🕶️ AR Learning (6)
+      </button>
+      <button onclick="filterCards('ai')" id="tab-ai" class="tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all">
+        🤖 AI Admissions (4)
+      </button>
+    </div>
+  </header>
+
+  <!-- 10 SERVICES CONTAINER -->
+  <main class="px-4 max-w-4xl mx-auto space-y-4">
+
+    <!-- 1. WebAR 3D Science Lab -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">🔬 Smart STEM</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🔬 1. WebAR 3D Interactive STEM & Science Lab</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">விலையுயர்ந்த லேப் இன்றி மனித இதயம், DNA, சூரிய குடும்பத்தை மாணவர்கள் போனில் 3D-யில் சுழற்றிப் பார்க்கும் WebAR லேப்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💡 No App Download Required</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%203D%20AR%20Science%20Lab%20Demo" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="play" class="w-3 h-3"></i> Try Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. WhatsApp AI Admission Concierge -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🤖 24/7 Admissions</span>
+        <span class="text-xs font-medium text-slate-400">AI Automation</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📱 2. 24/7 AI WhatsApp Student Admission Concierge</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">வாட்ஸ்அப்பிலேயே கட்டண விவரம், ஸ்காலர்ஷிப் தகவல்களை வழங்கி விண்ணப்பப் படிவங்களை பூர்த்தி செய்து கேம்பஸ் விசிட் புக் செய்யும் AI.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">💬 Automated Lead Funnel</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20to%20test%20Admission%20WhatsApp%20Bot" class="bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="message-circle" class="w-3 h-3"></i> Test Bot
+        </a>
+      </div>
+    </div>
+
+    <!-- 3. WebAR Living Textbooks -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">📚 Magic Book</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📚 3. WebAR "Living Interactive" Textbooks</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">புத்தகத்தில் உள்ள படத்தை போனில் பார்த்தால் ஆசிரியர் அந்த குறிப்பிட்ட கணக்கை அல்லது விடையை நடத்தும் வீடியோ திரையில் தோன்றும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">📖 Self-Learning Innovation</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Textbook%20Demo" class="glass-card hover:bg-slate-800 text-sky-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 4. WebAR Virtual Campus Tour -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">🏫 Outstation Admissions</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🏫 4. WebAR 360° "Virtual Campus & Hostel Tour"</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">வகுப்பறைகள், ஆய்வகங்கள் மற்றும் ஹாஸ்டல் வசதிகளை வெளியூர் மாணவர்கள் வீட்டிலிருந்தே 360-டிகிரியில் 3D-யாகப் பார்க்கும் வசதி.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🌐 360° Virtual Walkthrough</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20Virtual%20Campus%20Tour%20Demo" class="glass-card hover:bg-slate-800 text-sky-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 5. AI Smart Doubt Solver -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">🤖 24/7 Tutor</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🧠 5. AI Smart Doubt Solver & Homework Assistant</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">சந்தேகங்களை வாட்ஸ்அப்பில் போட்டோ எடுத்து அனுப்பினால் நொடிகளில் ஸ்டெப்-பை-ஸ்டெப் விடையை விளக்கும் ஸ்மார்ட் AI டியூட்டர்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">📐 Instant Step-by-Step Solutions</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Doubt%20Solver%20Demo" class="glass-card hover:bg-slate-800 text-sky-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 6. AI Institute Review Booster -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">⭐ 5-Star Rank</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">⭐ 6. AI Student Review & Reputation Booster</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">தேர்வில் வென்ற மாணவர்களிடம் ஃபீட்பேக் வாங்கி கூகுள் மேப்பில் 5-ஸ்டார் ரேட்டிங்கை ஏற்றி அட்மிஷன் சீசனில் கூட்டத்தை ஈர்க்கும் சிஸ்டம்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🚀 Local Admission Authority</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20Institute%20Review%20Booster%20Demo" class="glass-card hover:bg-slate-800 text-sky-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 7. Custom AR Convocation Filters -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20">📸 Viral Fest</span>
+        <span class="text-xs font-medium text-slate-400">Social AR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📸 7. Custom AR Convocation & Fest Filters</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">பட்டமளிப்பு விழா மற்றும் கல்சுரல்ஸ்க்கான பிரத்யேக இன்ஸ்டாகிராம் AR ஃபில்டர்கள் மூலம் கல்லூரியை சோசியல் மீடியாவில் வைரலாக்குங்கள்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">🔥 Free Organic Social Branding</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20College%20Filter%20Demo" class="bg-pink-500 hover:bg-pink-400 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="instagram" class="w-3 h-3"></i> Test Filter
+        </a>
+      </div>
+    </div>
+
+    <!-- 8. AR Interactive Prospectus -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">📄 High Conversion</span>
+        <span class="text-xs font-medium text-slate-400">WebAR</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📄 8. AR Interactive Admission Prospectus & Ads</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">செய்தித்தாள் விளம்பரம் அல்லது அட்மிஷன் பிரசுரத்தை போனில் ஸ்கேன் செய்தால் முதல்வர் தோன்றிப் பேசும் 3D வீடியோ தோன்றும்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">⚡ 3X Higher Prospectus Enquiries</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AR%20Prospectus%20Demo" class="glass-card hover:bg-slate-800 text-sky-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 9. AI Attendance & Performance Bot -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20">📊 Parent Trust</span>
+        <span class="text-xs font-medium text-slate-400">AI Automation</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">📊 9. AI Student Attendance & Performance Alert Bot</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">மாணவர்களின் தேர்வு மதிப்பெண்கள் மற்றும் பலவீனமான பாடங்களை AI கணித்து பெற்றோருக்கு வாட்ஸ்அப்பில் தானாக அனுப்பும் சிஸ்டம்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">📈 Decreases Student Dropouts</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Performance%20Alert%20Demo" class="glass-card hover:bg-slate-800 text-sky-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+    <!-- 10. AI Education Reels Generator -->
+    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">🎯 Viral Faculty</span>
+        <span class="text-xs font-medium text-slate-400">AI Tool</span>
+      </div>
+      <h3 class="text-base font-bold text-white flex items-center gap-2">🎬 10. AI Education Reels & Exam Hacks Script Engine</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">ஆசிரியர்களுக்கு எக்ஸாம் டிரிக்ஸ் மற்றும் கேரியர் வழிகாட்டுதல் ரீல்ஸ் ஸ்கிரிப்ட்களை நொடிகளில் உருவாக்கும் AI இன்ஜின்.</p>
+      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-slate-400">📱 Thousands of Inbound Student Leads</div>
+        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%20AI%20Edu%20Reels%20Demo" class="glass-card hover:bg-slate-800 text-sky-400 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+          <i data-lucide="eye" class="w-3 h-3"></i> View Flow
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- STICKY MOBILE BOTTOM BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 p-3 bg-slate-950/90 backdrop-blur-lg border-t border-slate-800 flex items-center gap-2 max-w-md mx-auto">
+    <a href="index.html" class="flex-1 glass-card hover:bg-slate-900 text-slate-300 font-semibold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 transition-all">
+      <i data-lucide="grid" class="w-3.5 h-3.5 text-sky-400"></i> Categories
+    </a>
+    <a href="https://wa.me/919999999999?text=Hi%20Jewels-AI%2C%20I%20want%20to%20get%20Education%20AR%2FAI%20Package" 
+       class="flex-[2] bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20 transition-all">
+      <i data-lucide="message-circle" class="w-4 h-4"></i> Get Edu Package
+    </a>
+  </div>
+
+  <!-- JAVASCRIPT FOR FILTER TABS & ICONS -->
+  <script>
+    lucide.createIcons();
+
+    function filterCards(category) {
+      const cards = document.querySelectorAll('.service-card');
+      const tabs = document.querySelectorAll('.tab-btn');
+
+      // Reset Tab Styles
+      tabs.forEach(tab => {
+        tab.className = 'tab-btn glass-card text-slate-300 font-semibold text-xs px-4 py-2 rounded-xl hover:bg-slate-900 transition-all';
+      });
+
+      // Active Tab Style
+      const activeTab = document.getElementById('tab-' + category);
+      if (activeTab) {
+        activeTab.className = 'tab-btn bg-sky-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition-all';
+      }
+
+      // Filter Logic
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-type') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
