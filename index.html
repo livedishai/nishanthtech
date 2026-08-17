@@ -22,7 +22,7 @@
       box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
     }
     .lang-dropdown {
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.85);
       border: 1px solid rgba(56, 189, 248, 0.3);
     }
     .lang-dropdown:focus {
@@ -47,14 +47,17 @@
         </span>
       </div>
 
-      <!-- Right Navigation Actions: Language Switcher + Demo Button -->
+      <!-- Right Navigation Actions: Multi-Language Switcher + Demo Button -->
       <div class="flex items-center space-x-2.5">
         
-        <!-- Multi-Language Selector Dropdown -->
+        <!-- Multi-Language Selector Dropdown (5 Languages) -->
         <div class="relative">
           <select id="language-switcher" onchange="setLanguage(this.value)" class="lang-dropdown text-xs text-slate-200 font-medium px-2.5 py-1.5 rounded-lg cursor-pointer transition-all">
             <option value="en" selected class="bg-slate-900 text-white">🌐 English</option>
             <option value="ta" class="bg-slate-900 text-white">🌐 தமிழ்</option>
+            <option value="kn" class="bg-slate-900 text-white">🌐 ಕನ್ನಡ</option>
+            <option value="te" class="bg-slate-900 text-white">🌐 తెలుగు</option>
+            <option value="ml" class="bg-slate-900 text-white">🌐 മലയാളം</option>
           </select>
         </div>
 
@@ -209,7 +212,7 @@
         </div>
       </a>
 
-      <!-- 9. Manufacturing (Spans 2 cols on mobile) -->
+      <!-- 9. Manufacturing -->
       <a href="manufacturing.html" class="col-span-2 sm:col-span-1 glass-card rounded-2xl p-4 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
         <div class="space-y-2">
           <span class="text-3xl">🏭</span>
@@ -341,6 +344,114 @@
         demo_hint: "மொபைலில் 'View in AR' பட்டனை அழுத்தி உங்கள் அறையில் வைத்துப் பார்க்கலாம்",
         btn_call: "Call Us",
         btn_whatsapp: "Chat on WhatsApp"
+      },
+      kn: {
+        nav_demo_btn: "ಉಚಿತ ಡೆಮೊ",
+        hero_badge: "Next-Gen WebAR & AI Agency",
+        hero_title_1: "ನಿಮ್ಮ ವ್ಯವಹಾರವನ್ನು ಬೆಳೆಸಿ",
+        hero_title_2: "WebAR & AI ಆಟೊಮೇಷನ್",
+        hero_description: "ಯಾವುದೇ ಆ್ಯಪ್ ಡೌನ್‌ಲೋಡ್ ಅಗತ್ಯವಿಲ್ಲ. ಬ್ರೌಸರ್‌ನಲ್ಲೇ 3D AR ಅನುಭವ ಮತ್ತು WhatsApp ಮೂಲಕ 24/7 ಸ್ವಯಂಚಾಲಿತ ಮಾರಾಟವನ್ನು ಒದಗಿಸಿ ನಿಮ್ಮ ಆದಾಯವನ್ನು ಹೆಚ್ಚಿಸಿ.",
+        hero_btn_explore: "ಉದ್ಯಮಗಳನ್ನು ಅನ್ವೇಷಿಸಿ 🚀",
+        hero_btn_demo: "ಲೈವ್ 3D ಡೆಮೊ",
+        grid_heading: "ನಿಮಗೆ ಯಾವ ಉದ್ಯಮ ಪರಿಹಾರ ಬೇಕು?",
+        grid_subheading: "10 ಸಂವಾದಾತ್ಮಕ ಡೆಮೊಗಳನ್ನು ನೋಡಲು ಕೆಳಗೆ ನಿಮ್ಮ ಉದ್ಯಮವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+        card_1_title: "ಆಹಾರ & ರೆಸ್ಟೋರೆಂಟ್‌ಗಳು",
+        card_1_desc: "3D ಮೆನು, WhatsApp ಆರ್ಡರಿಂಗ್, ವೈರಲ್ ಟೇಬಲ್ ಗೇಮ್ಸ್",
+        card_2_title: "ಆರೋಗ್ಯ & ಕ್ಲಿನಿಕ್‌ಗಳು",
+        card_2_desc: "3D ಚಿಕಿತ್ಸಾ ವಿವರಣೆ, ಅಪಾಯಿಂಟ್‌ಮೆಂಟ್ ಬುಕಿಂಗ್ ಬಾಟ್",
+        card_3_title: "ರಿಯಲ್ ಎಸ್ಟೇಟ್ & ವಿನ್ಯಾಸ",
+        card_3_desc: "3D ಫ್ಲೋರ್ ಪ್ಲಾನ್‌ಗಳು, ವರ್ಚುವಲ್ ಆರ್ಕಿಟೆಕ್ಚರ್ ಟೂರ್ಸ್",
+        card_4_title: "ಚಿನ್ನಾಭರಣ & ಉಡುಪುಗಳು",
+        card_4_desc: "ವರ್ಚುವಲ್ ಟ್ರೈ-ಆನ್, 3D ಉತ್ಪನ್ನ ಪ್ರದರ್ಶನ, ದರ ಎಚ್ಚರಿಕೆ",
+        card_5_title: "ಮದುವೆ & ಗಿಫ್ಟಿಂಗ್",
+        card_5_desc: "ಲೈವ್ AR ಆಮಂತ್ರಣಗಳು, AR ವಿಡಿಯೋ ಫ್ರಿಡ್ಜ್ ಮ್ಯಾಗ್ನೆಟ್ಸ್",
+        card_6_title: "ಆಟೋಮೊಬೈಲ್ ಶೋರೂಮ್",
+        card_6_desc: "3D ಕಾರ್ ವೀಕ್ಷಕ, ಟೆಸ್ಟ್ ಡ್ರೈವ್ ಬುಕಿಂಗ್, ಸರ್ವಿಸ್ ಬಾಟ್‌ಗಳು",
+        card_7_title: "ಶಿಕ್ಷಣ & ಎಡ್‌ಟೆಕ್",
+        card_7_desc: "3D ಸೈನ್ಸ್ ಲ್ಯಾಬ್, 24/7 AI ಹೋಮ್‌ವರ್ಕ್ ಟ್ಯೂಟರ್",
+        card_8_title: "ಕಲೆ & ಪ್ರವಾಸೋದ್ಯಮ",
+        card_8_desc: "ಲಿವಿಂಗ್ ಕ್ಯಾನ್ವಾಸ್ ಗ್ಯಾಲರಿ, ಬಹುಭಾಷಾ AI ವಾಯ್ಸ್ ಗೈಡ್",
+        card_9_title: "ಉತ್ಪಾದನೆ & ಕೈಗಾರಿಕೆ",
+        card_9_desc: "1:1 ಮೆಷಿನರಿ AR, WhatsApp B2B ಲೀಡ್ ಬಾಟ್",
+        demo_count: "10 ಡೆಮೊಗಳು",
+        demo_badge: "ಲೈವ್ WebAR ಅನುಭವ",
+        demo_title: "ಈಗಲೇ 3D ಯಲ್ಲಿ ಅನುಭವಿಸಿ",
+        demo_sub: "ಬೆರಳಿನಿಂದ ತಿರುಗಿಸಿ ನೋಡಿ; ಕ್ಯಾಮೆರಾ ಮೂಲಕ ನಿಮ್ಮ ಟೇಬಲ್ ಮೇಲೆಯೇ ಇರಿಸಿ",
+        demo_hint: "ನಿಮ್ಮ ಕೋಣೆಯಲ್ಲಿ 3D ಮಾದರಿಯನ್ನು ಇರಿಸಲು 'View in AR' ಕ್ಲಿಕ್ ಮಾಡಿ",
+        btn_call: "ಕರೆ ಮಾಡಿ",
+        btn_whatsapp: "WhatsApp ಚಾಟ್"
+      },
+      te: {
+        nav_demo_btn: "ఉచిత డెమో",
+        hero_badge: "Next-Gen WebAR & AI Agency",
+        hero_title_1: "మీ వ్యాపారాన్ని మార్చండి",
+        hero_title_2: "WebAR & AI ఆటోమేషన్",
+        hero_description: "ఎలాంటి యాప్ డౌన్‌లోడ్ అవసరం లేదు. బ్రౌజర్‌లోనే 3D AR అనుభవం మరియు WhatsApp ద్వారా 24/7 ఆటోమేటెడ్ అమ్మకాలతో మీ ఆదాయాన్ని రెట్టింపు చేసుకోండి.",
+        hero_btn_explore: "పరిశ్రమలను అన్వేషించండి 🚀",
+        hero_btn_demo: "లైవ్ 3D డెమో",
+        grid_heading: "మీకు ఏ పరిశ్రమ పరిష్కారం కావాలి?",
+        grid_subheading: "10 ఇంటరాక్టివ్ డెమోలను చూడటానికి క్రింద మీ రంగాన్ని ఎంచుకోండి",
+        card_1_title: "ఫుడ్ & రెస్టారెంట్లు",
+        card_1_desc: "3D మెనూ, WhatsApp ఆర్డరింగ్, వైరల్ టేబుల్ గేమ్‌లు",
+        card_2_title: "వైద్యం & క్లినిక్‌లు",
+        card_2_desc: "3D చికిత్స వివరణ, అపాయింట్‌మెంట్ బుకింగ్ బాట్",
+        card_3_title: "రియల్ ఎస్టేట్ & స్టేజింగ్",
+        card_3_desc: "3D ఫ్లోర్ ప్లాన్‌లు, వర్చువల్ ఆర్కిటెక్చర్ టూర్స్",
+        card_4_title: "ఆభరణాలు & దుస్తులు",
+        card_4_desc: "వర్చువల్ ట్రై-ఆన్, 3D ప్రోడక్ట్ షోకేస్, రేట్ అలర్ట్స్",
+        card_5_title: "వివాహం & గిఫ్టింగ్",
+        card_5_desc: "లైవ్ AR ఆహ్వానాలు, AR వీడియో ఫ్రిడ్జ్ మాగ్నెట్స్",
+        card_6_title: "ఆటోమొబైల్ షోరూమ్‌లు",
+        card_6_desc: "3D కార్ విజువలైజర్, టెస్ట్ డ్రైవ్ బుకింగ్, సర్వీస్ బాట్స్",
+        card_7_title: "విద్య & ఎడ్‌టెక్",
+        card_7_desc: "3D సైన్స్ ల్యాబ్స్, 24/7 AI హోమ్‌వర్క్ ట్యూటర్",
+        card_8_title: "కళలు & పర్యాటకం",
+        card_8_desc: "లివింగ్ కాన్వాస్ గ్యాలరీ, బహుభాషా AI వాయిస్ గైడ్",
+        card_9_title: "తయారీ & పరిశ్రమలు",
+        card_9_desc: "1:1 మెషినరీ AR, WhatsApp B2B లీడ్ క్వాలిఫికేషన్",
+        demo_count: "10 డెమోలు",
+        demo_badge: "లైవ్ WebAR అనుభవం",
+        demo_title: "ఇప్పుడే 3D లో అనుభవించండి",
+        demo_sub: "వేలితో తిప్పి చూడండి; కెమెరా ద్వారా మీ టేబుల్‌పైనే చూడండి",
+        demo_hint: "మీ గదిలో 3D మోడల్‌ను ఉంచడానికి 'View in AR' క్లిక్ చేయండి",
+        btn_call: "కాల్ చేయండి",
+        btn_whatsapp: "WhatsApp లో చాట్ చేయండి"
+      },
+      ml: {
+        nav_demo_btn: "സൗജന്യ ഡെമോ",
+        hero_badge: "Next-Gen WebAR & AI Agency",
+        hero_title_1: "നിങ്ങളുടെ ബിസിനസ്സ് മാറ്റിയെടുക്കൂ",
+        hero_title_2: "WebAR & AI ഓട്ടോമേഷൻ",
+        hero_description: "ഒരു ആപ്പും ഡൗൺലോഡ് ചെയ്യേണ്ടതില്ല. ബ്രൗസറിൽ തന്നെ 3D AR അനുഭവവും WhatsApp വഴി 24/7 ഓട്ടോമേറ്റഡ് വിൽപ്പനയും നൽകി വരുമാനം ഇരട്ടിയാക്കൂ.",
+        hero_btn_explore: "മേഖലകൾ പരിശോധിക്കൂ 🚀",
+        hero_btn_demo: "ലൈവ് 3D ഡെമോ",
+        grid_heading: "ഏത് മേഖലയിലെ പരിഹാരമാണ് നിങ്ങൾക്ക് വേണ്ടത്?",
+        grid_subheading: "10 സവിശേഷ ഡെമോകൾ കാണാൻ താഴെ നിങ്ങളുടെ തൊഴിൽ തിരഞ്ഞെടുക്കൂ",
+        card_1_title: "ഭക്ഷണം & ഹോട്ടലുകൾ",
+        card_1_desc: "3D മെനു, WhatsApp ഓർഡറിങ്, വൈറൽ ടേബിൾ ഗെയിമുകൾ",
+        card_2_title: "ആരോഗ്യം & ക്ലിനിക്കുകൾ",
+        card_2_desc: "3D ചികിത്സാ വിവരണം, അപ്പോയിന്റ്മെന്റ് ബുക്കിംഗ് ബോട്ട്",
+        card_3_title: "റിയൽ എസ്റ്റേറ്റ്",
+        card_3_desc: "3D ഫ്ലോർ പ്ലാനുകൾ, വെർച്വൽ ഇന്റീരിയർ ടൂറുകൾ",
+        card_4_title: "സ്വർണ്ണാഭരണങ്ങൾ & ഫാഷൻ",
+        card_4_desc: "വെർച്വൽ ട്രൈ-ഓൺ, 3D പ്രൊഡക്റ്റ് ഷോക്കേസ്, റേറ്റ് അലേർട്ടുകൾ",
+        card_5_title: "വിവാഹം & സമ്മാനങ്ങൾ",
+        card_5_desc: "AR ക്ഷണക്കത്തുകൾ, AR വീഡിയോ ഫ്രിഡ്ജ് മാഗ്നറ്റുകൾ",
+        card_6_title: "ഓട്ടോമൊബൈൽ ഷോറൂം",
+        card_6_desc: "3D കാർ വ്യൂവർ, ടെസ്റ്റ് ഡ്രൈവ് ബുക്കിംഗ്, സർവീസ് ബോട്ടുകൾ",
+        card_7_title: "വിദ്യാഭ്യാസം & എഡ്‌ടെക്",
+        card_7_desc: "3D സയൻസ് ലാബ്, 24/7 AI ഹോംവർക്ക് ട്യൂട്ടർ",
+        card_8_title: "കല & ടൂറിസം",
+        card_8_desc: "ലിവിംഗ് ക്യാൻവാസ് ഗാലറി, ബഹുഭാഷാ AI വോയ്‌സ് ഗൈഡ്",
+        card_9_title: "നിർമ്മാണം & വ്യവസായം",
+        card_9_desc: "1:1 മെഷിനറി AR, WhatsApp B2B ലീഡ് യോഗ്യത",
+        demo_count: "10 ഡെമോകൾ",
+        demo_badge: "ലൈവ് WebAR അനുഭവം",
+        demo_title: "ഇപ്പോൾ തന്നെ 3D-യിൽ അനുഭവിക്കൂ",
+        demo_sub: "വിരൽ കൊണ്ട് കറക്കി നോക്കൂ; ക്യാമറ വഴി നിങ്ങളുടെ മേശപ്പുറത്ത് തന്നെ വെയ്ക്കൂ",
+        demo_hint: "നിങ്ങളുടെ മുറിയിൽ 3D മോഡൽ കാണാൻ 'View in AR' ക്ലിക്ക് ചെയ്യുക",
+        btn_call: "വിളിക്കൂ",
+        btn_whatsapp: "WhatsApp-ൽ ചാറ്റ് ചെയ്യൂ"
       }
     };
 
