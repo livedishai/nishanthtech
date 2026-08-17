@@ -69,20 +69,104 @@
   <main class="px-4 max-w-4xl mx-auto space-y-4">
 
     <!-- 1. WebAR 3D Menu -->
-    <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ar">
-      <div class="flex items-center justify-between mb-2">
-        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">🔥 Most Popular</span>
-        <span class="text-xs font-medium text-slate-400">WebAR</span>
-      </div>
-      <h3 class="text-base font-bold text-white flex items-center gap-2">🍽️ 1. WebAR 3D Interactive Visual Menu</h3>
-      <p class="text-xs text-slate-300 mt-1 leading-relaxed">டேபிளில் உள்ள QR-ஐ ஸ்கேன் செய்தால் சிக்னேச்சர் உணவுகள் 3D-யில் மேஜை மீதே தோன்றும். டெசர்ட் & ஸ்டார்ட்டர்கள் விற்பனை 25% வரை உயரும்.</p>
-      <div class="mt-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-2">
-        <div class="text-[11px] text-slate-400">💡 No App Download Needed</div>
-        <a href="https://wa.me/919999999999?text=Hi%2C%20show%20me%203D%20AR%20Menu%20Demo" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
-          <i data-lucide="play" class="w-3 h-3"></i> Try Demo
-        </a>
-      </div>
+   <!-- 1. WebAR 3D Interactive Visual Menu (Upgraded with Live 3D Trial) -->
+<div class="service-card glass-card rounded-3xl p-5 sm:p-6 relative overflow-hidden border border-cyan-500/30" data-type="ar">
+  
+  <!-- Header Badges -->
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+        🔥 #1 Revenue Booster
+      </span>
+      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300">
+        WebAR • No App Needed
+      </span>
     </div>
+    <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
+      +25% to +35% Starters & Desserts Sales
+    </span>
+  </div>
+
+  <!-- Title & Description -->
+  <h3 class="text-lg sm:text-xl font-extrabold text-white flex items-center gap-2">
+    🍽️ 1. WebAR 3D Interactive Visual Menu
+  </h3>
+  <p class="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed">
+    Diners scan the table QR code on their phone browser to see mouth-watering 3D dishes appear right on their plate before ordering. Eliminates decision delay and spikes high-margin food sales.
+  </p>
+
+  <!-- Interactive 3D Dish Showcase Area -->
+  <div class="mt-4 p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+    
+    <!-- Dish Selector Pills -->
+    <div class="flex items-center justify-center gap-2 mb-3 overflow-x-auto pb-1">
+      <button type="button" onclick="changeDish(this, 'https://modelviewer.dev/shared-assets/models/Astronaut.glb')" class="dish-btn active px-3 py-1 rounded-full text-xs font-bold bg-cyan-500 text-slate-950 transition-all">
+        🍔 Gourmet Burger
+      </button>
+      <button type="button" onclick="changeDish(this, 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/DamagedHelmet/glTF-Binary/DamagedHelmet.glb')" class="dish-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+        🍰 Chocolate Cake
+      </button>
+      <button type="button" onclick="changeDish(this, 'https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb')" class="dish-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+        🍜 Signature Ramen
+      </button>
+    </div>
+
+    <!-- 3D Model Viewer Container -->
+    <div class="w-full h-64 rounded-xl bg-slate-950/60 relative overflow-hidden border border-slate-800/80 flex items-center justify-center">
+      <model-viewer 
+        id="menu-model-viewer"
+        src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" 
+        alt="3D Interactive Dish" 
+        ar 
+        ar-modes="webxr scene-viewer quick-look" 
+        camera-controls 
+        auto-rotate 
+        shadow-intensity="1.5"
+        class="w-full h-full">
+        
+        <!-- AR Launch Button -->
+        <button slot="ar-button" class="absolute bottom-3 right-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl shadow-lg shadow-cyan-500/30 flex items-center gap-1.5 transition-all">
+          <i data-lucide="scan" class="w-4 h-4"></i> View on Your Table (AR)
+        </button>
+      </model-viewer>
+    </div>
+
+    <p class="text-center text-[11px] text-slate-400 mt-2">
+      👆 Touch & drag to rotate 360° | Pinch to zoom ingredients
+    </p>
+  </div>
+
+  <!-- 3-Step "How It Works" Flow -->
+  <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+    <div class="p-2.5 rounded-xl bg-slate-900/50 border border-slate-800/60">
+      <span class="text-base">📱</span>
+      <div class="text-[11px] font-bold text-white mt-1">1. Scan Table QR</div>
+      <div class="text-[10px] text-slate-400">Zero app install</div>
+    </div>
+    <div class="p-2.5 rounded-xl bg-slate-900/50 border border-slate-800/60">
+      <span class="text-base">✨</span>
+      <div class="text-[11px] font-bold text-white mt-1">2. 3D AR On Table</div>
+      <div class="text-[10px] text-slate-400">Triggers instant appetite</div>
+    </div>
+    <div class="p-2.5 rounded-xl bg-slate-900/50 border border-slate-800/60">
+      <span class="text-base">⚡</span>
+      <div class="text-[11px] font-bold text-white mt-1">3. Fast Order</div>
+      <div class="text-[10px] text-slate-400">15% faster table turns</div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA Action -->
+  <div class="mt-4 pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <div class="text-xs text-slate-300 text-center sm:text-left">
+      Want to see your restaurant's dish in 3D AR?
+    </div>
+    <a href="https://wa.me/919999999999?text=Hi%20Nishanth%20AI%2C%20I%20want%20a%20free%203D%20AR%20menu%20demo%20for%20my%20restaurant%20signature%20dish." 
+       class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-xl shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 transition-all">
+      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Get Free 3D Demo For Your Dish
+    </a>
+  </div>
+
+</div>
 
     <!-- 2. WhatsApp AI Ordering -->
     <div class="service-card glass-card rounded-2xl p-5 relative overflow-hidden" data-type="ai">
