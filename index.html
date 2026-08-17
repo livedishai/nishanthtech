@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nishanth AI | Next-Gen WebAR & AI Agency</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Model-Viewer for WebAR -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Type system: Sora for display, Inter for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent: #38bdf8;
+      --accent-2: #f0b93a;
+      --ink: #e2e8f0;
+    }
+    html { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+    .font-display { font-family: 'Sora', 'Inter', ui-sans-serif, sans-serif; }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.15);
+    }
+    .lang-dropdown {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    .lang-dropdown:focus {
+      outline: none;
+      border-color: #38bdf8;
+    }
+
+    /* Signature element: an animated AR "scan line" used as section dividers and hero accents */
+    .scan-divider {
+      position: relative;
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, rgba(56,189,248,0.35), transparent);
+      overflow: visible;
+    }
+    .scan-divider::after {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 120px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, #38bdf8, #f0b93a, transparent);
+      filter: blur(0.5px);
+      box-shadow: 0 0 12px rgba(56,189,248,0.8);
+      animation: scan-move 4.5s ease-in-out infinite;
+    }
+    @keyframes scan-move {
+      0% { left: -10%; opacity: 0; }
+      10% { opacity: 1; }
+      50% { left: 100%; opacity: 1; }
+      60% { opacity: 0; }
+      100% { left: 100%; opacity: 0; }
+    }
+
+    .scan-frame { position: relative; }
+    .scan-frame::before, .scan-frame::after {
+      content: "";
+      position: absolute;
+      width: 22px; height: 22px;
+      border: 2px solid rgba(56,189,248,0.6);
+      z-index: 10;
+    }
+    .scan-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; border-radius: 6px 0 0 0; }
+    .scan-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; border-radius: 0 0 6px 0; }
+
+    details.faq-item summary::-webkit-details-marker { display: none; }
+
+    /* ============ NAV: animated underline ============ */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0; height: 1.5px;
+      background: linear-gradient(90deg, #38bdf8, #f0b93a);
+      transition: width .3s cubic-bezier(.4,0,.2,1);
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ============ HERO: ambient drifting aurora + entrance ============ */
+    .hero-aurora {
+      position: absolute;
+      inset: -20% -10% auto -10%;
+      height: 420px;
+      z-index: -1;
+      background:
+        radial-gradient(38% 55% at 22% 30%, rgba(56,189,248,0.16), transparent 70%),
+        radial-gradient(30% 45% at 78% 40%, rgba(240,185,58,0.10), transparent 70%),
+        radial-gradient(35% 50% at 50% 75%, rgba(99,102,241,0.10), transparent 70%);
+      filter: blur(10px);
+      animation: aurora-drift 14s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes aurora-drift {
+      0%   { transform: translate(0,0) scale(1); }
+      50%  { transform: translate(2%, 3%) scale(1.06); }
+      100% { transform: translate(-3%, -2%) scale(1.02); }
+    }
+    .hero-rise {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: hero-rise-in .7s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    @keyframes hero-rise-in { to { opacity: 1; transform: translateY(0); } }
+    .badge-glow {
+      animation: badge-glow-pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes badge-glow-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(56,189,248,0.0); }
+      50% { box-shadow: 0 0 0 5px rgba(56,189,248,0.06); }
+    }
+    .btn-shimmer { position: relative; overflow: hidden; }
+    .btn-shimmer::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -60%;
+      width: 40%; height: 100%;
+      background: linear-gradient(115deg, transparent, rgba(255,255,255,0.45), transparent);
+      transform: skewX(-20deg);
+      transition: none;
+      animation: btn-sheen 3.2s ease-in-out infinite;
+    }
+    @keyframes btn-sheen {
+      0% { left: -60%; }
+      35%, 100% { left: 130%; }
+    }
+
+    /* ============ SCROLL REVEAL (generic, staggered via style delay) ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* ============ STATS: counter pop + underline draw ============ */
+    .stat-card { position: relative; }
+    .stat-card .stat-num { display: inline-block; }
+    .stat-card.is-visible .stat-num { animation: stat-pop .5s cubic-bezier(.34,1.56,.64,1) both; }
+    @keyframes stat-pop { 0% { transform: scale(.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+    .stat-card::after {
+      content: "";
+      position: absolute; left: 50%; bottom: 6px;
+      width: 0; height: 2px; border-radius: 2px;
+      background: linear-gradient(90deg, transparent, currentColor, transparent);
+      opacity: .5;
+      transition: width .8s ease .2s, left .8s ease .2s;
+    }
+    .stat-card.is-visible::after { width: 70%; left: 15%; }
+
+    /* ============ INDUSTRY CARDS: tilt + diagonal shine sweep ============ */
+    .tilt-card {
+      transform-style: preserve-3d;
+      perspective: 800px;
+      will-change: transform;
+    }
+    .tilt-card .shine {
+      position: absolute; inset: 0;
+      background: linear-gradient(115deg, transparent 40%, rgba(56,189,248,0.16) 50%, transparent 60%);
+      transform: translateX(-120%);
+      transition: transform .7s ease;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .tilt-card:hover .shine { transform: translateX(120%); }
+    .tilt-card .icon-pop { display: inline-block; transition: transform .35s cubic-bezier(.34,1.56,.64,1); }
+    .tilt-card:hover .icon-pop { transform: scale(1.25) rotate(-6deg); }
+
+    /* ============ PROCESS: draw-in connecting line + number roll ============ */
+    .process-wrap { position: relative; }
+    .process-line {
+      position: absolute;
+      top: 34px; left: 8%; right: 8%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(56,189,248,0.5), rgba(240,185,58,0.5));
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform 1.1s cubic-bezier(.65,0,.35,1);
+      display: none;
+    }
+    @media (min-width: 640px) { .process-line { display: block; } }
+    .process-wrap.is-visible .process-line { transform: scaleX(1); }
+    .process-step { transition: transform .4s ease; }
+    .process-step:hover { transform: translateY(-4px); }
+    .process-step .step-num {
+      display: inline-block;
+      transition: color .4s ease, transform .4s ease;
+    }
+    .process-wrap.is-visible .process-step:nth-child(1) .step-num { animation: num-land .5s ease .1s both; }
+    .process-wrap.is-visible .process-step:nth-child(2) .step-num { animation: num-land .5s ease .35s both; }
+    .process-wrap.is-visible .process-step:nth-child(3) .step-num { animation: num-land .5s ease .6s both; }
+    @keyframes num-land { 0% { opacity: 0; transform: translateY(-8px); } 100% { opacity: 1; transform: translateY(0); } }
+
+    /* ============ LIVE DEMO: breathing corner glow + orbiting dot ============ */
+    .scan-frame::before, .scan-frame::after { animation: corner-breathe 2.6s ease-in-out infinite; }
+    .scan-frame::after { animation-delay: .3s; }
+    @keyframes corner-breathe {
+      0%, 100% { border-color: rgba(56,189,248,0.35); }
+      50% { border-color: rgba(56,189,248,0.9); }
+    }
+    .orbit-dot {
+      position: absolute;
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: #38bdf8;
+      box-shadow: 0 0 10px 2px rgba(56,189,248,0.8);
+      animation: orbit-around 6s linear infinite;
+      z-index: 6;
+    }
+    @keyframes orbit-around {
+      0%   { top: 4%; left: 4%; }
+      25%  { top: 4%; left: 94%; }
+      50%  { top: 92%; left: 94%; }
+      75%  { top: 92%; left: 4%; }
+      100% { top: 4%; left: 4%; }
+    }
+    .blob-drift-1 { animation: blob-drift 9s ease-in-out infinite; }
+    .blob-drift-2 { animation: blob-drift 11s ease-in-out infinite reverse; }
+    @keyframes blob-drift {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(10px,-10px) scale(1.15); }
+    }
+
+    /* ============ TESTIMONIALS: staggered rise + twinkling stars ============ */
+    .testi-card { transition: transform .4s ease; }
+    .testi-card:hover { transform: translateY(-3px); }
+    .star-twinkle span { display: inline-block; animation: star-twinkle 1.8s ease-in-out infinite; }
+    .star-twinkle span:nth-child(1) { animation-delay: 0s; }
+    .star-twinkle span:nth-child(2) { animation-delay: .12s; }
+    .star-twinkle span:nth-child(3) { animation-delay: .24s; }
+    .star-twinkle span:nth-child(4) { animation-delay: .36s; }
+    .star-twinkle span:nth-child(5) { animation-delay: .48s; }
+    @keyframes star-twinkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .55; transform: scale(.85); }
+    }
+
+    /* ============ FAQ: smooth expand via grid-rows trick ============ */
+    details.faq-item .faq-body-wrap {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .35s cubic-bezier(.4,0,.2,1);
+    }
+    details.faq-item.is-open .faq-body-wrap { grid-template-rows: 1fr; }
+    details.faq-item .faq-body-inner { overflow: hidden; }
+    details.faq-item .chev { transition: transform .35s cubic-bezier(.4,0,.2,1); }
+    details.faq-item.is-open .chev { transform: rotate(180deg); }
+    details.faq-item summary { transition: color .2s ease; }
+    details.faq-item:hover summary { color: #38bdf8; }
+
+    /* ============ CTA: shifting mesh gradient + pulsing ring ============ */
+    .cta-mesh {
+      background: linear-gradient(120deg, rgba(56,189,248,0.10), rgba(240,185,58,0.08), rgba(99,102,241,0.10), rgba(56,189,248,0.10));
+      background-size: 300% 300%;
+      animation: mesh-shift 10s ease-in-out infinite;
+    }
+    @keyframes mesh-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .cta-btn-ring { position: relative; }
+    .cta-btn-ring::before {
+      content: "";
+      position: absolute; inset: -4px;
+      border-radius: inherit;
+      border: 1.5px solid rgba(16,185,129,0.6);
+      animation: ring-pulse 2s ease-out infinite;
+      pointer-events: none;
+    }
+    @keyframes ring-pulse {
+      0% { transform: scale(1); opacity: .8; }
+      100% { transform: scale(1.18); opacity: 0; }
+    }
+
+    /* ============ STICKY BAR: attention pulse on WhatsApp CTA ============ */
+    .wa-pulse { position: relative; }
+    .wa-pulse::before {
+      content: "";
+      position: absolute; inset: 0;
+      border-radius: inherit;
+      background: rgba(16,185,129,0.55);
+      animation: wa-pulse-ring 2.4s ease-out infinite;
+      z-index: -1;
+    }
+    @keyframes wa-pulse-ring {
+      0% { transform: scale(1); opacity: .5; }
+      70%, 100% { transform: scale(1.12); opacity: 0; }
+    }
+
+    /* ============ FOOTER / MISC ============ */
+    .logo-mark { animation: logo-breathe 5s ease-in-out infinite; }
+    @keyframes logo-breathe {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(56,189,248,0.25); }
+      50% { box-shadow: 0 0 14px 2px rgba(56,189,248,0.35); }
+    }
+
+    /* ============ SCROLL PROGRESS BAR (mobile-friendly position sense) ============ */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2.5px;
+      width: 0%;
+      background: linear-gradient(90deg, #38bdf8, #f0b93a);
+      box-shadow: 0 0 8px rgba(56,189,248,0.6);
+      z-index: 60;
+      transition: width .08s linear;
+    }
+
+    /* ============ NAV: auto hide on scroll-down, reveal on scroll-up ============ */
+    nav.site-nav { transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s ease; }
+    nav.site-nav.nav-hidden { transform: translateY(-100%); }
+    nav.site-nav.nav-scrolled { box-shadow: 0 8px 24px -12px rgba(0,0,0,0.5); }
+
+    /* ============ TAP / ACTIVE FEEDBACK (mobile has no hover, so :active carries the weight) ============ */
+    .tap-scale { transition: transform .18s cubic-bezier(.4,0,.2,1), box-shadow .18s ease; }
+    .tap-scale:active { transform: scale(0.94); }
+    a.tap-scale:active, button.tap-scale:active { filter: brightness(0.96); }
+
+    /* ============ RIPPLE (touch feedback on CTA buttons) ============ */
+    .ripple-wrap { position: relative; overflow: hidden; }
+    .ripple-dot {
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.55);
+      transform: scale(0);
+      animation: ripple-grow .6s ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes ripple-grow {
+      to { transform: scale(1); opacity: 0; }
+    }
+
+    /* ============ INDUSTRY CARDS: idle auto-shine sweep so touch users see it too ============ */
+    .tilt-card .shine.auto-shine {
+      animation: auto-shine-sweep 5.5s ease-in-out infinite;
+    }
+    @keyframes auto-shine-sweep {
+      0%, 12% { transform: translateX(-120%); }
+      35%, 100% { transform: translateX(120%); }
+    }
+    .tilt-card:hover .shine.auto-shine { animation-play-state: paused; transform: translateX(120%); }
+
+    /* Idle bob for card emoji icons, always on (no hover needed) */
+    .icon-pop.idle-bob { animation: icon-bob 3.2s ease-in-out infinite; }
+    @keyframes icon-bob {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-4px) rotate(-4deg); }
+    }
+    .tilt-card:hover .icon-pop.idle-bob { animation-play-state: paused; }
+
+    /* Card entrance: slight scale-in combined with the existing reveal rise, for a punchier mobile feel */
+    .tilt-card.reveal { transform: translateY(22px) scale(.96); }
+    .tilt-card.reveal.is-visible { transform: translateY(0) scale(1); }
+
+    /* ============ HERO: floating ambient particles (pure CSS, cheap on mobile) ============ */
+    .hero-particle {
+      position: absolute;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(56,189,248,0.9), rgba(56,189,248,0));
+      pointer-events: none;
+      animation: particle-float linear infinite;
+    }
+    @keyframes particle-float {
+      0%   { transform: translateY(0) translateX(0); opacity: 0; }
+      10%  { opacity: .8; }
+      90%  { opacity: .5; }
+      100% { transform: translateY(-140px) translateX(12px); opacity: 0; }
+    }
+
+    /* ============ TESTIMONIALS: swipe hint dots for mobile snap-scroll ============ */
+    .testi-scroll { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .testi-scroll > * { scroll-snap-align: center; }
+    .swipe-dot { width: 5px; height: 5px; border-radius: 999px; background: rgba(148,163,184,0.35); transition: all .3s ease; }
+    .swipe-dot.active { width: 16px; background: #38bdf8; }
+
+    /* ============ SECTION HEADERS: underline draw-in on reveal ============ */
+    .eyebrow-draw { position: relative; }
+    .eyebrow-draw::after {
+      content: "";
+      display: block;
+      margin: 6px auto 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #f0b93a);
+      transition: width .6s cubic-bezier(.4,0,.2,1) .15s;
+    }
+    .reveal.is-visible .eyebrow-draw::after { width: 40px; }
+
+    /* ============ FAQ: subtle attention pulse on chevron to invite tapping ============ */
+    details.faq-item:not(.is-open) .chev { animation: chev-nudge 2.6s ease-in-out infinite; }
+    @keyframes chev-nudge {
+      0%, 80%, 100% { transform: translateY(0); }
+      90% { transform: translateY(2px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scan-divider::after { animation: none; left: 40%; opacity: 1; }
+      * { scroll-behavior: auto !important; }
+      .hero-aurora, .hero-rise, .badge-glow, .btn-shimmer::before, .reveal,
+      .stat-card .stat-num, .stat-card::after, .tilt-card .shine, .tilt-card .icon-pop,
+      .process-line, .process-step .step-num, .scan-frame::before, .scan-frame::after,
+      .orbit-dot, .blob-drift-1, .blob-drift-2, .star-twinkle span, .cta-mesh,
+      .cta-btn-ring::before, .wa-pulse::before, .logo-mark,
+      .scroll-progress, nav.site-nav, .tap-scale, .ripple-dot, .shine.auto-shine,
+      .icon-pop.idle-bob, .hero-particle, .eyebrow-draw::after, details.faq-item .chev {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .scroll-progress { display: none; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-white pb-24">
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- TOP NAVIGATION -->
+  <nav class="site-nav sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 px-4 py-3">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+
+      <!-- Brand Logo & Name -->
+      <div class="flex items-center space-x-2">
+        <div class="logo-mark w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-500/20 font-display">
+          N
+        </div>
+        <span class="font-display font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+          Nishanth AI
+        </span>
+      </div>
+
+      <!-- Desktop nav links -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <a href="#industries" class="nav-link hover:text-cyan-400 transition-colors" data-i18n="nav_link_industries">Industries</a>
+        <a href="#process" class="nav-link hover:text-cyan-400 transition-colors" data-i18n="nav_link_process">Process</a>
+        <a href="#live-demo" class="nav-link hover:text-cyan-400 transition-colors" data-i18n="nav_link_demo">Demo</a>
+        <a href="#faq" class="nav-link hover:text-cyan-400 transition-colors" data-i18n="nav_link_faq">FAQ</a>
+      </div>
+
+      <!-- Right Navigation Actions: Multi-Language Switcher + Demo Button -->
+      <div class="flex items-center space-x-2.5">
+
+        <!-- Multi-Language Selector Dropdown (5 Languages) -->
+        <div class="relative">
+          <select id="language-switcher" onchange="setLanguage(this.value)" class="lang-dropdown text-xs text-slate-200 font-medium px-2.5 py-1.5 rounded-lg cursor-pointer transition-all">
+            <option value="en" selected class="bg-slate-900 text-white">🌐 English</option>
+            <option value="ta" class="bg-slate-900 text-white">🌐 தமிழ்</option>
+            <option value="kn" class="bg-slate-900 text-white">🌐 ಕನ್ನಡ</option>
+            <option value="te" class="bg-slate-900 text-white">🌐 తెలుగు</option>
+            <option value="ml" class="bg-slate-900 text-white">🌐 മലയാളം</option>
+          </select>
+        </div>
+
+        <a href="https://wa.me/919999999999?text=Hi%20Nishanth%20AI%2C%20I%20want%20a%20free%20AR%2FAI%20demo"
+           class="tap-scale hidden sm:inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all shadow-md shadow-emerald-500/20">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> <span data-i18n="nav_demo_btn">Free Demo</span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="relative px-4 pt-8 pb-10 max-w-4xl mx-auto text-center space-y-4 overflow-hidden">
+    <div class="hero-aurora"></div>
+    <div id="hero-particles" class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+    <div class="hero-rise badge-glow inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-medium" style="animation-delay:.05s">
+      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+      <span data-i18n="hero_badge">Next-Gen WebAR & AI Agency</span>
+    </div>
+
+    <h1 class="hero-rise font-display text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight" style="animation-delay:.15s">
+      <span data-i18n="hero_title_1">Transform Your Business With</span> <br>
+      <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent" data-i18n="hero_title_2">
+        WebAR & AI Automation
+      </span>
+    </h1>
+
+    <p class="hero-rise text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed" style="animation-delay:.28s" data-i18n="hero_description">
+      No App Download Required. Deliver native 3D AR in any mobile browser & convert leads 24/7 with autonomous WhatsApp workflows to double your revenue.
+    </p>
+
+    <div class="hero-rise flex flex-wrap items-center justify-center gap-3 pt-2" style="animation-delay:.4s">
+      <a href="#industries" class="ripple-wrap tap-scale btn-shimmer w-full sm:w-auto bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-6 py-3 rounded-xl shadow-lg shadow-cyan-500/25 transition-all" data-i18n="hero_btn_explore">
+        Explore Industries 🚀
+      </a>
+      <a href="#live-demo" class="ripple-wrap tap-scale w-full sm:w-auto glass-card hover:bg-slate-900 text-slate-200 font-semibold text-sm px-5 py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+        <i data-lucide="scan" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="hero_btn_demo">Live 3D Demo</span>
+      </a>
+    </div>
+
+    <div class="scan-divider max-w-md mx-auto mt-6"></div>
+  </header>
+
+  <!-- TRUST / STATS BAND -->
+  <section class="px-4 pb-2 max-w-5xl mx-auto">
+    <div class="grid grid-cols-3 gap-3">
+      <div class="reveal stat-card glass-card rounded-2xl px-3 py-4 text-center text-cyan-400 tap-scale" style="transition-delay:0ms">
+        <p class="stat-num font-display text-xl sm:text-3xl font-extrabold text-cyan-400" data-count-to="150" data-suffix="+">0</p>
+        <p class="text-[10px] sm:text-xs text-slate-400 mt-1 leading-tight" data-i18n="stat_1_label">AR Experiences Deployed</p>
+      </div>
+      <div class="reveal stat-card glass-card rounded-2xl px-3 py-4 text-center text-amber-400 tap-scale" style="transition-delay:120ms">
+        <p class="stat-num font-display text-xl sm:text-3xl font-extrabold text-amber-400" data-count-to="3.2" data-suffix="×">0</p>
+        <p class="text-[10px] sm:text-xs text-slate-400 mt-1 leading-tight" data-i18n="stat_2_label">Average Conversion Lift</p>
+      </div>
+      <div class="reveal stat-card glass-card rounded-2xl px-3 py-4 text-center text-cyan-400 tap-scale" style="transition-delay:240ms">
+        <p class="stat-num font-display text-xl sm:text-3xl font-extrabold text-cyan-400" data-static="24/7">24/7</p>
+        <p class="text-[10px] sm:text-xs text-slate-400 mt-1 leading-tight" data-i18n="stat_3_label">Autonomous WhatsApp Response</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9-CATEGORY 2-COLUMN COMPACT GRID -->
+  <section id="industries" class="px-4 py-10 max-w-4xl mx-auto">
+    <div class="reveal text-center mb-6">
+      <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 eyebrow-draw" data-i18n="grid_eyebrow">Pick Your Vertical</span>
+      <h2 class="font-display text-xl sm:text-2xl font-bold text-white tracking-tight mt-1" data-i18n="grid_heading">Which Industry Solution Do You Need?</h2>
+      <p class="text-slate-400 text-xs sm:text-sm mt-1" data-i18n="grid_subheading">Select your niche below to explore 10 interactive bespoke demos</p>
+    </div>
+
+    <!-- Grid Container: 2-Column on Mobile, 3-Column on Tablets/Desktop -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+
+      <!-- 1. Hospitality -->
+      <a href="hospitality.html" class="glass-card rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 reveal tilt-card relative tap-scale ripple-wrap" style="transition-delay:0ms">
+        <div class="shine auto-shine"></div>
+        <div class="w-full h-24 sm:h-28 overflow-hidden">
+          <img src="https://placehold.co/400x240/1c1917/f59e0b?text=Food+%26+Hospitality&font=raleway" alt="Food & Hospitality" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <div class="space-y-2">
+            <span class="text-2xl icon-pop idle-bob">🍽️</span>
+            <h3 class="font-display font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_1_title">Food & Hospitality</h3>
+            <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_1_desc">3D Menu Viewer, WhatsApp Ordering, Viral Table Games</p>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
+            <span data-i18n="demo_count">10 Demos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- 2. Healthcare -->
+      <a href="healthcare.html" class="glass-card rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 reveal tilt-card relative tap-scale ripple-wrap" style="transition-delay:60ms">
+        <div class="shine auto-shine"></div>
+        <div class="w-full h-24 sm:h-28 overflow-hidden">
+          <img src="https://placehold.co/400x240/0f172a/34d399?text=Medical+%26+Clinics&font=raleway" alt="Medical & Clinics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <div class="space-y-2">
+            <span class="text-2xl icon-pop idle-bob">🏥</span>
+            <h3 class="font-display font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_2_title">Medical & Clinics</h3>
+            <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_2_desc">3D Procedure Explainer, 24/7 Appointment Booking Bot</p>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
+            <span data-i18n="demo_count">10 Demos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- 3. Real Estate -->
+      <a href="realestate.html" class="glass-card rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 reveal tilt-card relative tap-scale ripple-wrap" style="transition-delay:120ms">
+        <div class="shine auto-shine"></div>
+        <div class="w-full h-24 sm:h-28 overflow-hidden">
+          <img src="https://placehold.co/400x240/0f172a/38bdf8?text=Real+Estate&font=raleway" alt="Real Estate & Staging" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <div class="space-y-2">
+            <span class="text-2xl icon-pop idle-bob">🏗️</span>
+            <h3 class="font-display font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_3_title">Real Estate & Staging</h3>
+            <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_3_desc">Interactive 3D Floor Plans, Virtual Architecture Tours</p>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
+            <span data-i18n="demo_count">10 Demos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- 4. Retail & Jewelry -->
+      <a href="retail.html" class="glass-card rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 reveal tilt-card relative tap-scale ripple-wrap" style="transition-delay:180ms">
+        <div class="shine auto-shine"></div>
+        <div class="w-full h-24 sm:h-28 overflow-hidden">
+          <img src="https://placehold.co/400x240/1c1917/fbbf24?text=Jewelry+%26+Luxury&font=raleway" alt="Jewelry & Luxury" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <div class="space-y-2">
+            <span class="text-2xl icon-pop idle-bob">💍</span>
+            <h3 class="font-display font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_4_title">Jewelry & Luxury</h3>
+            <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_4_desc">Virtual Try-On, 3D Product Showcase, Live Rate Alerts</p>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
+            <span data-i18n="demo_count">10 Demos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- 5. Events & Gifting -->
+      <a href="events.html" class="glass-card rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 reveal tilt-card relative tap-scale ripple-wrap" style="transition-delay:240ms">
+        <div class="shine auto-shine"></div>
+        <div class="w-full h-24 sm:h-28 overflow-hidden">
+          <img src="https://placehold.co/400x240/1e1b2e/f472b6?text=Weddings+%26+Gifting&font=raleway" alt="Weddings & Gifting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <div class="space-y-2">
+            <span class="text-2xl icon-pop idle-bob">🎁</span>
+            <h3 class="font-display font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_5_title">Weddings & Gifting</h3>
+            <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_5_desc">Living AR Invitations, AR Video Fridge Magnets</p>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
+            <span data-i18n="demo_count">10 Demos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- 6. Automobile -->
+      <a href="automobile.html" class="glass-card rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 reveal tilt-card relative tap-scale ripple-wrap" style="transition-delay:300ms">
+        <div class="shine auto-shine"></div>
+        <div class="w-full h-24 sm:h-28 overflow-hidden">
+          <img src="https://placehold.co/400x240/0f172a/60a5fa?text=Automobile&font=raleway" alt="Automobile Showrooms" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <div class="space-y-2">
+            <span class="text-2xl icon-pop idle-bob">🚗</span>
+            <h3 class="font-display font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_6_title">Automobile Showrooms</h3>
+            <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_6_desc">3D Car Visualizer, Test Drive Booking, Service Bots</p>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
+            <span data-i18n="demo_count">10 Demos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- 7. Education -->
+      <a href="education.html" class="glass-card rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 reveal tilt-card relative tap-scale ripple-wrap" style="transition-delay:360ms">
+        <div class="shine auto-shine"></div>
+        <div class="w-full h-24 sm:h-28 overflow-hidden">
+          <img src="https://placehold.co/400x240/0f172a/a78bfa?text=Education&font=raleway" alt="Education & EdTech" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <div class="space-y-2">
+            <span class="text-2xl icon-pop idle-bob">🎓</span>
+            <h3 class="font-display font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_7_title">Education & EdTech</h3>
+            <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_7_desc">Interactive 3D Science Labs, 24/7 AI Homework Tutor</p>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
+            <span data-i18n="demo_count">10 Demos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- 8. Art & Tourism -->
+      <a href="tourism.html" class="glass-card rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 reveal tilt-card relative tap-scale ripple-wrap" style="transition-delay:420ms">
+        <div class="shine auto-shine"></div>
+        <div class="w-full h-24 sm:h-28 overflow-hidden">
+          <img src="https://placehold.co/400x240/1c1917/fb923c?text=Art+%26+Tourism&font=raleway" alt="Art, Culture & Tourism" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <div class="space-y-2">
+            <span class="text-2xl icon-pop idle-bob">🎨</span>
+            <h3 class="font-display font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_8_title">Art, Culture & Tourism</h3>
+            <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_8_desc">Living Canvas Gallery, Multilingual AI Voice Tour Guide</p>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
+            <span data-i18n="demo_count">10 Demos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- 9. Manufacturing -->
+      <a href="manufacturing.html" class="col-span-2 sm:col-span-1 glass-card rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 reveal tilt-card relative tap-scale ripple-wrap" style="transition-delay:480ms">
+        <div class="shine auto-shine"></div>
+        <div class="w-full h-24 sm:h-28 overflow-hidden">
+          <img src="https://placehold.co/400x240/0f172a/94a3b8?text=Manufacturing&font=raleway" alt="Manufacturing & B2B" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <div class="space-y-2">
+            <span class="text-2xl icon-pop idle-bob">🏭</span>
+            <h3 class="font-display font-bold text-sm sm:text-base text-white group-hover:text-cyan-400 transition-colors" data-i18n="card_9_title">Manufacturing & B2B</h3>
+            <p class="text-[11px] text-slate-400 leading-snug" data-i18n="card_9_desc">1:1 Heavy Machinery AR, Automated Lead Qualification</p>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-[11px] font-semibold text-cyan-400">
+            <span data-i18n="demo_count">10 Demos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS / PROCESS -->
+  <section id="process" class="px-4 py-10 max-w-4xl mx-auto">
+    <div class="reveal text-center mb-8">
+      <span class="text-xs font-bold uppercase tracking-wider text-amber-400 eyebrow-draw" data-i18n="process_eyebrow">Our Process</span>
+      <h2 class="font-display text-xl sm:text-2xl font-bold text-white tracking-tight mt-1" data-i18n="process_heading">From Idea to Live in Days</h2>
+    </div>
+    <div class="process-wrap grid sm:grid-cols-3 gap-4">
+      <div class="process-line"></div>
+      <div class="process-step glass-card rounded-2xl p-5 relative tap-scale">
+        <span class="step-num font-display text-4xl font-extrabold text-cyan-500/25">01</span>
+        <h3 class="font-display font-bold text-white mt-1" data-i18n="process_1_title">Discover</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="process_1_desc">We study your products, space, or catalogue and map exactly where 3D and automation move the needle.</p>
+      </div>
+      <div class="process-step glass-card rounded-2xl p-5 relative tap-scale">
+        <span class="step-num font-display text-4xl font-extrabold text-cyan-500/25">02</span>
+        <h3 class="font-display font-bold text-white mt-1" data-i18n="process_2_title">Build</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="process_2_desc">Our team models your assets in photoreal 3D and wires up AI workflows tailored to your sales funnel.</p>
+      </div>
+      <div class="process-step glass-card rounded-2xl p-5 relative tap-scale">
+        <span class="step-num font-display text-4xl font-extrabold text-cyan-500/25">03</span>
+        <h3 class="font-display font-bold text-white mt-1" data-i18n="process_3_title">Launch & Scale</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="process_3_desc">Go live in days, then track engagement while your WhatsApp agent qualifies leads around the clock.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE 3D INTERACTIVE DEMO SECTION -->
+  <section id="live-demo" class="px-4 py-8 max-w-4xl mx-auto">
+    <div class="reveal glass-card rounded-3xl p-6 sm:p-8 border border-cyan-500/30 relative overflow-hidden">
+      <div class="blob-drift-1 absolute -top-12 -right-12 w-44 h-44 bg-cyan-500/10 rounded-full blur-3xl"></div>
+      <div class="blob-drift-2 absolute -bottom-12 -left-12 w-44 h-44 bg-amber-400/5 rounded-full blur-3xl"></div>
+
+      <div class="text-center space-y-2 mb-6">
+        <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 eyebrow-draw" data-i18n="demo_badge">Live WebAR Experience</span>
+        <h2 class="font-display text-2xl font-bold text-white" data-i18n="demo_title">Experience in Native 3D Now</h2>
+        <p class="text-slate-400 text-xs sm:text-sm" data-i18n="demo_sub">Rotate with touch; place right on your physical table using your mobile camera</p>
+      </div>
+
+      <div class="grid sm:grid-cols-5 gap-4 items-center">
+        <!-- 3D Model Viewer Component -->
+        <div class="scan-frame sm:col-span-3 w-full h-72 rounded-2xl bg-slate-900/60 border border-slate-800 flex items-center justify-center overflow-hidden relative">
+          <span class="orbit-dot"></span>
+          <model-viewer
+            src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+            alt="3D Demo Model"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            camera-controls
+            auto-rotate
+            shadow-intensity="1"
+            class="w-full h-full">
+          </model-viewer>
+        </div>
+
+        <!-- Feature bullets beside the viewer -->
+        <ul class="sm:col-span-2 space-y-3">
+          <li class="flex items-start gap-2.5">
+            <i data-lucide="smartphone" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>
+            <span class="text-xs text-slate-300" data-i18n="demo_feat_1">No app install — opens straight from a link or QR code</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i data-lucide="ruler" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>
+            <span class="text-xs text-slate-300" data-i18n="demo_feat_2">True-to-scale placement using your camera and floor</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i data-lucide="languages" class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0"></i>
+            <span class="text-xs text-slate-300" data-i18n="demo_feat_3">Works alongside voice guides in five regional languages</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mt-4 text-center">
+        <p class="text-[11px] text-slate-400" data-i18n="demo_hint">Tap 'View in your space' on mobile to place the 3D model in your room</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="px-4 py-10 max-w-4xl mx-auto">
+    <div class="reveal text-center mb-8">
+      <span class="text-xs font-bold uppercase tracking-wider text-amber-400 eyebrow-draw" data-i18n="testimonials_eyebrow">Client Voices</span>
+      <h2 class="font-display text-xl sm:text-2xl font-bold text-white tracking-tight mt-1" data-i18n="testimonials_heading">Trusted Across Industries</h2>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-4">
+      <div class="reveal testi-card glass-card rounded-2xl p-5 flex flex-col justify-between tap-scale" style="transition-delay:0ms">
+        <div>
+          <div class="star-twinkle flex gap-0.5 text-amber-400 mb-3"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="text-xs text-slate-300 leading-relaxed" data-i18n="testimonial_1_quote">The virtual try-on cut our showroom queues in half and customers now browse the full collection from home before visiting.</p>
+        </div>
+        <p class="text-[11px] font-semibold text-white mt-4" data-i18n="testimonial_1_name">Meenakshi Silks & Jewellery</p>
+        <p class="text-[10px] text-slate-500" data-i18n="testimonial_1_role">Retail Partner, Coimbatore</p>
+      </div>
+      <div class="reveal testi-card glass-card rounded-2xl p-5 flex flex-col justify-between tap-scale" style="transition-delay:120ms">
+        <div>
+          <div class="star-twinkle flex gap-0.5 text-amber-400 mb-3"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="text-xs text-slate-300 leading-relaxed" data-i18n="testimonial_2_quote">Our booking bot now handles most appointment requests overnight, and missed slots have dropped noticeably.</p>
+        </div>
+        <p class="text-[11px] font-semibold text-white mt-4" data-i18n="testimonial_2_name">Arvind Family Clinic</p>
+        <p class="text-[10px] text-slate-500" data-i18n="testimonial_2_role">Healthcare Partner</p>
+      </div>
+      <div class="reveal testi-card glass-card rounded-2xl p-5 flex flex-col justify-between tap-scale" style="transition-delay:240ms">
+        <div>
+          <div class="star-twinkle flex gap-0.5 text-amber-400 mb-3"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="text-xs text-slate-300 leading-relaxed" data-i18n="testimonial_3_quote">Buyers walk through floor plans on their phones before ever visiting a site, so our team now only meets serious leads.</p>
+        </div>
+        <p class="text-[11px] font-semibold text-white mt-4" data-i18n="testimonial_3_name">Coastal Realty Group</p>
+        <p class="text-[10px] text-slate-500" data-i18n="testimonial_3_role">Real Estate Partner</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="px-4 py-10 max-w-3xl mx-auto">
+    <div class="reveal text-center mb-6">
+      <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 eyebrow-draw" data-i18n="faq_eyebrow">Questions</span>
+      <h2 class="font-display text-xl sm:text-2xl font-bold text-white tracking-tight mt-1" data-i18n="faq_heading">Frequently Asked</h2>
+    </div>
+    <div class="reveal space-y-3">
+      <details class="faq-item glass-card rounded-2xl px-4 py-3" open>
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white list-none">
+          <span data-i18n="faq_1_q">Do my customers need to download an app?</span>
+          <i data-lucide="chevron-down" class="chev w-4 h-4 text-cyan-400"></i>
+        </summary>
+        <div class="faq-body-wrap"><div class="faq-body-inner">
+          <p class="text-xs text-slate-400 mt-2 pb-1 leading-relaxed" data-i18n="faq_1_a">No. WebAR runs directly inside the mobile browser from a shared link or QR code, on both iOS and Android.</p>
+        </div></div>
+      </details>
+      <details class="faq-item glass-card rounded-2xl px-4 py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white list-none">
+          <span data-i18n="faq_2_q">How long does it take to launch?</span>
+          <i data-lucide="chevron-down" class="chev w-4 h-4 text-cyan-400"></i>
+        </summary>
+        <div class="faq-body-wrap"><div class="faq-body-inner">
+          <p class="text-xs text-slate-400 mt-2 pb-1 leading-relaxed" data-i18n="faq_2_a">Most single-industry demos go live within 5 to 10 business days, depending on how many assets need modelling.</p>
+        </div></div>
+      </details>
+      <details class="faq-item glass-card rounded-2xl px-4 py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white list-none">
+          <span data-i18n="faq_3_q">Does the WhatsApp bot work in regional languages?</span>
+          <i data-lucide="chevron-down" class="chev w-4 h-4 text-cyan-400"></i>
+        </summary>
+        <div class="faq-body-wrap"><div class="faq-body-inner">
+          <p class="text-xs text-slate-400 mt-2 pb-1 leading-relaxed" data-i18n="faq_3_a">Yes. It is configured for Tamil, Kannada, Telugu, Malayalam and English out of the box.</p>
+        </div></div>
+      </details>
+      <details class="faq-item glass-card rounded-2xl px-4 py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white list-none">
+          <span data-i18n="faq_4_q">What devices support the AR experience?</span>
+          <i data-lucide="chevron-down" class="chev w-4 h-4 text-cyan-400"></i>
+        </summary>
+        <div class="faq-body-wrap"><div class="faq-body-inner">
+          <p class="text-xs text-slate-400 mt-2 pb-1 leading-relaxed" data-i18n="faq_4_a">Any modern smartphone browser — iOS uses Quick Look and Android uses Scene Viewer, both built in.</p>
+        </div></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- FINAL CTA BAND -->
+  <section class="px-4 py-10 max-w-4xl mx-auto">
+    <div class="reveal glass-card rounded-3xl p-8 text-center border border-amber-400/20 relative overflow-hidden">
+      <div class="cta-mesh absolute inset-0"></div>
+      <div class="relative">
+        <h2 class="font-display text-xl sm:text-2xl font-bold text-white" data-i18n="cta_heading">Ready to Bring Your Business Into 3D?</h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-2 max-w-md mx-auto" data-i18n="cta_sub">Get a free tailored demo for your industry within 48 hours — no obligation.</p>
+        <a href="https://wa.me/919999999999?text=Hi%20Nishanth%20AI%2C%20I%20want%20a%20free%20AR%2FAI%20demo"
+           class="cta-btn-ring ripple-wrap tap-scale inline-flex items-center gap-2 mt-5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-lg shadow-emerald-500/20 transition-all">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> <span data-i18n="cta_btn">Get My Free Demo</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="px-4 pt-10 pb-6 max-w-6xl mx-auto border-t border-slate-800/80">
+    <div class="grid sm:grid-cols-3 gap-8 text-center sm:text-left">
+      <div>
+        <div class="flex items-center justify-center sm:justify-start space-x-2 mb-2">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-white text-sm font-display">N</div>
+          <span class="font-display font-extrabold text-white">Nishanth AI</span>
+        </div>
+        <p class="text-xs text-slate-500 leading-relaxed" data-i18n="footer_blurb">WebAR and AI automation studio helping businesses launch 3D experiences and 24/7 WhatsApp workflows without writing a line of code.</p>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3" data-i18n="footer_links_heading">Quick Links</p>
+        <div class="flex flex-col gap-2 text-xs text-slate-500">
+          <a href="#industries" class="hover:text-cyan-400 transition-colors" data-i18n="nav_link_industries">Industries</a>
+          <a href="#process" class="hover:text-cyan-400 transition-colors" data-i18n="nav_link_process">Process</a>
+          <a href="#live-demo" class="hover:text-cyan-400 transition-colors" data-i18n="nav_link_demo">Demo</a>
+          <a href="#faq" class="hover:text-cyan-400 transition-colors" data-i18n="nav_link_faq">FAQ</a>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3" data-i18n="footer_contact_heading">Contact</p>
+        <div class="flex flex-col gap-2 text-xs text-slate-500">
+          <a href="tel:+919999999999" class="hover:text-cyan-400 transition-colors flex items-center justify-center sm:justify-start gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5"></i> +91 99999 99999</a>
+          <a href="https://wa.me/919999999999" class="hover:text-cyan-400 transition-colors flex items-center justify-center sm:justify-start gap-1.5"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp</a>
+          <span class="flex items-center justify-center sm:justify-start gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5"></i> hello@nishanth.ai</span>
+        </div>
+      </div>
+    </div>
+    <div class="scan-divider my-6"></div>
+    <p class="text-[10px] text-slate-600 text-center" data-i18n="footer_copyright">© 2026 Nishanth AI. All rights reserved.</p>
+  </footer>
+
+  <!-- STICKY MOBILE BOTTOM BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 p-3 bg-slate-950/90 backdrop-blur-lg border-t border-slate-800 flex items-center gap-2 max-w-md mx-auto">
+    <a href="tel:+919999999999" class="tap-scale ripple-wrap flex-1 glass-card hover:bg-slate-900 text-slate-200 font-semibold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 transition-all">
+      <i data-lucide="phone" class="w-3.5 h-3.5 text-cyan-400"></i> <span data-i18n="btn_call">Call Us</span>
+    </a>
+    <a href="https://wa.me/919999999999?text=Hi%20Nishanth%20AI%2C%20I%20am%20interested%20in%20your%20AR%2FAI%20services"
+       class="wa-pulse tap-scale ripple-wrap flex-[2] bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20 transition-all">
+      <i data-lucide="message-circle" class="w-4 h-4"></i> <span data-i18n="btn_whatsapp">Chat on WhatsApp</span>
+    </a>
+  </div>
+
+  <!-- MULTILINGUAL DICTIONARY & SWITCHING ENGINE -->
+  <script>
+    const translations = {
+      en: {
+        nav_demo_btn: "Free Demo",
+        nav_link_industries: "Industries",
+        nav_link_process: "Process",
+        nav_link_demo: "Demo",
+        nav_link_faq: "FAQ",
+        hero_badge: "Next-Gen WebAR & AI Agency",
+        hero_title_1: "Transform Your Business With",
+        hero_title_2: "WebAR & AI Automation",
+        hero_description: "No App Download Required. Deliver native 3D AR in any mobile browser & convert leads 24/7 with autonomous WhatsApp workflows to double your revenue.",
+        hero_btn_explore: "Explore Industries 🚀",
+        hero_btn_demo: "Live 3D Demo",
+        stat_1_label: "AR Experiences Deployed",
+        stat_2_label: "Average Conversion Lift",
+        stat_3_label: "Autonomous WhatsApp Response",
+        grid_eyebrow: "Pick Your Vertical",
+        grid_heading: "Which Industry Solution Do You Need?",
+        grid_subheading: "Select your niche below to explore 10 interactive bespoke demos",
+        card_1_title: "Food & Hospitality",
+        card_1_desc: "3D Menu Viewer, WhatsApp Ordering, Viral Table Games",
+        card_2_title: "Medical & Clinics",
+        card_2_desc: "3D Procedure Explainer, 24/7 Appointment Booking Bot",
+        card_3_title: "Real Estate & Staging",
+        card_3_desc: "Interactive 3D Floor Plans, Virtual Architecture Tours",
+        card_4_title: "Jewelry & Luxury",
+        card_4_desc: "Virtual Try-On, 3D Product Showcase, Live Rate Alerts",
+        card_5_title: "Weddings & Gifting",
+        card_5_desc: "Living AR Invitations, AR Video Fridge Magnets",
+        card_6_title: "Automobile Showrooms",
+        card_6_desc: "3D Car Visualizer, Test Drive Booking, Service Bots",
+        card_7_title: "Education & EdTech",
+        card_7_desc: "Interactive 3D Science Labs, 24/7 AI Homework Tutor",
+        card_8_title: "Art, Culture & Tourism",
+        card_8_desc: "Living Canvas Gallery, Multilingual AI Voice Tour Guide",
+        card_9_title: "Manufacturing & B2B",
+        card_9_desc: "1:1 Heavy Machinery AR, Automated Lead Qualification",
+        demo_count: "10 Demos",
+        process_eyebrow: "Our Process",
+        process_heading: "From Idea to Live in Days",
+        process_1_title: "Discover",
+        process_1_desc: "We study your products, space, or catalogue and map exactly where 3D and automation move the needle.",
+        process_2_title: "Build",
+        process_2_desc: "Our team models your assets in photoreal 3D and wires up AI workflows tailored to your sales funnel.",
+        process_3_title: "Launch & Scale",
+        process_3_desc: "Go live in days, then track engagement while your WhatsApp agent qualifies leads around the clock.",
+        demo_badge: "Live WebAR Experience",
+        demo_title: "Experience in Native 3D Now",
+        demo_sub: "Rotate with touch; place right on your physical table using your mobile camera",
+        demo_feat_1: "No app install — opens straight from a link or QR code",
+        demo_feat_2: "True-to-scale placement using your camera and floor",
+        demo_feat_3: "Works alongside voice guides in five regional languages",
+        demo_hint: "Tap 'View in your space' on mobile to place the 3D model in your room",
+        testimonials_eyebrow: "Client Voices",
+        testimonials_heading: "Trusted Across Industries",
+        testimonial_1_quote: "The virtual try-on cut our showroom queues in half and customers now browse the full collection from home before visiting.",
+        testimonial_1_name: "Meenakshi Silks & Jewellery",
+        testimonial_1_role: "Retail Partner, Coimbatore",
+        testimonial_2_quote: "Our booking bot now handles most appointment requests overnight, and missed slots have dropped noticeably.",
+        testimonial_2_name: "Arvind Family Clinic",
+        testimonial_2_role: "Healthcare Partner",
+        testimonial_3_quote: "Buyers walk through floor plans on their phones before ever visiting a site, so our team now only meets serious leads.",
+        testimonial_3_name: "Coastal Realty Group",
+        testimonial_3_role: "Real Estate Partner",
+        faq_eyebrow: "Questions",
+        faq_heading: "Frequently Asked",
+        faq_1_q: "Do my customers need to download an app?",
+        faq_1_a: "No. WebAR runs directly inside the mobile browser from a shared link or QR code, on both iOS and Android.",
+        faq_2_q: "How long does it take to launch?",
+        faq_2_a: "Most single-industry demos go live within 5 to 10 business days, depending on how many assets need modelling.",
+        faq_3_q: "Does the WhatsApp bot work in regional languages?",
+        faq_3_a: "Yes. It is configured for Tamil, Kannada, Telugu, Malayalam and English out of the box.",
+        faq_4_q: "What devices support the AR experience?",
+        faq_4_a: "Any modern smartphone browser — iOS uses Quick Look and Android uses Scene Viewer, both built in.",
+        cta_heading: "Ready to Bring Your Business Into 3D?",
+        cta_sub: "Get a free tailored demo for your industry within 48 hours — no obligation.",
+        cta_btn: "Get My Free Demo",
+        footer_blurb: "WebAR and AI automation studio helping businesses launch 3D experiences and 24/7 WhatsApp workflows without writing a line of code.",
+        footer_links_heading: "Quick Links",
+        footer_contact_heading: "Contact",
+        footer_copyright: "© 2026 Nishanth AI. All rights reserved.",
+        btn_call: "Call Us",
+        btn_whatsapp: "Chat on WhatsApp"
+      },
+      ta: {
+        nav_demo_btn: "இலவச டெமோ",
+        nav_link_industries: "துறைகள்",
+        nav_link_process: "செயல்முறை",
+        nav_link_demo: "டெமோ",
+        nav_link_faq: "கேள்விகள்",
+        hero_badge: "Next-Gen WebAR & AI Agency",
+        hero_title_1: "உங்கள் வணிகத்திற்கு",
+        hero_title_2: "WebAR & AI ஆட்டோமேஷன்",
+        hero_description: "No App Download. உங்கள் வாடிக்கையாளர்களுக்கு பிரவுசரிலேயே 3D AR அனுபவமும், வாட்ஸ்அப் வழியே 24/7 தானியங்கி விற்பனையும் வழங்கி வருவாயை இரட்டிப்பாக்குங்கள்.",
+        hero_btn_explore: "துறைகளைத் தேர்ந்தெடுக்க 🚀",
+        hero_btn_demo: "Live 3D Demo",
+        stat_1_label: "வழங்கப்பட்ட AR அனுபவங்கள்",
+        stat_2_label: "சராசரி விற்பனை அதிகரிப்பு",
+        stat_3_label: "24/7 வாட்ஸ்அப் தானியங்கு பதில்",
+        grid_eyebrow: "உங்கள் துறையைத் தேர்வு செய்யுங்கள்",
+        grid_heading: "எந்த துறைக்கான தீர்வு வேண்டும்?",
+        grid_subheading: "கீழே உள்ள உங்கள் தொழிலைத் தேர்ந்தெடுத்து 10 பிரத்யேக டெமோக்களைப் பாருங்கள்",
+        card_1_title: "உணவு & ஹோட்டல்",
+        card_1_desc: "3D மெனு, வாட்ஸ்அப் ஆர்டரிங், வைரல் கேம்ஸ்",
+        card_2_title: "மருத்துவம் & கிளினிக்",
+        card_2_desc: "3D சிகிச்சை விளக்கம், அப்பாயின்ட்மென்ட் போட்",
+        card_3_title: "ரியல் எஸ்டேட்",
+        card_3_desc: "3D ஃப்ளோர் பிளான், விர்ச்சுவல் இன்டீரியர்",
+        card_4_title: "நகை & ஆடைகள்",
+        card_4_desc: "விர்ச்சுவல் ட்ரை-ஆன், மேஜிக் மிரர்",
+        card_5_title: "திருமணம் & கிஃப்ட்",
+        card_5_desc: "AR பத்திரிகை, வீடியோ மேக்னட்ஸ்",
+        card_6_title: "ஆட்டோமொபைல்",
+        card_6_desc: "3D கார் வியூவர், சர்வீஸ் ரிமைண்டர்",
+        card_7_title: "கல்வி & பயிற்சி",
+        card_7_desc: "3D லேப், AI டவுட் சால்வர் போட்",
+        card_8_title: "கலை & சுற்றுலா",
+        card_8_desc: "லிவிங் கேன்வாஸ், பலமொழி AI கைடு",
+        card_9_title: "உற்பத்தி & தொழிற்துறை",
+        card_9_desc: "1:1 மெஷினரி AR, வாட்ஸ்அப் B2B போட்",
+        demo_count: "10 Demos",
+        process_eyebrow: "எங்கள் செயல்முறை",
+        process_heading: "சில நாட்களில் யோசனையிலிருந்து லைவ் வரை",
+        process_1_title: "கண்டறிதல்",
+        process_1_desc: "உங்கள் தயாரிப்புகள், இடம் அல்லது காட்டலாக்கை ஆய்வு செய்து, 3D மற்றும் ஆட்டோமேஷன் எங்கு சிறந்த பலனைத் தரும் என்பதை வரைபடமாக்குகிறோம்.",
+        process_2_title: "உருவாக்கம்",
+        process_2_desc: "எங்கள் குழு உங்கள் பொருட்களை உயர்தர 3D-யில் மாடலாக்கி, உங்கள் விற்பனை பாதைக்கேற்ப AI செயல்பாடுகளை அமைக்கிறது.",
+        process_3_title: "லாஞ்ச் & விரிவாக்கம்",
+        process_3_desc: "சில நாட்களில் லைவ் ஆகும்; பிறகு ஈடுபாட்டைக் கண்காணிக்கவும், வாட்ஸ்அப் ஏஜென்ட் இடையறாது வாய்ப்புகளை சரிபார்க்கவும் அனுமதிக்கவும்.",
+        demo_badge: "Live WebAR Experience",
+        demo_title: "இப்போதே 3D-யில் அனுபவியுங்கள்",
+        demo_sub: "விரலால் சுழற்றிப் பாருங்கள்; போன் கேமராவில் உங்கள் மேஜை மீதே பார்க்கலாம்",
+        demo_feat_1: "ஆப் தேவையில்லை — லிங்க் அல்லது QR கோட் மூலம் நேரடியாக திறக்கும்",
+        demo_feat_2: "உங்கள் கேமரா மற்றும் தரையைப் பயன்படுத்தி சரியான அளவில் வைக்கலாம்",
+        demo_feat_3: "ஐந்து பிராந்திய மொழிகளில் குரல் வழிகாட்டியுடன் இயங்கும்",
+        demo_hint: "மொபைலில் 'View in AR' பட்டனை அழுத்தி உங்கள் அறையில் வைத்துப் பார்க்கலாம்",
+        testimonials_eyebrow: "வாடிக்கையாளர் கருத்துகள்",
+        testimonials_heading: "பல துறைகளில் நம்பகத்தன்மை",
+        testimonial_1_quote: "விர்ச்சுவல் ட்ரை-ஆன் எங்கள் ஷோரூம் வரிசைகளை பாதியாகக் குறைத்தது; வாடிக்கையாளர்கள் வருகைக்கு முன் வீட்டிலிருந்தே முழு தொகுப்பையும் பார்க்கிறார்கள்.",
+        testimonial_1_name: "மீனாட்சி சில்க்ஸ் & நகை",
+        testimonial_1_role: "சில்லறை கூட்டாளர், கோயம்புத்தூர்",
+        testimonial_2_quote: "எங்கள் புக்கிங் போட் இப்போது பெரும்பாலான அப்பாயின்ட்மென்ட் கோரிக்கைகளை இரவில் கையாள்கிறது; தவறவிட்ட நேரங்கள் குறிப்பிடத்தக்க அளவில் குறைந்துள்ளன.",
+        testimonial_2_name: "அரவிந்த் குடும்ப கிளினிக்",
+        testimonial_2_role: "சுகாதார கூட்டாளர்",
+        testimonial_3_quote: "வாங்குபவர்கள் தளத்திற்குச் செல்வதற்கு முன்பே தங்கள் போனில் ஃப்ளோர் பிளான்களைப் பார்க்கிறார்கள், எனவே எங்கள் குழு தீவிரமான வாய்ப்புகளை மட்டுமே சந்திக்கிறது.",
+        testimonial_3_name: "கோஸ்டல் ரியல்டி குரூப்",
+        testimonial_3_role: "ரியல் எஸ்டேட் கூட்டாளர்",
+        faq_eyebrow: "கேள்விகள்",
+        faq_heading: "அடிக்கடி கேட்கப்படும் கேள்விகள்",
+        faq_1_q: "எனது வாடிக்கையாளர்கள் ஆப் டவுன்லோட் செய்ய வேண்டுமா?",
+        faq_1_a: "தேவையில்லை. WebAR ஒரு லிங்க் அல்லது QR கோட் மூலம் iOS மற்றும் Android இரண்டிலும் நேரடியாக மொபைல் பிரவுசரில் இயங்கும்.",
+        faq_2_q: "லாஞ்ச் செய்ய எவ்வளவு நேரம் ஆகும்?",
+        faq_2_a: "பெரும்பாலான ஒரு-துறை டெமோக்கள் 5 முதல் 10 வேலை நாட்களுக்குள் லைவ் ஆகும், மாடலிங் தேவைப்படும் பொருட்களின் எண்ணிக்கையைப் பொறுத்து.",
+        faq_3_q: "வாட்ஸ்அப் போட் பிராந்திய மொழிகளில் வேலை செய்யுமா?",
+        faq_3_a: "ஆம். இது தமிழ், கன்னடம், தெலுங்கு, மலையாளம் மற்றும் ஆங்கிலத்திற்கு ஏற்கனவே அமைக்கப்பட்டுள்ளது.",
+        faq_4_q: "எந்த சாதனங்கள் AR அனுபவத்தை ஆதரிக்கும்?",
+        faq_4_a: "எந்த நவீன ஸ்மார்ட்போன் பிரவுசரும் — iOS Quick Look-ஐயும், Android Scene Viewer-ஐயும் பயன்படுத்துகிறது, இரண்டும் உள்ளமைந்தவை.",
+        cta_heading: "உங்கள் வணிகத்தை 3D-க்கு கொண்டு வர தயாரா?",
+        cta_sub: "48 மணி நேரத்திற்குள் உங்கள் துறைக்கான இலவச டெமோவைப் பெறுங்கள் — எந்த கடமையும் இல்லை.",
+        cta_btn: "என் இலவச டெமோவைப் பெறுங்கள்",
+        footer_blurb: "வணிகங்கள் குறியீடு எழுதாமல் 3D அனுபவங்களையும் 24/7 வாட்ஸ்அப் செயல்பாடுகளையும் தொடங்க உதவும் WebAR மற்றும் AI ஆட்டோமேஷன் ஸ்டுடியோ.",
+        footer_links_heading: "விரைவு இணைப்புகள்",
+        footer_contact_heading: "தொடர்பு",
+        footer_copyright: "© 2026 Nishanth AI. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+        btn_call: "Call Us",
+        btn_whatsapp: "Chat on WhatsApp"
+      },
+      kn: {
+        nav_demo_btn: "ಉಚಿತ ಡೆಮೊ",
+        nav_link_industries: "ಉದ್ಯಮಗಳು",
+        nav_link_process: "ಪ್ರಕ್ರಿಯೆ",
+        nav_link_demo: "ಡೆಮೊ",
+        nav_link_faq: "FAQ",
+        hero_badge: "Next-Gen WebAR & AI Agency",
+        hero_title_1: "ನಿಮ್ಮ ವ್ಯವಹಾರವನ್ನು ಬೆಳೆಸಿ",
+        hero_title_2: "WebAR & AI ಆಟೊಮೇಷನ್",
+        hero_description: "ಯಾವುದೇ ಆ್ಯಪ್ ಡೌನ್‌ಲೋಡ್ ಅಗತ್ಯವಿಲ್ಲ. ಬ್ರೌಸರ್‌ನಲ್ಲೇ 3D AR ಅನುಭವ ಮತ್ತು WhatsApp ಮೂಲಕ 24/7 ಸ್ವಯಂಚಾಲಿತ ಮಾರಾಟವನ್ನು ಒದಗಿಸಿ ನಿಮ್ಮ ಆದಾಯವನ್ನು ಹೆಚ್ಚಿಸಿ.",
+        hero_btn_explore: "ಉದ್ಯಮಗಳನ್ನು ಅನ್ವೇಷಿಸಿ 🚀",
+        hero_btn_demo: "ಲೈವ್ 3D ಡೆಮೊ",
+        stat_1_label: "ಒದಗಿಸಿದ AR ಅನುಭವಗಳು",
+        stat_2_label: "ಸರಾಸರಿ ಪರಿವರ್ತನೆ ಏರಿಕೆ",
+        stat_3_label: "24/7 WhatsApp ಸ್ವಯಂಚಾಲಿತ ಪ್ರತಿಕ್ರಿಯೆ",
+        grid_eyebrow: "ನಿಮ್ಮ ಕ್ಷೇತ್ರ ಆಯ್ಕೆಮಾಡಿ",
+        grid_heading: "ನಿಮಗೆ ಯಾವ ಉದ್ಯಮ ಪರಿಹಾರ ಬೇಕು?",
+        grid_subheading: "10 ಸಂವಾದಾತ್ಮಕ ಡೆಮೊಗಳನ್ನು ನೋಡಲು ಕೆಳಗೆ ನಿಮ್ಮ ಉದ್ಯಮವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+        card_1_title: "ಆಹಾರ & ರೆಸ್ಟೋರೆಂಟ್‌ಗಳು",
+        card_1_desc: "3D ಮೆನು, WhatsApp ಆರ್ಡರಿಂಗ್, ವೈರಲ್ ಟೇಬಲ್ ಗೇಮ್ಸ್",
+        card_2_title: "ಆರೋಗ್ಯ & ಕ್ಲಿನಿಕ್‌ಗಳು",
+        card_2_desc: "3D ಚಿಕಿತ್ಸಾ ವಿವರಣೆ, ಅಪಾಯಿಂಟ್‌ಮೆಂಟ್ ಬುಕಿಂಗ್ ಬಾಟ್",
+        card_3_title: "ರಿಯಲ್ ಎಸ್ಟೇಟ್ & ವಿನ್ಯಾಸ",
+        card_3_desc: "3D ಫ್ಲೋರ್ ಪ್ಲಾನ್‌ಗಳು, ವರ್ಚುವಲ್ ಆರ್ಕಿಟೆಕ್ಚರ್ ಟೂರ್ಸ್",
+        card_4_title: "ಚಿನ್ನಾಭರಣ & ಉಡುಪುಗಳು",
+        card_4_desc: "ವರ್ಚುವಲ್ ಟ್ರೈ-ಆನ್, 3D ಉತ್ಪನ್ನ ಪ್ರದರ್ಶನ, ದರ ಎಚ್ಚರಿಕೆ",
+        card_5_title: "ಮದುವೆ & ಗಿಫ್ಟಿಂಗ್",
+        card_5_desc: "ಲೈವ್ AR ಆಮಂತ್ರಣಗಳು, AR ವಿಡಿಯೋ ಫ್ರಿಡ್ಜ್ ಮ್ಯಾಗ್ನೆಟ್ಸ್",
+        card_6_title: "ಆಟೋಮೊಬೈಲ್ ಶೋರೂಮ್",
+        card_6_desc: "3D ಕಾರ್ ವೀಕ್ಷಕ, ಟೆಸ್ಟ್ ಡ್ರೈವ್ ಬುಕಿಂಗ್, ಸರ್ವಿಸ್ ಬಾಟ್‌ಗಳು",
+        card_7_title: "ಶಿಕ್ಷಣ & ಎಡ್‌ಟೆಕ್",
+        card_7_desc: "3D ಸೈನ್ಸ್ ಲ್ಯಾಬ್, 24/7 AI ಹೋಮ್‌ವರ್ಕ್ ಟ್ಯೂಟರ್",
+        card_8_title: "ಕಲೆ & ಪ್ರವಾಸೋದ್ಯಮ",
+        card_8_desc: "ಲಿವಿಂಗ್ ಕ್ಯಾನ್ವಾಸ್ ಗ್ಯಾಲರಿ, ಬಹುಭಾಷಾ AI ವಾಯ್ಸ್ ಗೈಡ್",
+        card_9_title: "ಉತ್ಪಾದನೆ & ಕೈಗಾರಿಕೆ",
+        card_9_desc: "1:1 ಮೆಷಿನರಿ AR, WhatsApp B2B ಲೀಡ್ ಬಾಟ್",
+        demo_count: "10 ಡೆಮೊಗಳು",
+        process_eyebrow: "ನಮ್ಮ ಪ್ರಕ್ರಿಯೆ",
+        process_heading: "ಕೆಲವೇ ದಿನಗಳಲ್ಲಿ ಆಲೋಚನೆಯಿಂದ ಲೈವ್‌ಗೆ",
+        process_1_title: "ಅನ್ವೇಷಣೆ",
+        process_1_desc: "ನಿಮ್ಮ ಉತ್ಪನ್ನಗಳು, ಸ್ಥಳ ಅಥವಾ ಕ್ಯಾಟಲಾಗ್ ಅನ್ನು ಅಧ್ಯಯನ ಮಾಡಿ 3D ಮತ್ತು ಆಟೊಮೇಷನ್ ಎಲ್ಲಿ ಹೆಚ್ಚು ಪರಿಣಾಮ ಬೀರುತ್ತದೆ ಎಂದು ಗುರುತಿಸುತ್ತೇವೆ.",
+        process_2_title: "ನಿರ್ಮಾಣ",
+        process_2_desc: "ನಮ್ಮ ತಂಡ ನಿಮ್ಮ ಉತ್ಪನ್ನಗಳನ್ನು ಫೋಟೋರಿಯಲ್ 3D ಯಲ್ಲಿ ಮಾಡೆಲ್ ಮಾಡಿ, ನಿಮ್ಮ ಮಾರಾಟ ಹಂತಕ್ಕೆ ಸೂಕ್ತವಾದ AI ವರ್ಕ್‌ಫ್ಲೋಗಳನ್ನು ಸಿದ್ಧಪಡಿಸುತ್ತದೆ.",
+        process_3_title: "ಲಾಂಚ್ & ಸ್ಕೇಲ್",
+        process_3_desc: "ಕೆಲವೇ ದಿನಗಳಲ್ಲಿ ಲೈವ್ ಆಗಿ, ನಂತರ ತೊಡಗಿಸಿಕೊಳ್ಳುವಿಕೆಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ ಮತ್ತು WhatsApp ಏಜೆಂಟ್ ನಿರಂತರವಾಗಿ ಲೀಡ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಲಿ.",
+        demo_badge: "ಲೈವ್ WebAR ಅನುಭವ",
+        demo_title: "ಈಗಲೇ 3D ಯಲ್ಲಿ ಅನುಭವಿಸಿ",
+        demo_sub: "ಬೆರಳಿನಿಂದ ತಿರುಗಿಸಿ ನೋಡಿ; ಕ್ಯಾಮೆರಾ ಮೂಲಕ ನಿಮ್ಮ ಟೇಬಲ್ ಮೇಲೆಯೇ ಇರಿಸಿ",
+        demo_feat_1: "ಆ್ಯಪ್ ಬೇಡ — ಲಿಂಕ್ ಅಥವಾ QR ಕೋಡ್‌ನಿಂದ ನೇರವಾಗಿ ತೆರೆಯುತ್ತದೆ",
+        demo_feat_2: "ನಿಮ್ಮ ಕ್ಯಾಮೆರಾ ಮತ್ತು ನೆಲವನ್ನು ಬಳಸಿ ನಿಖರ ಅಳತೆಯಲ್ಲಿ ಇರಿಸುವಿಕೆ",
+        demo_feat_3: "ಐದು ಪ್ರಾದೇಶಿಕ ಭಾಷೆಗಳಲ್ಲಿ ಧ್ವನಿ ಮಾರ್ಗದರ್ಶಿಯೊಂದಿಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ",
+        demo_hint: "ನಿಮ್ಮ ಕೋಣೆಯಲ್ಲಿ 3D ಮಾದರಿಯನ್ನು ಇರಿಸಲು 'View in AR' ಕ್ಲಿಕ್ ಮಾಡಿ",
+        testimonials_eyebrow: "ಗ್ರಾಹಕರ ಅಭಿಪ್ರಾಯ",
+        testimonials_heading: "ಬಹು ಉದ್ಯಮಗಳಲ್ಲಿ ವಿಶ್ವಾಸಾರ್ಹ",
+        testimonial_1_quote: "ವರ್ಚುವಲ್ ಟ್ರೈ-ಆನ್ ನಮ್ಮ ಶೋರೂಂ ಸಾಲುಗಳನ್ನು ಅರ್ಧಕ್ಕೆ ಇಳಿಸಿತು; ಗ್ರಾಹಕರು ಈಗ ಭೇಟಿ ನೀಡುವ ಮೊದಲೇ ಮನೆಯಿಂದ ಪೂರ್ಣ ಸಂಗ್ರಹವನ್ನು ವೀಕ್ಷಿಸುತ್ತಾರೆ.",
+        testimonial_1_name: "ಮೀನಾಕ್ಷಿ ಸಿಲ್ಕ್ಸ್ & ಆಭರಣ",
+        testimonial_1_role: "ರೀಟೇಲ್ ಪಾಲುದಾರ, ಕೊಯಮತ್ತೂರು",
+        testimonial_2_quote: "ನಮ್ಮ ಬುಕಿಂಗ್ ಬಾಟ್ ಈಗ ಹೆಚ್ಚಿನ ಅಪಾಯಿಂಟ್‌ಮೆಂಟ್ ವಿನಂತಿಗಳನ್ನು ರಾತ್ರಿಯಿಡೀ ನಿಭಾಯಿಸುತ್ತದೆ, ತಪ್ಪಿದ ಸ್ಲಾಟ್‌ಗಳು ಗಮನಾರ್ಹವಾಗಿ ಕಡಿಮೆಯಾಗಿವೆ.",
+        testimonial_2_name: "ಅರವಿಂದ್ ಫ್ಯಾಮಿಲಿ ಕ್ಲಿನಿಕ್",
+        testimonial_2_role: "ಆರೋಗ್ಯ ಪಾಲುದಾರ",
+        testimonial_3_quote: "ಖರೀದಿದಾರರು ಸೈಟ್‌ಗೆ ಭೇಟಿ ನೀಡುವ ಮೊದಲೇ ತಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ಫ್ಲೋರ್ ಪ್ಲಾನ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸುತ್ತಾರೆ, ಆದ್ದರಿಂದ ನಮ್ಮ ತಂಡ ಈಗ ಗಂಭೀರ ಲೀಡ್‌ಗಳನ್ನು ಮಾತ್ರ ಭೇಟಿಯಾಗುತ್ತದೆ.",
+        testimonial_3_name: "ಕೋಸ್ಟಲ್ ರಿಯಾಲ್ಟಿ ಗ್ರೂಪ್",
+        testimonial_3_role: "ರಿಯಲ್ ಎಸ್ಟೇಟ್ ಪಾಲುದಾರ",
+        faq_eyebrow: "ಪ್ರಶ್ನೆಗಳು",
+        faq_heading: "ಪದೇ ಪದೇ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು",
+        faq_1_q: "ನನ್ನ ಗ್ರಾಹಕರು ಆ್ಯಪ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಬೇಕೇ?",
+        faq_1_a: "ಇಲ್ಲ. WebAR ಒಂದು ಲಿಂಕ್ ಅಥವಾ QR ಕೋಡ್‌ನಿಂದ iOS ಮತ್ತು Android ಎರಡರಲ್ಲೂ ನೇರವಾಗಿ ಮೊಬೈಲ್ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಚಲಿಸುತ್ತದೆ.",
+        faq_2_q: "ಲಾಂಚ್ ಮಾಡಲು ಎಷ್ಟು ಸಮಯ ಬೇಕಾಗುತ್ತದೆ?",
+        faq_2_a: "ಹೆಚ್ಚಿನ ಒಂದೇ-ಉದ್ಯಮ ಡೆಮೊಗಳು 5 ರಿಂದ 10 ಕೆಲಸದ ದಿನಗಳಲ್ಲಿ ಲೈವ್ ಆಗುತ್ತವೆ, ಎಷ್ಟು ಉತ್ಪನ್ನಗಳನ್ನು ಮಾಡೆಲ್ ಮಾಡಬೇಕು ಎಂಬುದರ ಮೇಲೆ ಅವಲಂಬಿತ.",
+        faq_3_q: "WhatsApp ಬಾಟ್ ಪ್ರಾದೇಶಿಕ ಭಾಷೆಗಳಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತದೆಯೇ?",
+        faq_3_a: "ಹೌದು. ಇದನ್ನು ತಮಿಳು, ಕನ್ನಡ, ತೆಲುಗು, ಮಲಯಾಳಂ ಮತ್ತು ಇಂಗ್ಲಿಷ್‌ಗಾಗಿ ಮೊದಲೇ ಸಿದ್ಧಪಡಿಸಲಾಗಿದೆ.",
+        faq_4_q: "ಯಾವ ಸಾಧನಗಳು AR ಅನುಭವವನ್ನು ಬೆಂಬಲಿಸುತ್ತವೆ?",
+        faq_4_a: "ಯಾವುದೇ ಆಧುನಿಕ ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಬ್ರೌಸರ್ — iOS Quick Look ಮತ್ತು Android Scene Viewer ಬಳಸುತ್ತದೆ, ಎರಡೂ ಒಳಗೊಂಡಿವೆ.",
+        cta_heading: "ನಿಮ್ಮ ವ್ಯವಹಾರವನ್ನು 3D ಗೆ ತರಲು ಸಿದ್ಧರಿದ್ದೀರಾ?",
+        cta_sub: "48 ಗಂಟೆಗಳಲ್ಲಿ ನಿಮ್ಮ ಉದ್ಯಮಕ್ಕಾಗಿ ಉಚಿತ ಕಸ್ಟಮ್ ಡೆಮೊ ಪಡೆಯಿರಿ — ಯಾವುದೇ ಬಾಧ್ಯತೆ ಇಲ್ಲ.",
+        cta_btn: "ನನ್ನ ಉಚಿತ ಡೆಮೊ ಪಡೆಯಿರಿ",
+        footer_blurb: "ಸಂಸ್ಥೆಗಳು ಕೋಡ್ ಬರೆಯದೆ 3D ಅನುಭವಗಳು ಮತ್ತು 24/7 WhatsApp ವರ್ಕ್‌ಫ್ಲೋಗಳನ್ನು ಪ್ರಾರಂಭಿಸಲು ಸಹಾಯ ಮಾಡುವ WebAR ಮತ್ತು AI ಆಟೊಮೇಷನ್ ಸ್ಟುಡಿಯೋ.",
+        footer_links_heading: "ತ್ವರಿತ ಲಿಂಕ್‌ಗಳು",
+        footer_contact_heading: "ಸಂಪರ್ಕಿಸಿ",
+        footer_copyright: "© 2026 Nishanth AI. ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.",
+        btn_call: "ಕರೆ ಮಾಡಿ",
+        btn_whatsapp: "WhatsApp ಚಾಟ್"
+      },
+      te: {
+        nav_demo_btn: "ఉచిత డెమో",
+        nav_link_industries: "పరిశ్రమలు",
+        nav_link_process: "ప్రక్రియ",
+        nav_link_demo: "డెమో",
+        nav_link_faq: "FAQ",
+        hero_badge: "Next-Gen WebAR & AI Agency",
+        hero_title_1: "మీ వ్యాపారాన్ని మార్చండి",
+        hero_title_2: "WebAR & AI ఆటోమేషన్",
+        hero_description: "ఎలాంటి యాప్ డౌన్‌లోడ్ అవసరం లేదు. బ్రౌజర్‌లోనే 3D AR అనుభవం మరియు WhatsApp ద్వారా 24/7 ఆటోమేటెడ్ అమ్మకాలతో మీ ఆదాయాన్ని రెట్టింపు చేసుకోండి.",
+        hero_btn_explore: "పరిశ్రమలను అన్వేషించండి 🚀",
+        hero_btn_demo: "లైవ్ 3D డెమో",
+        stat_1_label: "అందించిన AR అనుభవాలు",
+        stat_2_label: "సగటు కన్వర్షన్ పెరుగుదల",
+        stat_3_label: "24/7 WhatsApp స్వయంచాలక ప్రతిస్పందన",
+        grid_eyebrow: "మీ రంగాన్ని ఎంచుకోండి",
+        grid_heading: "మీకు ఏ పరిశ్రమ పరిష్కారం కావాలి?",
+        grid_subheading: "10 ఇంటరాక్టివ్ డెమోలను చూడటానికి క్రింద మీ రంగాన్ని ఎంచుకోండి",
+        card_1_title: "ఫుడ్ & రెస్టారెంట్లు",
+        card_1_desc: "3D మెనూ, WhatsApp ఆర్డరింగ్, వైరల్ టేబుల్ గేమ్‌లు",
+        card_2_title: "వైద్యం & క్లినిక్‌లు",
+        card_2_desc: "3D చికిత్స వివరణ, అపాయింట్‌మెంట్ బుకింగ్ బాట్",
+        card_3_title: "రియల్ ఎస్టేట్ & స్టేజింగ్",
+        card_3_desc: "3D ఫ్లోర్ ప్లాన్‌లు, వర్చువల్ ఆర్కిటెక్చర్ టూర్స్",
+        card_4_title: "ఆభరణాలు & దుస్తులు",
+        card_4_desc: "వర్చువల్ ట్రై-ఆన్, 3D ప్రోడక్ట్ షోకేస్, రేట్ అలర్ట్స్",
+        card_5_title: "వివాహం & గిఫ్టింగ్",
+        card_5_desc: "లైవ్ AR ఆహ్వానాలు, AR వీడియో ఫ్రిడ్జ్ మాగ్నెట్స్",
+        card_6_title: "ఆటోమొబైల్ షోరూమ్‌లు",
+        card_6_desc: "3D కార్ విజువలైజర్, టెస్ట్ డ్రైవ్ బుకింగ్, సర్వీస్ బాట్స్",
+        card_7_title: "విద్య & ఎడ్‌టెక్",
+        card_7_desc: "3D సైన్స్ ల్యాబ్స్, 24/7 AI హోమ్‌వర్క్ ట్యూటర్",
+        card_8_title: "కళలు & పర్యాటకం",
+        card_8_desc: "లివింగ్ కాన్వాస్ గ్యాలరీ, బహుభాషా AI వాయిస్ గైడ్",
+        card_9_title: "తయారీ & పరిశ్రమలు",
+        card_9_desc: "1:1 మెషినరీ AR, WhatsApp B2B లీడ్ క్వాలిఫికేషన్",
+        demo_count: "10 డెమోలు",
+        process_eyebrow: "మా ప్రక్రియ",
+        process_heading: "కొన్ని రోజుల్లో ఆలోచన నుండి లైవ్ వరకు",
+        process_1_title: "గుర్తింపు",
+        process_1_desc: "మీ ఉత్పత్తులు, స్థలం లేదా కేటలాగ్‌ను అధ్యయనం చేసి, 3D మరియు ఆటోమేషన్ ఎక్కడ ఎక్కువ ప్రభావం చూపుతాయో గుర్తిస్తాము.",
+        process_2_title: "నిర్మాణం",
+        process_2_desc: "మా బృందం మీ వస్తువులను ఫోటోరియల్ 3D లో మోడల్ చేసి, మీ సేల్స్ ఫన్నెల్‌కు తగిన AI వర్క్‌ఫ్లోలను ఏర్పాటు చేస్తుంది.",
+        process_3_title: "లాంచ్ & స్కేల్",
+        process_3_desc: "కొన్ని రోజుల్లో లైవ్ అవుతుంది, ఆపై ఎంగేజ్‌మెంట్‌ను ట్రాక్ చేస్తూ WhatsApp ఏజెంట్ నిరంతరం లీడ్‌లను క్వాలిఫై చేస్తుంది.",
+        demo_badge: "లైవ్ WebAR అనుభవం",
+        demo_title: "ఇప్పుడే 3D లో అనుభవించండి",
+        demo_sub: "వేలితో తిప్పి చూడండి; కెమెరా ద్వారా మీ టేబుల్‌పైనే చూడండి",
+        demo_feat_1: "యాప్ అవసరం లేదు — లింక్ లేదా QR కోడ్ నుండి నేరుగా తెరుచుకుంటుంది",
+        demo_feat_2: "మీ కెమెరా మరియు నేలను ఉపయోగించి సరైన కొలతలో ఉంచడం",
+        demo_feat_3: "ఐదు ప్రాంతీయ భాషల్లో వాయిస్ గైడ్‌లతో పనిచేస్తుంది",
+        demo_hint: "మీ గదిలో 3D మోడల్‌ను ఉంచడానికి 'View in AR' క్లిక్ చేయండి",
+        testimonials_eyebrow: "క్లయింట్ అభిప్రాయాలు",
+        testimonials_heading: "పరిశ్రమలలో నమ్మకమైనది",
+        testimonial_1_quote: "వర్చువల్ ట్రై-ఆన్ మా షోరూమ్ క్యూలను సగానికి తగ్గించింది; కస్టమర్లు ఇప్పుడు సందర్శించే ముందే ఇంటి నుండి పూర్తి కలెక్షన్‌ను చూస్తారు.",
+        testimonial_1_name: "మీనాక్షి సిల్క్స్ & జువెలరీ",
+        testimonial_1_role: "రిటైల్ భాగస్వామి, కోయంబత్తూరు",
+        testimonial_2_quote: "మా బుకింగ్ బాట్ ఇప్పుడు చాలా అపాయింట్‌మెంట్ అభ్యర్థనలను రాత్రిపూట నిర్వహిస్తుంది, మిస్ అయిన స్లాట్‌లు గణనీయంగా తగ్గాయి.",
+        testimonial_2_name: "అరవింద్ ఫ్యామిలీ క్లినిక్",
+        testimonial_2_role: "హెల్త్‌కేర్ భాగస్వామి",
+        testimonial_3_quote: "కొనుగోలుదారులు సైట్‌ను సందర్శించే ముందే వారి ఫోన్‌లో ఫ్లోర్ ప్లాన్‌లను చూస్తారు, కాబట్టి మా బృందం ఇప్పుడు సీరియస్ లీడ్‌లనే కలుస్తుంది.",
+        testimonial_3_name: "కోస్టల్ రియల్టీ గ్రూప్",
+        testimonial_3_role: "రియల్ ఎస్టేట్ భాగస్వామి",
+        faq_eyebrow: "ప్రశ్నలు",
+        faq_heading: "తరచుగా అడిగే ప్రశ్నలు",
+        faq_1_q: "నా కస్టమర్లు యాప్‌ను డౌన్‌లోడ్ చేయాలా?",
+        faq_1_a: "అవసరం లేదు. WebAR లింక్ లేదా QR కోడ్ నుండి iOS మరియు Android రెండింటిలోనూ నేరుగా మొబైల్ బ్రౌజర్‌లో నడుస్తుంది.",
+        faq_2_q: "లాంచ్ చేయడానికి ఎంత సమయం పడుతుంది?",
+        faq_2_a: "చాలా సింగిల్-ఇండస్ట్రీ డెమోలు 5 నుండి 10 పని దినాల్లో లైవ్ అవుతాయి, ఎన్ని వస్తువులను మోడల్ చేయాలో దానిపై ఆధారపడి.",
+        faq_3_q: "WhatsApp బాట్ ప్రాంతీయ భాషల్లో పనిచేస్తుందా?",
+        faq_3_a: "అవును. ఇది తమిళం, కన్నడ, తెలుగు, మలయాళం మరియు ఇంగ్లీష్ కోసం ముందుగానే కాన్ఫిగర్ చేయబడింది.",
+        faq_4_q: "ఏ పరికరాలు AR అనుభవానికి మద్దతు ఇస్తాయి?",
+        faq_4_a: "ఏదైనా ఆధునిక స్మార్ట్‌ఫోన్ బ్రౌజర్ — iOS Quick Look ను, Android Scene Viewer ను ఉపయోగిస్తుంది, రెండూ అంతర్నిర్మితమే.",
+        cta_heading: "మీ వ్యాపారాన్ని 3D లోకి తీసుకురావడానికి సిద్ధంగా ఉన్నారా?",
+        cta_sub: "48 గంటల్లో మీ పరిశ్రమ కోసం ఉచిత అనుకూల డెమోను పొందండి — ఎలాంటి బాధ్యత లేదు.",
+        cta_btn: "నా ఉచిత డెమో పొందండి",
+        footer_blurb: "వ్యాపారాలు ఒక్క కోడ్ లైన్ కూడా రాయకుండా 3D అనుభవాలు మరియు 24/7 WhatsApp వర్క్‌ఫ్లోలను ప్రారంభించడంలో సహాయపడే WebAR మరియు AI ఆటోమేషన్ స్టూడియో.",
+        footer_links_heading: "త్వరిత లింక్‌లు",
+        footer_contact_heading: "సంప్రదించండి",
+        footer_copyright: "© 2026 Nishanth AI. అన్ని హక్కులు కలిగి ఉన్నాయి.",
+        btn_call: "కాల్ చేయండి",
+        btn_whatsapp: "WhatsApp లో చాట్ చేయండి"
+      },
+      ml: {
+        nav_demo_btn: "സൗജന്യ ഡെമോ",
+        nav_link_industries: "മേഖലകൾ",
+        nav_link_process: "പ്രക്രിയ",
+        nav_link_demo: "ഡെമോ",
+        nav_link_faq: "FAQ",
+        hero_badge: "Next-Gen WebAR & AI Agency",
+        hero_title_1: "നിങ്ങളുടെ ബിസിനസ്സ് മാറ്റിയെടുക്കൂ",
+        hero_title_2: "WebAR & AI ഓട്ടോമേഷൻ",
+        hero_description: "ഒരു ആപ്പും ഡൗൺലോഡ് ചെയ്യേണ്ടതില്ല. ബ്രൗസറിൽ തന്നെ 3D AR അനുഭവവും WhatsApp വഴി 24/7 ഓട്ടോമേറ്റഡ് വിൽപ്പനയും നൽകി വരുമാനം ഇരട്ടിയാക്കൂ.",
+        hero_btn_explore: "മേഖലകൾ പരിശോധിക്കൂ 🚀",
+        hero_btn_demo: "ലൈവ് 3D ഡെമോ",
+        stat_1_label: "നൽകിയ AR അനുഭവങ്ങൾ",
+        stat_2_label: "ശരാശരി കൺവേർഷൻ വർദ്ധനവ്",
+        stat_3_label: "24/7 WhatsApp ഓട്ടോമേറ്റഡ് മറുപടി",
+        grid_eyebrow: "നിങ്ങളുടെ മേഖല തിരഞ്ഞെടുക്കൂ",
+        grid_heading: "ഏത് മേഖലയിലെ പരിഹാരമാണ് നിങ്ങൾക്ക് വേണ്ടത്?",
+        grid_subheading: "10 സവിശേഷ ഡെമോകൾ കാണാൻ താഴെ നിങ്ങളുടെ തൊഴിൽ തിരഞ്ഞെടുക്കൂ",
+        card_1_title: "ഭക്ഷണം & ഹോട്ടലുകൾ",
+        card_1_desc: "3D മെനു, WhatsApp ഓർഡറിങ്, വൈറൽ ടേബിൾ ഗെയിമുകൾ",
+        card_2_title: "ആരോഗ്യം & ക്ലിനിക്കുകൾ",
+        card_2_desc: "3D ചികിത്സാ വിവരണം, അപ്പോയിന്റ്മെന്റ് ബുക്കിംഗ് ബോട്ട്",
+        card_3_title: "റിയൽ എസ്റ്റേറ്റ്",
+        card_3_desc: "3D ഫ്ലോർ പ്ലാനുകൾ, വെർച്വൽ ഇന്റീരിയർ ടൂറുകൾ",
+        card_4_title: "സ്വർണ്ണാഭരണങ്ങൾ & ഫാഷൻ",
+        card_4_desc: "വെർച്വൽ ട്രൈ-ഓൺ, 3D പ്രൊഡക്റ്റ് ഷോക്കേസ്, റേറ്റ് അലേർട്ടുകൾ",
+        card_5_title: "വിവാഹം & സമ്മാനങ്ങൾ",
+        card_5_desc: "AR ക്ഷണക്കത്തുകൾ, AR വീഡിയോ ഫ്രിഡ്ജ് മാഗ്നറ്റുകൾ",
+        card_6_title: "ഓട്ടോമൊബൈൽ ഷോറൂം",
+        card_6_desc: "3D കാർ വ്യൂവർ, ടെസ്റ്റ് ഡ്രൈവ് ബുക്കിംഗ്, സർവീസ് ബോട്ടുകൾ",
+        card_7_title: "വിദ്യാഭ്യാസം & എഡ്‌ടെക്",
+        card_7_desc: "3D സയൻസ് ലാബ്, 24/7 AI ഹോംവർക്ക് ട്യൂട്ടർ",
+        card_8_title: "കല & ടൂറിസം",
+        card_8_desc: "ലിവിംഗ് ക്യാൻവാസ് ഗാലറി, ബഹുഭാഷാ AI വോയ്‌സ് ഗൈഡ്",
+        card_9_title: "നിർമ്മാണം & വ്യവസായം",
+        card_9_desc: "1:1 മെഷിനറി AR, WhatsApp B2B ലീഡ് യോഗ്യത",
+        demo_count: "10 ഡെമോകൾ",
+        process_eyebrow: "ഞങ്ങളുടെ പ്രക്രിയ",
+        process_heading: "ദിവസങ്ങൾക്കുള്ളിൽ ആശയത്തിൽ നിന്ന് ലൈവിലേക്ക്",
+        process_1_title: "കണ്ടെത്തൽ",
+        process_1_desc: "നിങ്ങളുടെ ഉൽപ്പന്നങ്ങൾ, സ്ഥലം അല്ലെങ്കിൽ കാറ്റലോഗ് പഠിച്ച്, 3D യും ഓട്ടോമേഷനും ഏറ്റവും ഫലപ്രദമാകുന്നിടം കണ്ടെത്തുന്നു.",
+        process_2_title: "നിർമ്മാണം",
+        process_2_desc: "ഞങ്ങളുടെ ടീം നിങ്ങളുടെ ഉൽപ്പന്നങ്ങൾ ഫോട്ടോറിയൽ 3D യിൽ മോഡൽ ചെയ്ത്, നിങ്ങളുടെ വിൽപ്പന ഫണലിനു ചേരുന്ന AI വർക്ക്ഫ്ലോകൾ സജ്ജമാക്കുന്നു.",
+        process_3_title: "ലോഞ്ച് & സ്കെയിൽ",
+        process_3_desc: "ദിവസങ്ങൾക്കുള്ളിൽ ലൈവ് ആകും, പിന്നീട് എൻഗേജ്മെന്റ് ട്രാക്ക് ചെയ്യുകയും WhatsApp ഏജന്റ് നിരന്തരം ലീഡുകൾ യോഗ്യമാക്കുകയും ചെയ്യും.",
+        demo_badge: "ലൈവ് WebAR അനുഭവം",
+        demo_title: "ഇപ്പോൾ തന്നെ 3D-യിൽ അനുഭവിക്കൂ",
+        demo_sub: "വിരൽ കൊണ്ട് കറക്കി നോക്കൂ; ക്യാമറ വഴി നിങ്ങളുടെ മേശപ്പുറത്ത് തന്നെ വെയ്ക്കൂ",
+        demo_feat_1: "ആപ്പ് വേണ്ട — ലിങ്ക് അല്ലെങ്കിൽ QR കോഡിൽ നിന്ന് നേരിട്ട് തുറക്കും",
+        demo_feat_2: "നിങ്ങളുടെ ക്യാമറയും തറയും ഉപയോഗിച്ച് കൃത്യമായ അളവിൽ സ്ഥാപിക്കൽ",
+        demo_feat_3: "അഞ്ച് പ്രാദേശിക ഭാഷകളിൽ വോയ്സ് ഗൈഡിനൊപ്പം പ്രവർത്തിക്കുന്നു",
+        demo_hint: "നിങ്ങളുടെ മുറിയിൽ 3D മോഡൽ കാണാൻ 'View in AR' ക്ലിക്ക് ചെയ്യുക",
+        testimonials_eyebrow: "ക്ലയന്റ് അഭിപ്രായങ്ങൾ",
+        testimonials_heading: "വിവിധ മേഖലകളിൽ വിശ്വസ്തം",
+        testimonial_1_quote: "വെർച്വൽ ട്രൈ-ഓൺ ഞങ്ങളുടെ ഷോറൂം ക്യൂ പകുതിയായി കുറച്ചു; ഉപഭോക്താക്കൾ ഇപ്പോൾ സന്ദർശിക്കുന്നതിന് മുൻപ് വീട്ടിൽ നിന്ന് മുഴുവൻ ശേഖരവും കാണുന്നു.",
+        testimonial_1_name: "മീനാക്ഷി സിൽക്‌സ് & ജ്വല്ലറി",
+        testimonial_1_role: "റീട്ടെയിൽ പങ്കാളി, കോയമ്പത്തൂർ",
+        testimonial_2_quote: "ഞങ്ങളുടെ ബുക്കിംഗ് ബോട്ട് ഇപ്പോൾ മിക്ക അപ്പോയിന്റ്മെന്റ് അഭ്യർത്ഥനകളും രാത്രിയിൽ കൈകാര്യം ചെയ്യുന്നു, നഷ്ടപ്പെട്ട സ്ലോട്ടുകൾ ഗണ്യമായി കുറഞ്ഞു.",
+        testimonial_2_name: "അരവിന്ദ് ഫാമിലി ക്ലിനിക്",
+        testimonial_2_role: "ഹെൽത്ത്‌കെയർ പങ്കാളി",
+        testimonial_3_quote: "വാങ്ങുന്നവർ സൈറ്റ് സന്ദർശിക്കുന്നതിന് മുൻപ് തന്നെ ഫോണിൽ ഫ്ലോർ പ്ലാനുകൾ കാണുന്നു, അതിനാൽ ഞങ്ങളുടെ ടീം ഇപ്പോൾ ഗൗരവമുള്ള ലീഡുകളെ മാത്രമേ കാണുന്നുള്ളൂ.",
+        testimonial_3_name: "കോസ്റ്റൽ റിയാൽറ്റി ഗ്രൂപ്പ്",
+        testimonial_3_role: "റിയൽ എസ്റ്റേറ്റ് പങ്കാളി",
+        faq_eyebrow: "ചോദ്യങ്ങൾ",
+        faq_heading: "പതിവ് ചോദ്യങ്ങൾ",
+        faq_1_q: "എന്റെ ഉപഭോക്താക്കൾ ആപ്പ് ഡൗൺലോഡ് ചെയ്യേണ്ടതുണ്ടോ?",
+        faq_1_a: "ഇല്ല. WebAR ഒരു ലിങ്ക് അല്ലെങ്കിൽ QR കോഡ് വഴി iOS, Android എന്നിവയിൽ നേരിട്ട് മൊബൈൽ ബ്രൗസറിൽ പ്രവർത്തിക്കുന്നു.",
+        faq_2_q: "ലോഞ്ച് ചെയ്യാൻ എത്ര സമയമെടുക്കും?",
+        faq_2_a: "മിക്ക ഒറ്റ-മേഖലാ ഡെമോകളും 5 മുതൽ 10 പ്രവൃത്തി ദിവസത്തിനുള്ളിൽ ലൈവ് ആകും, എത്ര ഉൽപ്പന്നങ്ങൾ മോഡൽ ചെയ്യണം എന്നതിനെ ആശ്രയിച്ച്.",
+        faq_3_q: "WhatsApp ബോട്ട് പ്രാദേശിക ഭാഷകളിൽ പ്രവർത്തിക്കുമോ?",
+        faq_3_a: "അതെ. ഇത് തമിഴ്, കന്നഡ, തെലുങ്ക്, മലയാളം, ഇംഗ്ലീഷ് എന്നിവയ്ക്കായി മുൻകൂട്ടി സജ്ജീകരിച്ചിരിക്കുന്നു.",
+        faq_4_q: "ഏതൊക്കെ ഉപകരണങ്ങൾ AR അനുഭവത്തെ പിന്തുണയ്ക്കുന്നു?",
+        faq_4_a: "ഏതൊരു ആധുനിക സ്മാർട്ട്‌ഫോൺ ബ്രൗസറും — iOS Quick Look ഉം Android Scene Viewer ഉം ഉപയോഗിക്കുന്നു, രണ്ടും ബിൽറ്റ്-ഇൻ ആണ്.",
+        cta_heading: "നിങ്ങളുടെ ബിസിനസ്സ് 3D-യിലേക്ക് കൊണ്ടുവരാൻ തയ്യാറാണോ?",
+        cta_sub: "48 മണിക്കൂറിനുള്ളിൽ നിങ്ങളുടെ മേഖലയ്ക്കായി സൗജന്യ ഡെമോ നേടൂ — ഒരു ബാധ്യതയുമില്ല.",
+        cta_btn: "എന്റെ സൗജന്യ ഡെമോ നേടൂ",
+        footer_blurb: "ബിസിനസുകൾക്ക് ഒരു കോഡ് വരി പോലും എഴുതാതെ 3D അനുഭവങ്ങളും 24/7 WhatsApp വർക്ക്ഫ്ലോകളും ആരംഭിക്കാൻ സഹായിക്കുന്ന WebAR, AI ഓട്ടോമേഷൻ സ്റ്റുഡിയോ.",
+        footer_links_heading: "ദ്രുത ലിങ്കുകൾ",
+        footer_contact_heading: "ബന്ധപ്പെടുക",
+        footer_copyright: "© 2026 Nishanth AI. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.",
+        btn_call: "വിളിക്കൂ",
+        btn_whatsapp: "WhatsApp-ൽ ചാറ്റ് ചെയ്യൂ"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          element.innerText = translations[lang][key];
+        }
+      });
+      localStorage.setItem("selected_lang", lang);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      const savedLang = localStorage.getItem("selected_lang") || "en";
+      document.getElementById("language-switcher").value = savedLang;
+      setLanguage(savedLang);
+
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // ---- Count-up animation for stat numbers ----
+      function animateCount(el) {
+        const to = parseFloat(el.getAttribute("data-count-to"));
+        const suffix = el.getAttribute("data-suffix") || "";
+        const isDecimal = String(to).includes(".");
+        const duration = 1100;
+        const start = performance.now();
+        function tick(now) {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const val = to * eased;
+          el.textContent = (isDecimal ? val.toFixed(1) : Math.round(val)) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        if (reduceMotion) {
+          el.textContent = (isDecimal ? to.toFixed(1) : Math.round(to)) + suffix;
+        } else {
+          requestAnimationFrame(tick);
+        }
+      }
+
+      // ---- Scroll-triggered reveal (covers .reveal, .stat-card, .process-wrap) ----
+      const revealTargets = document.querySelectorAll(".reveal, .stat-card, .process-wrap");
+      if ("IntersectionObserver" in window && !reduceMotion) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              const counter = entry.target.querySelector("[data-count-to]");
+              if (counter && !counter.dataset.counted) {
+                counter.dataset.counted = "1";
+                animateCount(counter);
+              }
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2, rootMargin: "0px 0px -40px 0px" });
+        revealTargets.forEach((el) => io.observe(el));
+      } else {
+        // No IO support or reduced motion: show everything immediately
+        revealTargets.forEach((el) => {
+          el.classList.add("is-visible");
+          const counter = el.querySelector("[data-count-to]");
+          if (counter) animateCount(counter);
+        });
+      }
+
+      // ---- FAQ accordion: smooth height animation, single-open ----
+      const faqItems = document.querySelectorAll("details.faq-item");
+      faqItems.forEach((item) => {
+        item.setAttribute("open", ""); // keep content in flow so grid-rows can animate
+        const summary = item.querySelector("summary");
+        summary.addEventListener("click", (e) => {
+          e.preventDefault();
+          const willOpen = !item.classList.contains("is-open");
+          faqItems.forEach((other) => other.classList.remove("is-open"));
+          if (willOpen) item.classList.add("is-open");
+        });
+      });
+      // Start with the first FAQ open, matching original markup
+      if (faqItems[0]) faqItems[0].classList.add("is-open");
+
+      // ---- Scroll progress bar + nav auto-hide on scroll direction ----
+      const progressBar = document.getElementById("scroll-progress");
+      const siteNav = document.querySelector("nav.site-nav");
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+
+      function updateOnScroll() {
+        const doc = document.documentElement;
+        const scrollTop = window.scrollY;
+        const scrollHeight = doc.scrollHeight - doc.clientHeight;
+        const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        if (progressBar) progressBar.style.width = pct + "%";
+
+        if (siteNav) {
+          if (scrollTop > 140 && scrollTop > lastScrollY) {
+            siteNav.classList.add("nav-hidden");
+          } else {
+            siteNav.classList.remove("nav-hidden");
+          }
+          siteNav.classList.toggle("nav-scrolled", scrollTop > 8);
+        }
+        lastScrollY = scrollTop;
+        ticking = false;
+      }
+
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          requestAnimationFrame(updateOnScroll);
+          ticking = true;
+        }
+      }, { passive: true });
+      updateOnScroll();
+
+      // ---- Ripple touch/click feedback on CTA buttons ----
+      document.querySelectorAll(".ripple-wrap").forEach((el) => {
+        el.addEventListener("pointerdown", (e) => {
+          if (reduceMotion) return;
+          const rect = el.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height) * 1.4;
+          const dot = document.createElement("span");
+          dot.className = "ripple-dot";
+          dot.style.width = dot.style.height = size + "px";
+          dot.style.left = (e.clientX - rect.left - size / 2) + "px";
+          dot.style.top = (e.clientY - rect.top - size / 2) + "px";
+          el.appendChild(dot);
+          setTimeout(() => dot.remove(), 650);
+        });
+      });
+
+      // ---- Ambient floating particles in hero (cheap CSS-driven ambiance) ----
+      const particleHost = document.getElementById("hero-particles");
+      if (particleHost && !reduceMotion) {
+        const count = window.innerWidth < 640 ? 10 : 18;
+        for (let i = 0; i < count; i++) {
+          const p = document.createElement("span");
+          p.className = "hero-particle";
+          const size = 2 + Math.random() * 3;
+          p.style.width = size + "px";
+          p.style.height = size + "px";
+          p.style.left = Math.random() * 100 + "%";
+          p.style.top = 40 + Math.random() * 55 + "%";
+          p.style.animationDuration = (5 + Math.random() * 6) + "s";
+          p.style.animationDelay = (Math.random() * 6) + "s";
+          particleHost.appendChild(p);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
