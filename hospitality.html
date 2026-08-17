@@ -354,5 +354,22 @@
       });
     }
   </script>
+  <script>
+  function changeDish(btnElement, modelUrl) {
+    const viewer = document.getElementById('menu-model-viewer');
+    if (viewer) {
+      viewer.src = modelUrl;
+    }
+    
+    // Toggle active pill button styling
+    document.querySelectorAll('.dish-btn').forEach(btn => {
+      btn.className = 'dish-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all';
+    });
+    
+    if (btnElement) {
+      btnElement.className = 'dish-btn active px-3 py-1 rounded-full text-xs font-bold bg-cyan-500 text-slate-950 transition-all';
+    }
+  }
+</script>
 </body>
 </html>
